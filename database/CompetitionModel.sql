@@ -109,3 +109,16 @@ CREATE TABLE cm_charge(
 	CONSTRAINT fk_charge_level_id FOREIGN KEY (charge_level_id) REFERENCES cm_charge_level (charge_level_id) ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE = INNODB;
 
+CREATE TABLE cm_charge_assigned(
+	charge_assigned_id INT AUTO_INCREMENT NOT NULL,
+	user_id INT NOT NULL,
+	charge_id INT NOT NULL,
+	startdate DATE NOT NULL,
+	enddate NULL,
+	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updated TIMESTAMP NULL,
+	isactive CHAR(1) NOT NULL DEFAULT 'Y',
+	CONSTRAINT pk_charge_assigned_id PRIMARY KEY (charge_assigned_id),
+	CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES cm_user (user_id) ON UPDATE CASCADE ON DELETE RESTRICT,
+	CONSTRAINT fk_charge_id FOREIGN KEY (charge_id) REFERENCES cm_charge_id (charge_id) ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE = INNODB;
