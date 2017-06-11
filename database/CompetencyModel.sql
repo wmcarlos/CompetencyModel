@@ -1,6 +1,6 @@
-CREATE DATABASE competitionmodel;
+CREATE DATABASE competency_model;
 
-USE competitionmodel;
+USE competency_model;
 
 CREATE TABLE cm_company(
 	company_id INT AUTO_INCREMENT NOT NULL,
