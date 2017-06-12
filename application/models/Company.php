@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 class Company extends CI_Model{
 	
 	public $company_id,
