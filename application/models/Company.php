@@ -11,7 +11,7 @@ class Company extends CI_Model{
 		   $updated,
 		   $isactive;
 
-	public function __construnct(){
+	public function __construct(){
 		parent::__construct();
 	}
 
