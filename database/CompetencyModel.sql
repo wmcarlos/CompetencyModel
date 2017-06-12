@@ -85,7 +85,7 @@ CREATE TABLE cm_departament(
 
 CREATE TABLE cm_charge_level(
 	charge_level_id INT AUTO_INCREMENT NOT NULL,
-	name VARCHAR(30) NOT NULL,
+	name VARCHAR(60) NOT NULL,
 	company_id INT NOT NULL,
 	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updated TIMESTAMP NULL,
@@ -152,7 +152,7 @@ CREATE TABLE cm_development_level(
 
 CREATE TABLE cm_competency(
 	competency_id INT AUTO_INCREMENT NOT NULL,
-	name VARCHAR(100) NOT NULL,
+	name VARCHAR(255) NOT NULL,
 	definition TEXT NULL,
 	company_id INT NOT NULL,
 	charge_level_id INT NOT NULL,
@@ -180,7 +180,7 @@ CREATE TABLE cm_behavioral_indicator(
 
 CREATE TABLE cm_period(
 	period_id INT AUTO_INCREMENT NOT NULL,
-	name VARCHAR(150) NOT NULL,
+	name VARCHAR(100) NOT NULL,
 	startdate DATE NOT NULL,
 	enddate DATE NOT NULL,
 	company_id INT NOT NULL,
