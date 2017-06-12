@@ -1,6 +1,7 @@
 <?php 
 
 class Company extends CI_Model{
+	
 	public $company_id,
 		   $value,
 		   $name,
@@ -73,6 +74,7 @@ class Company extends CI_Model{
 	}
 
 	public function isactive($val){
+
 		$query = "UPDATE cm_company SET isactive = '$val' WHERE company_id = $this->company_id";
 
 		$this->db->trans_start();
@@ -86,5 +88,6 @@ class Company extends CI_Model{
 		}else{
 			return false;
 		}		
+
 	}
 }
