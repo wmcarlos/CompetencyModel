@@ -36,7 +36,7 @@
                       <a href='<?= base_url() ?>index.php/companies/edit/<?= $item->company_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
                       <a href='#' onclick='isdisable(<?= $item->company_id ?>)' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isenable(<?= $item->company_id ?>)' class="btn btn-success">Active</a>
+                      <a href='#' onclick='isenable(<?= $item->company_id ?>)' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
                     <?php } ?>
                 </td>
               </tr>

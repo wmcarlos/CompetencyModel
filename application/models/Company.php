@@ -47,6 +47,9 @@ class Company extends CI_Model{
 			case 'byvalue':
 				$query = "SELECT * FROM cm_company WHERE value = '$this->value' ORDER BY name ASC";
 			break;
+			case 'getbrand':
+				$query = "SELECT brand FROM cm_company WHERE company_id = $this->compnay_id";
+			break;
 		}
 
 		$query = $this->db->query($query);
@@ -57,7 +60,7 @@ class Company extends CI_Model{
 
 	public function update(){
 
-		$query = "UPDATE cm_company SET name = '$this->name', brand = '$this->brand', phone = '$this->phone', email = '$this->email' WHERE company_id = $this->company_id";
+		$query = "UPDATE cm_company SET value = '$this->value', name = '$this->name', brand = '$this->brand', phone = '$this->phone', email = '$this->email' WHERE company_id = $this->company_id";
 
 		$this->db->trans_start();
 
