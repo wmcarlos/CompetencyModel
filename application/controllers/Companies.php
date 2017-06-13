@@ -130,11 +130,32 @@ class Companies extends CI_Controller{
 
 	}
 
-	public function active(){
+	public function active($company_id){
+		$this->Company->company_id = $company_id;
 
+		if($this->Company->isactive('Y')){
+			$string = 'Compa&ntilde;ia activada con Exito!!';
+		}else{
+			$string = 'Error al intentar activar la Compa&ntilde;ia!!';
+		}
+
+		$this->session->set_flashdata('msj',$string);
+
+		redirect('Companies','refresh');
 	}
 
-	public function inactive(){
+	public function inactive($company_id){
 
+		$this->Company->company_id = $company_id;
+
+		if($this->Company->isactive('N')){
+			$string = 'Compa&ntilde;ia Desactivada con Exito!!';
+		}else{
+			$string = 'Error al intentar Desactivar la Compa&ntilde;ia!!';
+		}
+
+		$this->session->set_flashdata('msj',$string);
+
+		redirect('Companies','refresh');
 	}
 }
