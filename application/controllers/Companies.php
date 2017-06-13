@@ -17,7 +17,7 @@ class Companies extends CI_Controller{
 		$this->load->view('admin/index', $data);
 	}
 
-	public function add(){
+	public function create(){
 		$data['title'] = "New Company";
 		$data['path'] = 'admin/company';
 		$data['content'] = 'form';
@@ -25,6 +25,22 @@ class Companies extends CI_Controller{
 	}
 
 	public function store(){
+
+	}
+
+	public function edit(){
+
+	}
+
+	public function update(){
+
+	}
+
+	public function active(){
+
+	}
+
+	public function inactive(){
 
 	}
 }

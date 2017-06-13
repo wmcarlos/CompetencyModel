@@ -2,10 +2,10 @@
   <section class="content">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title"><?= $title ?></h3>
+        <h1><?= $title ?></h1>
       </div>
       <div class="box-body">
-      <?= form_open("companies/store") ?>
+      <?= form_open_multipart("companies/create") ?>
 
  			<div class='form-group'>
  				<label for="txtvalue">Value:</label>
@@ -27,9 +27,9 @@
  				<label for="txtemail">Email:</label>
  				<input type="text" class="form-control" name="txtemail" id="txtemail">
  			</div>
- 			<button class="btn btn-success" type="submit">Save</button>
- 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/companies">Cancel</a>
- 			
+ 			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+ 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/companies"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
+
       <?= form_close() ?>
       </div>
     </div>
