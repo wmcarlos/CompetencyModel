@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/ionicons-2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/css/skins/_all-skins.min.css">
 </head>

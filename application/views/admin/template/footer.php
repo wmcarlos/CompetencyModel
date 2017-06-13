@@ -8,14 +8,11 @@
 <!-- jQuery 3.1.1-->
 <script src="<?= base_url() ?>public/plugins/jQuery/jquery-3.1.1.min.js"></script>
 <script src="<?= base_url() ?>public/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="<?= base_url() ?>public/plugins/fastclick/fastclick.js"></script>
 <script src="<?= base_url() ?>public/js/adminlte.min.js"></script>
 <script src="<?= base_url() ?>public/js/demo.js"></script>
-<script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
-  })
-</script>
+<script src="<?= base_url() ?>public/js/global.js"></script>
 </body>
 </html>

@@ -11,17 +11,20 @@ class Companies extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Compa&ntilde;ias';
-		$data['subtitle'] = 'Listado';
+		$data['title'] = 'Companies';
 		$data['path'] = 'admin/company';
 		$data['content'] = 'all';
 		$this->load->view('admin/index', $data);
 	}
 
 	public function add(){
-		$data['title'] = "Nueva Compa&ntilde;ia";
+		$data['title'] = "New Company";
 		$data['path'] = 'admin/company';
 		$data['content'] = 'form';
 		$this->load->view('admin/index', $data);
+	}
+
+	public function store(){
+
 	}
 }
