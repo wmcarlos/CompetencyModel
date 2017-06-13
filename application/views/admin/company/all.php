@@ -6,6 +6,11 @@
         <h1><?= $title ?></h1>
       </div>
       <div class="box-body">
+
+        <?php if(!empty($this->session->flashdata('msj'))){ ?>
+          <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
+        <?php } ?>
+
         <a href="<?= base_url() ?>index.php/companies/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Company</a>
         <br />
         <br />
@@ -18,7 +23,25 @@
             <th>Email</th>
             <th>Actions</th>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <?php foreach($items as $item){ ?>
+              <tr>
+                <td><?= $item->company_id ?></td>
+                <td><?= $item->value ?></td>
+                <td><?= $item->name ?></td>
+                <td><?= $item->phone ?></td>
+                <td><?= $item->email ?></td>
+                <td>
+                    <?php if($item->isactive == 'Y'){ ?>
+                      <a href='<?= base_url() ?>index.php/companies/edit/$item->company_id' class="btn btn-info">Edit</a>
+                      <a href='#' onclick='isdisable($item->company_id)' class="btn btn-danger">Disable</a>
+                    <?php }else{ ?>
+                      <a href='#' onclick='isdisable($item->company_id)' class="btn btn-danger">Disable</a>
+                    <?php } ?>
+                </td>
+              </tr>
+            <?php } ?>
+          </tbody>
         </table>
       </div>
     </div>
