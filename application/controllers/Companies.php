@@ -6,7 +6,7 @@ class Companies extends CI_Controller{
 	public function __construct(){
 
 		parent::__construct();
-		
+
 		$this->load->model('Company');
 
 	}
@@ -37,7 +37,7 @@ class Companies extends CI_Controller{
 		$this->Company->email = strtoupper($this->input->post("txtemail"));
 		$this->Company->brand = 'empty.png';
 
-		if( isset($_FILES['txtbrand']['name']) and !empty($_FILES['txtbrand']['name']) ){
+		/*if( isset($_FILES['txtbrand']['name']) and !empty($_FILES['txtbrand']['name']) ){
 			//Config of Images
 			$config = array(
 				'upload_path' => "./public/upload/company/",
@@ -54,17 +54,17 @@ class Companies extends CI_Controller{
 				$udata = $this->upload->data();
 				$this->Company->brand = $udata['file_name'];
 			}
-		}
+		}*/
 
 		if( count($this->Company->getData("byname")) > 0){
 			$string = 'Esta Copa&ntilde;ia ya se encuentra Registrada!!';
-			unlink($udata['full_path']);
+			//unlink($udata['full_path']);
 		}else{
 			if($this->Company->add()){
 				$string = 'Compa&ntilde;ia registrada con Exito!!';
 			}else{
 				$string = 'Ocurrio un error al intentar registrar la Compa&ntilde;ia!!';
-				unlink($udata['full_path']);
+				//unlink($udata['full_path']);
 			}
 		}
 
@@ -94,11 +94,9 @@ class Companies extends CI_Controller{
 		$this->Company->name = strtoupper($this->input->post("txtname"));
 		$this->Company->phone = $this->input->post("txtphone");
 		$this->Company->email = strtoupper($this->input->post("txtemail"));
-		//get brand
-		$b_arr = $this->Company->getData('getbrand');
-		$this->Company->brand = (!empty($b_arr[0]->brand)) ? $b_arr[0]->brand : 'empty.png';
+		$this->Company->brand = 'empty.png';
 
-		//verify is not empty the brand from form
+		/*
 		if( isset($_FILES['txtbrand']['name']) and !empty($_FILES['txtbrand']['name']) ){
 			//Config of Images
 			$config = array(
@@ -117,13 +115,13 @@ class Companies extends CI_Controller{
 				$udata = $this->upload->data();
 				$this->Company->brand = $udata['file_name'];
 			}
-		}
+		}*/
 
 		if($this->Company->update()){
 			$string = 'Compa&ntilde;ia modificada con Exito!!';
 		}else{
 			$string = 'Ocurrio un error al intentar modificar la Compa&ntilde;ia!!';
-			unlink($udata['full_path']);
+			//unlink($udata['full_path']);
 		}
 
 		$this->session->set_flashdata('msj',$string);
