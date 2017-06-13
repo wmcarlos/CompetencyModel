@@ -16,8 +16,8 @@
  				<input type="text" class="form-control textuppercase" name="txtname" id="txtname">
  			</div>
  			<div class='form-group'>
- 				<label for="txtbrand">Brand:</label>
-        <input type="file" name="txtbrand" id="txtbrand">
+ 				<label for="txtshort_name">Short Name:</label>
+        <input type="text" class="form-control textuppercase" name="txtshort_name" id="txtshort_name">
  			</div>
  			<div class='form-group'>
  				<label for="txtphone">Phone:</label>

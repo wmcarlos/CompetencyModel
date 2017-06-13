@@ -35,36 +35,15 @@ class Companies extends CI_Controller{
 		$this->Company->name = strtoupper($this->input->post("txtname"));
 		$this->Company->phone = $this->input->post("txtphone");
 		$this->Company->email = strtoupper($this->input->post("txtemail"));
-		$this->Company->brand = 'empty.png';
-
-		/*if( isset($_FILES['txtbrand']['name']) and !empty($_FILES['txtbrand']['name']) ){
-			//Config of Images
-			$config = array(
-				'upload_path' => "./public/upload/company/",
-				'allowed_types' => "jpg|png|jpeg",
-				'overwrite' => TRUE,
-				'max_size' => "2048000",
-				'max_height' => "600",
-				'max_width' => "600",
-				'encrypt_name' => TRUE
-			);
-			//End Config
-			$this->load->library('upload',$config);
-			if($this->upload->do_upload('txtbrand')){
-				$udata = $this->upload->data();
-				$this->Company->brand = $udata['file_name'];
-			}
-		}*/
+		$this->Company->short_name = strtoupper($this->input->post("txtshort_name"));
 
 		if( count($this->Company->getData("byname")) > 0){
 			$string = 'Esta Copa&ntilde;ia ya se encuentra Registrada!!';
-			//unlink($udata['full_path']);
 		}else{
 			if($this->Company->add()){
 				$string = 'Compa&ntilde;ia registrada con Exito!!';
 			}else{
 				$string = 'Ocurrio un error al intentar registrar la Compa&ntilde;ia!!';
-				//unlink($udata['full_path']);
 			}
 		}
 
@@ -94,28 +73,8 @@ class Companies extends CI_Controller{
 		$this->Company->name = strtoupper($this->input->post("txtname"));
 		$this->Company->phone = $this->input->post("txtphone");
 		$this->Company->email = strtoupper($this->input->post("txtemail"));
-		$this->Company->brand = 'empty.png';
+		$this->Company->short_name = strtoupper($this->input->post("txtshort_name"));
 
-		/*
-		if( isset($_FILES['txtbrand']['name']) and !empty($_FILES['txtbrand']['name']) ){
-			//Config of Images
-			$config = array(
-				'upload_path' => "./public/upload/company/",
-				'allowed_types' => "jpg|png|jpeg",
-				'overwrite' => TRUE,
-				'max_size' => "2048000",
-				'max_height' => "600",
-				'max_width' => "600",
-				'encrypt_name' => TRUE
-			);
-			//End Config
-			$this->load->library('upload',$config);
-
-			if($this->upload->do_upload('txtbrand')){
-				$udata = $this->upload->data();
-				$this->Company->brand = $udata['file_name'];
-			}
-		}*/
 
 		if($this->Company->update()){
 			$string = 'Compa&ntilde;ia modificada con Exito!!';

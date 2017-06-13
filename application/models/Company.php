@@ -4,7 +4,7 @@ class Company extends CI_Model{
 	public $company_id,
 		   $value,
 		   $name,
-		   $brand,
+		   $short_name,
 		   $phone,
 		   $email,
 		   $created,
@@ -17,7 +17,7 @@ class Company extends CI_Model{
 
 	public function add(){
 
-		$query = "INSERT INTO cm_company(value,name,brand,phone,email) VALUES ('$this->value','$this->name','$this->brand','$this->phone','$this->email')";
+		$query = "INSERT INTO cm_company(value,name,short_name,phone,email) VALUES ('$this->value','$this->name','$this->short_name','$this->phone','$this->email')";
 
 		$this->db->trans_start();
 
@@ -47,8 +47,8 @@ class Company extends CI_Model{
 			case 'byvalue':
 				$query = "SELECT * FROM cm_company WHERE value = '$this->value' ORDER BY name ASC";
 			break;
-			case 'getbrand':
-				$query = "SELECT brand FROM cm_company WHERE company_id = $this->compnay_id";
+			case 'getshort_name':
+				$query = "SELECT short_name FROM cm_company WHERE company_id = $this->compnay_id";
 			break;
 		}
 
@@ -60,7 +60,7 @@ class Company extends CI_Model{
 
 	public function update(){
 
-		$query = "UPDATE cm_company SET value = '$this->value', name = '$this->name', brand = '$this->brand', phone = '$this->phone', email = '$this->email' WHERE company_id = $this->company_id";
+		$query = "UPDATE cm_company SET value = '$this->value', name = '$this->name', short_name = '$this->short_name', phone = '$this->phone', email = '$this->email' WHERE company_id = $this->company_id";
 
 		$this->db->trans_start();
 
