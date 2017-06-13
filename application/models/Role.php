@@ -33,7 +33,14 @@ class Role extends CI_Model{
 
 		switch ($type) {
 			case 'all':
-				$query = "SELECT * FROM cm_role ORDER BY name ASC";
+				$query = "SELECT  
+						  r.role_id,
+						  r.name,
+						  r.isactive,
+						  c.name AS company
+						  FROM cm_role AS r 
+						  INNER JOIN cm_company AS c ON (c.company_id = r.company_id) 
+						  ORDER BY name ASC";
 			break;
 			case 'byname':
 				$query = "SELECT * FROM cm_role WHERE name = '$this->name' ORDER BY name ASC";

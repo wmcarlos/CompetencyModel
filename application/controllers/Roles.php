@@ -34,7 +34,7 @@ class Roles extends CI_Controller{
 	public function store(){
 
 		$this->Role->company_id = $this->input->post("txtcompany_id");
-		$this->Role->name = $this->input->post("txtname");
+		$this->Role->name = strtouppercase($this->input->post("txtname"));
 
 		if( count($this->Role->getData("byname")) > 0){
 			$string = 'Este Rol ya se encuentra Registrado!!';
@@ -52,15 +52,19 @@ class Roles extends CI_Controller{
 
 	}
 
-	public function edit($Role_id){
+	public function edit($role_id){
 
-		$this->Role->Role_id = $Role_id;
+		$this->Role->role_id = $role_id;
 
 		$data['title'] = "Edit Role";
 		$data['path'] = 'admin/role';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
+
+		$items = $this->Role->getData('get_companies'); 
+
 		$data['item'] = $this->Role->getData('byid');
+		$data['company_select'] = load_select($items, $this->Role->getData('byid')[0]->company_id);
 
 		$this->load->view('admin/index', $data);
 	}

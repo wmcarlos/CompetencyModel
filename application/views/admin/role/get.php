@@ -25,8 +25,7 @@
             <?php foreach($items as $item){ ?>
               <tr>
                 <td><?= $item->role_id ?></td>
-                <td><?= $item->company_id ?></td>
-                <td><?= $item->value ?></td>
+                <td><?= $item->company ?></td>
                 <td><?= $item->name ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>

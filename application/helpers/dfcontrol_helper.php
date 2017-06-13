@@ -13,9 +13,9 @@ if ( ! function_exists('load_select'))
         	}else{
         		$cad.="<option value='".$item->value."'>".$item->text."</option>";
         	}
-        	
-        }
 
+        }
+        
         return $cad;
     }   
 }

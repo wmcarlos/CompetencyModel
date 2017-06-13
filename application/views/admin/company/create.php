@@ -5,7 +5,7 @@
         <h1><?= $title ?></h1>
       </div>
       <div class="box-body">
-      <?= form_open_multipart("companies/$action",array('autocomplete' => 'off')) ?>
+      <?= form_open_multipart("Companies/$action",array('autocomplete' => 'off')) ?>
 
  			<div class='form-group'>
  				<label for="txtvalue">Value:</label>
@@ -28,7 +28,7 @@
  				<input type="text" class="form-control textuppercase" name="txtemail" id="txtemail">
  			</div>
  			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
- 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/companies"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
+ 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Companies"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
 
       <?= form_close() ?>
       </div>
