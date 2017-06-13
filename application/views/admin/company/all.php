@@ -33,10 +33,10 @@
                 <td><?= $item->email ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
-                      <a href='<?= base_url() ?>index.php/companies/edit/$item->company_id' class="btn btn-info">Edit</a>
-                      <a href='#' onclick='isdisable($item->company_id)' class="btn btn-danger">Disable</a>
+                      <a href='<?= base_url() ?>index.php/companies/edit/<?= $item->company_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
+                      <a href='#' onclick='isdisable(<?= $item->company_id ?>)' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isdisable($item->company_id)' class="btn btn-danger">Disable</a>
+                      <a href='#' onclick='isenable(<?= $item->company_id ?>)' class="btn btn-success">Active</a>
                     <?php } ?>
                 </td>
               </tr>

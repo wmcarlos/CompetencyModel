@@ -72,8 +72,17 @@ class Companies extends CI_Controller{
 		redirect('Companies','refresh');
 	}
 
-	public function edit(){
+	public function edit($company_id){
 
+		$this->Company->company_id = $company_id;
+
+		$data['title'] = "Edit Company";
+		$data['path'] = 'admin/company';
+		$data['content'] = 'form';
+		$data['action'] = 'update';
+		$data['item'] = $this->Company->getData('byid');
+		
+		$this->load->view('admin/index', $data);
 	}
 
 	public function update(){
