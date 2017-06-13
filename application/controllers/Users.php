@@ -1,120 +1,130 @@
 <?php 
 defined('BASEPATH') OR exit ('No direct script access allowed');
 
-class Companies extends CI_Controller{
+class Users extends CI_Controller{
 
 	public function __construct(){
 
 		parent::__construct();
 
-		$this->load->model('Company');
+		$this->load->model('User');
+		$this->load->helper('dfcontrol');
 
 	}
 
 	public function index(){
-		$data['title'] = 'Companies';
-		$data['path'] = 'admin/company';
+		$data['title'] = 'Users';
+		$data['path'] = 'admin/user';
 		$data['content'] = 'get';
-		$data['items'] = $this->Company->getData();
+		$data['items'] = $this->User->getData();
 		$this->load->view('admin/index', $data);
 	}
 
 	public function create(){
 
-		$data['title'] = "New Company";
-		$data['path'] = 'admin/company';
+		$data['title'] = "New User";
+		$data['path'] = 'admin/user';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
-
+		$citems = $this->User->getData("get_companies");
+		$ritems = $this->User->getData("get_roles");
+		$data['companies'] = load_select($citems);
+		$data['roles'] = load_select($ritems);
 		$this->load->view('admin/index', $data);
 	}
 
 	public function store(){
 
-		$this->Company->value = strtoupper($this->input->post("txtvalue"));
-		$this->Company->name = strtoupper($this->input->post("txtname"));
-		$this->Company->phone = $this->input->post("txtphone");
-		$this->Company->email = strtoupper($this->input->post("txtemail"));
-		$this->Company->short_name = strtoupper($this->input->post("txtshort_name"));
+		$this->User->company_id = $this->input->post("txtcompany_id");
+		$this->User->role_id = $this->input->post("txtrole_id");
+		$this->User->value = strtoupper($this->input->post("txtvalue"));
+		$this->User->name = strtoupper($this->input->post("txtname"));
+		$this->User->email = strtoupper($this->input->post("txtemail"));
+		$this->User->phone = strtoupper($this->input->post("txtphone"));
+		$this->User->password = md5(strtoupper($this->input->post("txtemail")));
 
-		if( count($this->Company->getData("byname")) > 0){
-			$string = 'Esta Copa&ntilde;ia ya se encuentra Registrada!!';
+		if( count($this->User->getData("byemail")) > 0){
+			$string = 'Este Usuario ya se encuentra Registrado!!';
 		}else{
-			if($this->Company->add()){
-				$string = 'Compa&ntilde;ia registrada con Exito!!';
+			if($this->User->add()){
+				$string = 'Usuario registrado con Exito!!';
 			}else{
-				$string = 'Ocurrio un error al intentar registrar la Compa&ntilde;ia!!';
+				$string = 'Ocurrio un error al intentar registrar el Usuario!!';
 			}
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Companies','refresh');
+		redirect('Users','refresh');
 
 	}
 
-	public function edit($company_id){
+	public function edit($user_id){
 
-		$this->Company->company_id = $company_id;
+		$this->User->user_id = $user_id;
 
-		$data['title'] = "Edit Company";
-		$data['path'] = 'admin/company';
+		$data['title'] = "Edit User";
+		$data['path'] = 'admin/user';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
-		$data['item'] = $this->Company->getData('byid');
+		$citems = $this->User->getData("get_companies");
+		$ritems = $this->User->getData("get_roles");
+		$data['companies'] = load_select($citems, $this->User->getData('byid')[0]->company_id);
+		$data['roles'] = load_select($ritems, $this->User->getData('byid')[0]->role_id);
+		$data['item'] = $this->User->getData('byid');
 
 		$this->load->view('admin/index', $data);
 	}
 
 	public function update(){
 
-		$this->Company->company_id = $this->input->post("txtcompany_id");
-		$this->Company->value = strtoupper($this->input->post("txtvalue"));
-		$this->Company->name = strtoupper($this->input->post("txtname"));
-		$this->Company->phone = $this->input->post("txtphone");
-		$this->Company->email = strtoupper($this->input->post("txtemail"));
-		$this->Company->short_name = strtoupper($this->input->post("txtshort_name"));
+		$this->User->user_id = $this->input->post("txtuser_id");
+		$this->User->company_id = $this->input->post("txtcompany_id");
+		$this->User->role_id = $this->input->post("txtrole_id");
+		$this->User->value = strtoupper($this->input->post("txtvalue"));
+		$this->User->name = strtoupper($this->input->post("txtname"));
+		$this->User->email = strtoupper($this->input->post("txtemail"));
+		$this->User->phone = strtoupper($this->input->post("txtphone"));
 
-
-		if($this->Company->update()){
-			$string = 'Compa&ntilde;ia modificada con Exito!!';
+		if($this->User->update()){
+			$string = 'Usuario modificado con Exito!!';
 		}else{
-			$string = 'Ocurrio un error al intentar modificar la Compa&ntilde;ia!!';
+			$string = 'Ocurrio un error al intentar modificar el Usuario!!';
 			//unlink($udata['full_path']);
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Companies','refresh');	
+		redirect('Users','refresh');	
 
 	}
 
-	public function active($company_id){
-		$this->Company->company_id = $company_id;
+	public function active($user_id){
+		$this->User->user_id = $user_id;
 
-		if($this->Company->isactive('Y')){
-			$string = 'Compa&ntilde;ia activada con Exito!!';
+		if($this->User->isactive('Y')){
+			$string = 'Usuario activado con Exito!!';
 		}else{
-			$string = 'Error al intentar activar la Compa&ntilde;ia!!';
+			$string = 'Error al intentar activar el Usuario!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Companies','refresh');
+		redirect('Users','refresh');
 	}
 
-	public function inactive($company_id){
+	public function inactive($user_id){
 
-		$this->Company->company_id = $company_id;
+		$this->User->user_id = $user_id;
 
-		if($this->Company->isactive('N')){
-			$string = 'Compa&ntilde;ia Desactivada con Exito!!';
+		if($this->User->isactive('N')){
+			$string = 'Usuario Desactivado con Exito!!';
 		}else{
-			$string = 'Error al intentar Desactivar la Compa&ntilde;ia!!';
+			$string = 'Error al intentar Desactivar el Usuario!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Companies','refresh');
+		redirect('Users','refresh');
 	}
 }

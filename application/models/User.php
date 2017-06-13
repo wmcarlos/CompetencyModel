@@ -1,12 +1,15 @@
 <?php
-class Company extends CI_Model{
+class User extends CI_Model{
 	
-	public $company_id,
+	public $user_id,
+		   $company_id,
+		   $role_id,
 		   $value,
 		   $name,
-		   $short_name,
-		   $phone,
 		   $email,
+		   $phone,
+		   $password,
+		   $avatar,
 		   $created,
 		   $updated,
 		   $isactive;
@@ -17,7 +20,7 @@ class Company extends CI_Model{
 
 	public function add(){
 
-		$query = "INSERT INTO cm_company(value,name,short_name,phone,email) VALUES ('$this->value','$this->name','$this->short_name','$this->phone','$this->email')";
+		$query = "INSERT INTO cm_user(company_id,role_id,value,name,email,phone,password) VALUES ($this->company_id,$this->role_id,'$this->value','$this->name','$this->email','$this->phone','$this->password')";
 
 		$this->db->trans_start();
 
@@ -36,19 +39,30 @@ class Company extends CI_Model{
 
 		switch ($type) {
 			case 'all':
-				$query = "SELECT * FROM cm_company ORDER BY name ASC";
+				$query = "SELECT 
+						  u.user_id,
+						  u.value,
+						  u.name,
+						  u.email,
+						  c.name AS company,
+						  r.name AS role,
+						  u.isactive
+						  FROM cm_user AS u 
+						  INNER JOIN cm_company AS c ON (c.company_id = u.company_id)
+						  INNER JOIN cm_role AS r ON (r.role_id = u.role_id)
+						  ORDER BY u.name ASC";
 			break;
-			case 'byname':
-				$query = "SELECT * FROM cm_company WHERE name = '$this->name' ORDER BY name ASC";
+			case 'byemail':
+				$query = "SELECT * FROM cm_user WHERE email = '$this->email' ORDER BY name ASC";
 			break;
 			case 'byid':
-				$query = "SELECT * FROM cm_company WHERE company_id = $this->company_id ORDER BY name ASC";
+				$query = "SELECT * FROM cm_user WHERE user_id = $this->user_id ORDER BY name ASC";
 			break;
-			case 'byvalue':
-				$query = "SELECT * FROM cm_company WHERE value = '$this->value' ORDER BY name ASC";
+			case 'get_companies':
+				$query = "SELECT company_id AS value, name AS text FROM cm_company ORDER BY name ASC";
 			break;
-			case 'getshort_name':
-				$query = "SELECT short_name FROM cm_company WHERE company_id = $this->compnay_id";
+			case 'get_roles':
+				$query = "SELECT role_id AS value, name AS text FROM cm_role ORDER BY name ASC";
 			break;
 		}
 
@@ -60,7 +74,7 @@ class Company extends CI_Model{
 
 	public function update(){
 
-		$query = "UPDATE cm_company SET value = '$this->value', name = '$this->name', short_name = '$this->short_name', phone = '$this->phone', email = '$this->email' WHERE company_id = $this->company_id";
+		$query = "UPDATE cm_user SET company_id = $this->company_id, role_id = $this->role_id, value = '$this->value', name = '$this->name', email = '$this->email', phone = '$this->phone', password = '$this->password' WHERE user_id = $this->user_id";
 
 		$this->db->trans_start();
 
@@ -77,7 +91,7 @@ class Company extends CI_Model{
 
 	public function isactive($val){
 
-		$query = "UPDATE cm_company SET isactive = '$val' WHERE company_id = $this->company_id";
+		$query = "UPDATE cm_user SET isactive = '$val' WHERE user_id = $this->user_id";
 
 		$this->db->trans_start();
 

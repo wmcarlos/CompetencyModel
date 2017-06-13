@@ -34,7 +34,7 @@ class Roles extends CI_Controller{
 	public function store(){
 
 		$this->Role->company_id = $this->input->post("txtcompany_id");
-		$this->Role->name = strtouppercase($this->input->post("txtname"));
+		$this->Role->name = strtoupper($this->input->post("txtname"));
 
 		if( count($this->Role->getData("byname")) > 0){
 			$string = 'Este Rol ya se encuentra Registrado!!';
