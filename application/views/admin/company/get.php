@@ -7,7 +7,7 @@
       </div>
       <div class="box-body">
 
-        <?php if(!empty($this->session->flashdata('msj'))){ ?>
+        <?php if( $this->session->flashdata('msj') ){ ?>
           <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
         <?php } ?>
 
