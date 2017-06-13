@@ -12,18 +12,19 @@ function isalert(msj){
 	});
 }
 
-function isconfirm(url){
+function isconfirm(message,url){
 
 	bootbox.confirm({
-	    message: "Estas Seguro de Realizar la Operacion?",
+		title : "Confirmation",
+	    message: message,
 	    buttons: {
-	        confirm: {
-	            label: 'Yes',
-	            className: 'btn-success'
-	        },
 	        cancel: {
-	            label: 'No',
+	            label: '<i class="fa fa-times"></i> No',
 	            className: 'btn-danger'
+	        },
+	        confirm: {
+	            label: '<i class="fa fa-check"></i> Yes',
+	            className: 'btn-success'
 	        }
 	    },
 	    callback: function (result) {

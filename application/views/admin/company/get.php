@@ -34,9 +34,9 @@
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
                       <a href='<?= base_url() ?>index.php/companies/edit/<?= $item->company_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("<?= base_url() ?>/index.php/companies/inactive/<?= $item->company_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar esta Compa&ntilde;ia?","<?= base_url() ?>/index.php/companies/inactive/<?= $item->company_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isconfirm("<?= base_url() ?>index.php/companies/active/<?= $item->company_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Activar esta Compa&ntilde;ia?","<?= base_url() ?>index.php/companies/active/<?= $item->company_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
                     <?php } ?>
                 </td>
               </tr>
