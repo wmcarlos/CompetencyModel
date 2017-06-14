@@ -18,6 +18,10 @@
  				<label for="txtname">Name:</label>
  				<input type="text" class="form-control textuppercase" name="txtname" id="txtname">
  			</div>
+      <div class='form-group'>
+        <label for="txtservices">Services:</label>
+        <?= $services ?>
+      </div>
  			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
  			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Roles"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
 

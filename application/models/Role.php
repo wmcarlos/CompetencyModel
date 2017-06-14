@@ -4,6 +4,7 @@ class Role extends CI_Model{
 	public $role_id,
 		   $company_id,
 		   $name,
+		   $services,
 		   $created,
 		   $updated,
 		   $isactive;
@@ -19,6 +20,12 @@ class Role extends CI_Model{
 		$this->db->trans_start();
 
 		$this->db->query($query);
+
+		foreach($this->services AS $service){
+
+			$this->db->query("INSERT INTO cm_access (role_id,service_id) VALUES ($this->role_id, $service)");
+		
+		}
 
 		$this->db->trans_complete();
 
@@ -50,6 +57,17 @@ class Role extends CI_Model{
 			break;
 			case 'get_companies':
 				$query = "SELECT company_id AS value, name AS text FROM cm_company ORDER BY name ASC";
+			break;
+			case 'get_services':
+				$query = "SELECT service_id AS value, name AS text FROM cm_service";
+			break;
+			case 'get_assigned_services':
+				$query = "SELECT
+						a.service_id AS value,
+						s.name AS text
+						FROM cm_access AS a
+						INNER JOIN cm_service AS s ON (s.service_id = a.service_id)
+						WHERE a.role_id = $this->role_id";
 			break;
 		}
 

@@ -28,6 +28,8 @@ class Roles extends CI_Controller{
 		$data['action'] = 'store';
 		$items = $this->Role->getData('get_companies'); 
 		$data['company_select'] = load_select($items);
+		$sitems = $this->Role->getData("get_services");
+		$data['services'] = load_checkbox($sitems,'services');
 		$this->load->view('admin/index', $data);
 	}
 
@@ -35,6 +37,7 @@ class Roles extends CI_Controller{
 
 		$this->Role->company_id = $this->input->post("txtcompany_id");
 		$this->Role->name = strtoupper($this->input->post("txtname"));
+		$this->Role->services = $this->input->post("txtservices");
 
 		if( count($this->Role->getData("byname")) > 0){
 			$string = 'Este Rol ya se encuentra Registrado!!';
@@ -48,7 +51,7 @@ class Roles extends CI_Controller{
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Roles','refresh');
+		//redirect('Roles','refresh');
 
 	}
 
@@ -62,10 +65,15 @@ class Roles extends CI_Controller{
 		$data['action'] = 'update';
 
 		$items = $this->Role->getData('get_companies'); 
-
-		$data['item'] = $this->Role->getData('byid');
 		$data['company_select'] = load_select($items, $this->Role->getData('byid')[0]->company_id);
+		
+		$sitems = $this->Role->getData("get_services");
 
+		$this->Role->role_id = $this->Role->getData('byid')[0]->role_id;
+		$saitems = $this->Role->getData("get_assigned_services");
+		$data['services'] = load_checkbox($sitems,'services',$saitems);
+		
+		$data['item'] = $this->Role->getData('byid');
 		$this->load->view('admin/index', $data);
 	}
 
