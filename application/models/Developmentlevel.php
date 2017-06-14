@@ -1,5 +1,5 @@
 <?php
-class Charge extends CI_Model{
+class Developmentlevel extends CI_Model{
 	
 	public $charge_id,
 		   $departament_id,
