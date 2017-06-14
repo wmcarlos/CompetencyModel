@@ -73,7 +73,6 @@ CREATE TABLE cm_departament(
 	departament_id INT AUTO_INCREMENT NOT NULL,
 	company_id INT NOT NULL,
 	name VARCHAR(60) NOT NULL,
-	issumary CHAR(1) NOT NULL DEFAULT 'N',
 	departament_parent_id INT NULL,
 	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updated TIMESTAMP NULL,
@@ -97,7 +96,6 @@ CREATE TABLE cm_charge(
 	charge_id INT AUTO_INCREMENT NOT NULL,
 	departament_id INT NOT NULL,
 	name VARCHAR(60) NOT NULL,
-	issumary CHAR(1) NOT NULL DEFAULT 'N',
 	charge_parent_id INT NULL,
 	charge_level_id INT NOT NULL,
 	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -263,8 +261,36 @@ CREATE TABLE cm_user_instrument_answer(
  	CONSTRAINT fk_domain_level_id FOREIGN KEY (domain_level_id) REFERENCES cm_domain_level (domain_level_id) ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE = INNODB;
 
-INSERT INTO cm_company (value,name,short_name,phone,email) VALUES ('J00000000','COMP. MODEL','CPM','00000000000','ADMINISTRATOR@COMPETENCY-MODEL.COM');
+INSERT INTO cm_company (value,name,short_name,phone,email) VALUES ('J407008544','FRONTUARI','FTI','02556217144','ADMINISTRADOR@FRONTUARI.COM');
 
 INSERT INTO cm_role (company_id, name) VALUES (1,'ADMINISTRATOR');
 
-INSERT INTO cm_user (company_id, role_id, value, name, email, phone, password) VALUES (1,1,'V00000000','SYSTEM','SYSTEM@COMPANY-MODEL.COM','00000000000',MD5('SYSTEM@COMPANY-MODEL.COM'));
+INSERT INTO cm_user (company_id, role_id, value, name, email, phone, password) VALUES (1,1,'V19455541','CARLOS VARGAS','CVARGAS@FRONTUARI.COM','04160984343',MD5('CVARGAS@FRONTUARI.COM'));
+INSERT INTO cm_user (company_id, role_id, value, name, email, phone, password) VALUES (1,1,'V20467209','ALBERTO VARGAS','AVARGAS@FRONTUARI.COM','02556217144',MD5('AVARGAS@FRONTUARI.COM'));
+INSERT INTO cm_user (company_id, role_id, value, name, email, phone, password) VALUES (1,1,'V20389586','JORGE COLMENAREZ','JCOLMENAREZ@FRONTUARI.COM','04149739547',MD5('JCOLMENAREZ@FRONTUARI.COM'));
+
+INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
+			VALUES (1,'DASHBOARD','FO',1,'Mains','fa fa-dashboard');
+
+INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
+			VALUES (1,'COMPANY','FO',2,'Companies','fa fa-building');
+
+INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
+			VALUES (1,'ROLE','FO',3,'Roles','fa fa-universal-access');
+
+INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
+			VALUES (1,'USER','FO',4,'Users','fa fa-user');
+
+INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
+			VALUES (1,'SERVICE','FO',5,'Services','fa fa-link');
+
+INSERT INTO cm_access (role_id,service_id)
+			VALUES (1,1);
+INSERT INTO cm_access (role_id,service_id)
+			VALUES (1,2);
+INSERT INTO cm_access (role_id,service_id)
+			VALUES (1,3);
+INSERT INTO cm_access (role_id,service_id)
+			VALUES (1,4);
+INSERT INTO cm_access (role_id,service_id)
+			VALUES (1,5);

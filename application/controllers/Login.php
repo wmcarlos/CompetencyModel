@@ -20,8 +20,8 @@ class Login extends CI_Controller {
 
 	public function open_session(){
 
-		$this->User->email = $this->input->post("txtemail");
-		$this->User->password = $this->input->post("txtpassword");
+		$this->User->email = strtoupper($this->input->post("txtemail"));
+		$this->User->password = strtoupper($this->input->post("txtpassword"));
 
 		if(count ($this->User->verify_user()) > 0){
 
