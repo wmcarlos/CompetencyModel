@@ -81,7 +81,6 @@ class Departaments extends CI_Controller{
 			$string = 'Departamento modificado con Exito!!';
 		}else{
 			$string = 'Ocurrio un error al intentar modificar el Departamento!!';
-			//unlink($udata['full_path']);
 		}
 
 		$this->session->set_flashdata('msj',$string);
