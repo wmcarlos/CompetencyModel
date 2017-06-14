@@ -2,6 +2,12 @@
   if( count($this->session->userdata("logged_in")) <= 0 ){
       redirect("Login");
   }
+
+  $name = $this->router->fetch_class();
+  if($this->Service->getServicesForName($name)){
+    redirect("Mains");
+  }
+
 ?>
 <!DOCTYPE html>
 <html>

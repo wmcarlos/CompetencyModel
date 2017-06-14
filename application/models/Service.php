@@ -119,4 +119,21 @@ class Service extends CI_Model{
 									ORDER BY s.position ASC");
 		return $query->result();
 	}
+
+	public function getServicesForName($name){
+
+		$items = $this->getServicesForRole($this->session->userdata("logged_in")->role_id);
+		$cont = 0;
+		foreach ($items as $item) {
+			if(strtoupper($item->url) == strtoupper($name)){
+				$cont++;
+			}
+		}
+
+		if($cont == 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
