@@ -1,3 +1,8 @@
+<?php 
+  if( count($this->session->userdata("logged_in")) <= 0 ){
+      redirect("Login");
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
