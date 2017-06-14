@@ -1,15 +1,11 @@
 <?php
-class User extends CI_Model{
+class Charge extends CI_Model{
 	
-	public $user_id,
-		   $company_id,
-		   $role_id,
-		   $value,
+	public $charge_id,
+		   $departament_id,
 		   $name,
-		   $email,
-		   $phone,
-		   $password,
-		   $avatar,
+		   $charge_parent_id,
+		   $charge_level_id,
 		   $created,
 		   $updated,
 		   $isactive;
@@ -20,7 +16,7 @@ class User extends CI_Model{
 
 	public function add(){
 
-		$query = "INSERT INTO cm_user(company_id,role_id,value,name,email,phone,password) VALUES ($this->company_id,$this->role_id,'$this->value','$this->name','$this->email','$this->phone','$this->password')";
+		$query = "INSERT INTO cm_charge(departament_id,name,charge_parent_id,charge_level_id) VALUES ($this->departament_id,'$this->name',$this->charge_parent_id,$this->charge_level_id)";
 
 		$this->db->trans_start();
 
@@ -40,29 +36,32 @@ class User extends CI_Model{
 		switch ($type) {
 			case 'all':
 				$query = "SELECT 
-						  u.user_id,
-						  u.value,
-						  u.name,
-						  u.email,
-						  c.name AS company,
-						  r.name AS role,
-						  u.isactive
-						  FROM cm_user AS u 
-						  INNER JOIN cm_company AS c ON (c.company_id = u.company_id)
-						  INNER JOIN cm_role AS r ON (r.role_id = u.role_id)
-						  ORDER BY u.name ASC";
+						  ch.charge_id,
+						  ch.name,
+						  ch.isactive,
+						  d.name AS departament,
+						  COALESCE(ch2.name, 'NOT PARENT') AS parent,
+						  cl.name AS charge_level
+						  FROM cm_charge AS ch 
+						  INNER JOIN cm_departament AS d ON (d.departament_id = ch.departament_id)
+						  LEFT JOIN cm_charge AS ch2 ON (ch2.charge_id = ch.charge_parent_id)
+						  INNER JOIN cm_charge_level AS cl ON (cl.charge_level_id = ch.charge_level_id) 
+						  ORDER BY ch.name";
 			break;
-			case 'byemail':
-				$query = "SELECT * FROM cm_user WHERE email = '$this->email' ORDER BY name ASC";
+			case 'byname':
+				$query = "SELECT * FROM cm_charge WHERE name = '$this->name' ORDER BY name ASC";
 			break;
 			case 'byid':
-				$query = "SELECT * FROM cm_user WHERE user_id = $this->user_id ORDER BY name ASC";
+				$query = "SELECT * FROM cm_charge WHERE charge_id = $this->charge_id ORDER BY name ASC";
 			break;
-			case 'get_companies':
-				$query = "SELECT company_id AS value, name AS text FROM cm_company ORDER BY name ASC";
+			case 'get_departaments':
+				$query = "SELECT departament_id AS value, name AS text FROM cm_departament ORDER BY name ASC";
 			break;
-			case 'get_roles':
-				$query = "SELECT role_id AS value, name AS text FROM cm_role ORDER BY name ASC";
+			case 'get_charges':
+				$query = "SELECT charge_id AS value, name AS text FROM cm_charge ORDER BY name ASC";
+			break;
+			case 'get_chargelevels':
+				$query = "SELECT charge_level_id AS value, name AS text FROM cm_charge_level ORDER BY name ASC";
 			break;
 		}
 
@@ -74,7 +73,8 @@ class User extends CI_Model{
 
 	public function update(){
 
-		$query = "UPDATE cm_user SET company_id = $this->company_id, role_id = $this->role_id, value = '$this->value', name = '$this->name', email = '$this->email', phone = '$this->phone', password = '$this->password' WHERE user_id = $this->user_id";
+		$query = "UPDATE cm_charge SET departament_id = $this->departament_id, name = '$this->name', charge_parent_id = '$this->charge_parent_id', charge_level_id = '$this->charge_level_id'
+		    WHERE charge_id = $this->charge_id";
 
 		$this->db->trans_start();
 
@@ -91,7 +91,7 @@ class User extends CI_Model{
 
 	public function isactive($val){
 
-		$query = "UPDATE cm_user SET isactive = '$val' WHERE user_id = $this->user_id";
+		$query = "UPDATE cm_charge SET isactive = '$val' WHERE charge_id = $this->charge_id";
 
 		$this->db->trans_start();
 
@@ -105,24 +105,5 @@ class User extends CI_Model{
 			return false;
 		}		
 
-	}
-
-	public function verify_user(){
-
-		$query = $this->db->query("SELECT 
-								   u.company_id,
-								   c.name AS company,
-								   c.short_name,
-								   u.role_id, 
-								   r.name as role,
-								   u.name, 
-								   u.email 
-								   FROM cm_user AS u
-								   INNER JOIN cm_company AS c ON (c.company_id = u.company_id)
-								   INNER JOIN cm_role AS r ON (r.role_id = u.role_id)
-								   WHERE u.email = '$this->email' 
-								   AND u.password = MD5('$this->password')");
-
-		return $query->row();
 	}
 }

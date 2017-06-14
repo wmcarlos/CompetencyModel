@@ -11,34 +11,32 @@
           <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
         <?php } ?>
 
-        <a href="<?= base_url() ?>index.php/Users/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New User</a>
+        <a href="<?= base_url() ?>index.php/Charges/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Charge</a>
         <br />
         <br />
         <table class="table table-bordered table-striped datatable">
           <thead>
             <th>ID</th>
-            <th>Company</th>
-            <th>Role</th>
-            <th>Value</th>
+            <th>Departament</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Actions</th>
+            <th>Charge Parent</th>
+            <th>Charge Level</th>
+            <th>Options</th>
           </thead>
           <tbody>
             <?php foreach($items as $item){ ?>
               <tr>
-                <td><?= $item->user_id ?></td>
-                <td><?= $item->company ?></td>
-                <td><?= $item->role ?></td>
-                <td><?= $item->value ?></td>
+                <td><?= $item->charge_id ?></td>
+                <td><?= $item->departament ?></td>
                 <td><?= $item->name ?></td>
-                <td><?= $item->email ?></td>
+                <td><?= $item->parent ?></td>
+                <td><?= $item->charge_level ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
-                      <a href='<?= base_url() ?>index.php/Users/edit/<?= $item->user_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Usuario?","<?= base_url() ?>/index.php/Users/inactive/<?= $item->user_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='<?= base_url() ?>index.php/Charges/edit/<?= $item->charge_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Cargo?","<?= base_url() ?>/index.php/Charges/inactive/<?= $item->charge_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Usuario?","<?= base_url() ?>index.php/Users/active/<?= $item->user_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Cargo?","<?= base_url() ?>index.php/Charges/active/<?= $item->charge_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
                     <?php } ?>
                 </td>
               </tr>

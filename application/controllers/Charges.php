@@ -1,130 +1,129 @@
 <?php 
 defined('BASEPATH') OR exit ('No direct script access allowed');
 
-class Users extends CI_Controller{
+class Charges extends CI_Controller{
 
 	public function __construct(){
 
 		parent::__construct();
 
-		$this->load->model('User');
+		$this->load->model('Charge');
 		$this->load->helper('dfcontrol');
 
 	}
 
 	public function index(){
-		$data['title'] = 'Users';
-		$data['path'] = 'admin/user';
+		$data['title'] = 'Charges';
+		$data['path'] = 'admin/charge';
 		$data['content'] = 'get';
-		$data['items'] = $this->User->getData();
+		$data['items'] = $this->Charge->getData();
 		$this->load->view('admin/index', $data);
 	}
 
 	public function create(){
 
-		$data['title'] = "New User";
-		$data['path'] = 'admin/user';
+		$data['title'] = "New Charge";
+		$data['path'] = 'admin/charge';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
-		$citems = $this->User->getData("get_companies");
-		$ritems = $this->User->getData("get_roles");
-		$data['companies'] = load_select($citems);
-		$data['roles'] = load_select($ritems);
+		$ditems = $this->Charge->getData("get_departaments");
+		$citems = $this->Charge->getData("get_charges");
+		$clitems = $this->Charge->getData("get_chargelevels");
+		$data['departaments'] = load_select($ditems);
+		$data['charges'] = load_select($citems);
+		$data['chargelevels'] = load_select($clitems);
 		$this->load->view('admin/index', $data);
 	}
 
 	public function store(){
 
-		$this->User->company_id = $this->input->post("txtcompany_id");
-		$this->User->role_id = $this->input->post("txtrole_id");
-		$this->User->value = strtoupper($this->input->post("txtvalue"));
-		$this->User->name = strtoupper($this->input->post("txtname"));
-		$this->User->email = strtoupper($this->input->post("txtemail"));
-		$this->User->phone = strtoupper($this->input->post("txtphone"));
-		$this->User->password = md5(strtoupper($this->input->post("txtemail")));
+		$this->Charge->departament_id = $this->input->post("txtdepartament_id");
+		$this->Charge->name = strtoupper($this->input->post("txtname"));
+		$this->Charge->charge_parent_id = $this->input->post("txtcharge_parent_id");
+		$this->Charge->charge_level_id = $this->input->post("txtcharge_level_id");
 
-		if( count($this->User->getData("byemail")) > 0){
-			$string = 'Este Usuario ya se encuentra Registrado!!';
+		if( count($this->Charge->getData("byname")) > 0){
+			$string = 'Este Cargo ya se encuentra Registrado!!';
 		}else{
-			if($this->User->add()){
-				$string = 'Usuario registrado con Exito!!';
+			if($this->Charge->add()){
+				$string = 'Cargo registrado con Exito!!';
 			}else{
-				$string = 'Ocurrio un error al intentar registrar el Usuario!!';
+				$string = 'Ocurrio un error al intentar registrar el Cargo!!';
 			}
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Users','refresh');
+		redirect('Charges','refresh');
 
 	}
 
-	public function edit($user_id){
+	public function edit($charge_id){
 
-		$this->User->user_id = $user_id;
+		$this->Charge->charge_id = $charge_id;
 
-		$data['title'] = "Edit User";
-		$data['path'] = 'admin/user';
+		$data['title'] = "Edit charge";
+		$data['path'] = 'admin/charge';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
-		$citems = $this->User->getData("get_companies");
-		$ritems = $this->User->getData("get_roles");
-		$data['companies'] = load_select($citems, $this->User->getData('byid')[0]->company_id);
-		$data['roles'] = load_select($ritems, $this->User->getData('byid')[0]->role_id);
-		$data['item'] = $this->User->getData('byid');
+		$ditems = $this->Charge->getData("get_departaments");
+		$citems = $this->Charge->getData("get_charges");
+		$clitems = $this->Charge->getData("get_chargelevels");
+		$data['departaments'] = load_select($ditems, $this->Charge->getData('byid')[0]->departament_id);
+		$data['charges'] = load_select($citems, $this->Charge->getData('byid')[0]->charge_parent_id);
+		$data['chargelevels'] = load_select($clitems, $this->Charge->getData('byid')[0]->charge_level_id);
+		$data['item'] = $this->Charge->getData('byid');
 
 		$this->load->view('admin/index', $data);
 	}
 
 	public function update(){
 
-		$this->User->user_id = $this->input->post("txtuser_id");
-		$this->User->company_id = $this->input->post("txtcompany_id");
-		$this->User->role_id = $this->input->post("txtrole_id");
-		$this->User->value = strtoupper($this->input->post("txtvalue"));
-		$this->User->name = strtoupper($this->input->post("txtname"));
-		$this->User->email = strtoupper($this->input->post("txtemail"));
-		$this->User->phone = strtoupper($this->input->post("txtphone"));
+		$this->Charge->charge_id = $this->input->post("txtcharge_id");
+		$this->Charge->departament_id = $this->input->post("txtdepartament_id");
+		$this->Charge->name = strtoupper($this->input->post("txtname"));
+		$this->Charge->charge_parent_id = $this->input->post("txtcharge_parent_id");
+		$this->Charge->charge_level_id = $this->input->post("txtcharge_level_id");
 
-		if($this->User->update()){
-			$string = 'Usuario modificado con Exito!!';
+		if($this->Charge->update()){
+			$string = 'Cargo modificado con Exito!!';
 		}else{
-			$string = 'Ocurrio un error al intentar modificar el Usuario!!';
+			$string = 'Ocurrio un error al intentar modificar el Cargo!!';
 			//unlink($udata['full_path']);
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Users','refresh');	
+		redirect('Charges','refresh');	
 
 	}
 
-	public function active($user_id){
-		$this->User->user_id = $user_id;
+	public function active($charge_id){
+		$this->Charge->charge_id = $charge_id;
 
-		if($this->User->isactive('Y')){
-			$string = 'Usuario activado con Exito!!';
+		if($this->Charge->isactive('Y')){
+			$string = 'Cargo activado con Exito!!';
 		}else{
-			$string = 'Error al intentar activar el Usuario!!';
+			$string = 'Error al intentar activar el Cargo!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Users','refresh');
+		redirect('Charges','refresh');
 	}
 
-	public function inactive($user_id){
+	public function inactive($charge_id){
 
-		$this->User->user_id = $user_id;
+		$this->Charge->charge_id = $charge_id;
 
-		if($this->User->isactive('N')){
-			$string = 'Usuario Desactivado con Exito!!';
+		if($this->Charge->isactive('N')){
+			$string = 'Cargo Desactivado con Exito!!';
 		}else{
-			$string = 'Error al intentar Desactivar el Usuario!!';
+			$string = 'Error al intentar Desactivar el Cargo!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Users','refresh');
+		redirect('Charges','refresh');
 	}
 }
