@@ -106,4 +106,23 @@ class User extends CI_Model{
 		}		
 
 	}
+
+	public function verify_user(){
+
+		$query = $this->db->query("SELECT 
+								   u.company_id,
+								   c.name AS company,
+								   c.short_name,
+								   u.role_id, 
+								   r.name as role,
+								   u.name, 
+								   u.email 
+								   FROM cm_user AS u
+								   INNER JOIN cm_company AS c ON (c.company_id = u.company_id)
+								   INNER JOIN cm_role AS r ON (r.role_id = u.role_id)
+								   WHERE u.email = '$this->email' 
+								   AND u.password = MD5('$this->password')");
+
+		return $query->row();
+	}
 }

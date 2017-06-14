@@ -32,9 +32,9 @@
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>PM</span>
+      <span class="logo-mini"><b><?= $this->session->userdata("logged_in")->short_name ?></b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Competency</b> Model</span>
+      <span class="logo-lg"><b><?= $this->session->userdata("logged_in")->company ?></b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -73,7 +73,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?= base_url() ?>public/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?= $this->session->userdata('logged_in')->name ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -81,8 +81,8 @@
                 <img src="<?= base_url() ?>public/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <?= $this->session->userdata('logged_in')->name ?>
+                  <small><?= $this->session->userdata('logged_in')->company ." - ". $this->session->userdata('logged_in')->role ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -91,7 +91,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?= base_url() ?>index.php/Login/close_session" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

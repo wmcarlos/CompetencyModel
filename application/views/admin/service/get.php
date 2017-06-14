@@ -19,21 +19,18 @@
             <th>ID</th>
             <th>Company</th>
             <th>Name</th>
-            <th>Service Type</th>
             <th>Position</th>
-            <th>Service Parent</th>
-            <th>Url</th>
+            <th>Service Type</th>
             <th>Actions</th>
           </thead>
           <tbody>
             <?php foreach($items as $item){ ?>
               <tr>
                 <td><?= $item->service_id ?></td>
-                <td><?= $item->company_id ?></td>
-                <td><?= $item->service_type ?></td>
+                <td><?= $item->company ?></td>
+                <td><?= $item->name ?></td>
                 <td><?= $item->position ?></td>
-                <td><?= $item->parent_service_id ?></td>
-                <td><?= $item->url ?></td>
+                <td><?= $item->servicetype ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
                       <a href='<?= base_url() ?>index.php/Services/edit/<?= $item->service_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>

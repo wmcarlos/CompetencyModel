@@ -8,6 +8,7 @@ class Services extends CI_Controller{
 		parent::__construct();
 
 		$this->load->model('Service');
+		$this->load->helper('dfcontrol');
 
 	}
 
@@ -24,8 +25,11 @@ class Services extends CI_Controller{
 		$data['title'] = "New Service";
 		$data['path'] = 'admin/service';
 		$data['content'] = 'create';
+		$citems = $this->Service->getData('get_companies'); 
+		$data['company_select'] = load_select($citems);
+		$spitems = $this->Service->getData('get_service_parent'); 
+		$data['service_parent_select'] = load_select($spitems);
 		$data['action'] = 'store';
-
 		$this->load->view('admin/index', $data);
 	}
 
@@ -35,7 +39,6 @@ class Services extends CI_Controller{
 		$this->Service->name = strtoupper($this->input->post("txtname"));
 		$this->Service->servicetype = $this->input->post("txtservicetype");
 		$this->Service->position = $this->input->post("txtposition");
-		$this->Service->issumary = strtoupper($this->input->post("txtissumary"));
 		$this->Service->service_parent_id = $this->input->post("txtservice_parent_id");
 		$this->Service->url = $this->input->post("txturl");
 		$this->Service->icon_class = $this->input->post("txticon_class");
@@ -64,6 +67,10 @@ class Services extends CI_Controller{
 		$data['path'] = 'admin/service';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
+		$citems = $this->Service->getData('get_companies'); 
+		$data['company_select'] = load_select($citems, $this->Service->getData('byid')[0]->company_id);
+		$spitems = $this->Service->getData('get_service_parent'); 
+		$data['service_parent_select'] = load_select($spitems, $this->Service->getData('byid')[0]->service_parent_id);
 		$data['item'] = $this->Service->getData('byid');
 
 		$this->load->view('admin/index', $data);
@@ -76,7 +83,6 @@ class Services extends CI_Controller{
 		$this->Service->name = strtoupper($this->input->post("txtname"));
 		$this->Service->servicetype = $this->input->post("txtservicetype");
 		$this->Service->position = $this->input->post("txtposition");
-		$this->Service->issumary = strtoupper($this->input->post("txtissumary"));
 		$this->Service->service_parent_id = $this->input->post("txtservice_parent_id");
 		$this->Service->url = $this->input->post("txturl");
 		$this->Service->icon_class = $this->input->post("txticon_class");

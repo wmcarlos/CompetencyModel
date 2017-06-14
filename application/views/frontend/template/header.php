@@ -10,5 +10,22 @@
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/ionicons-2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/iCheck/square/blue.css">
+  <!-- jQuery 3.1.1 -->
+  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-3.1.1.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="<?= base_url() ?>public/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <!-- iCheck -->
+  <script src="<?= base_url() ?>public/plugins/iCheck/icheck.min.js"></script>
+  <script src="<?= base_url() ?>public/js/bootbox.min.js"></script>
+  <script src="<?= base_url() ?>public/js/global.js"></script>
+  <script>
+	  $(function () {
+	    $('input').iCheck({
+	      checkboxClass: 'icheckbox_square-blue',
+	      radioClass: 'iradio_square-blue',
+	      increaseArea: '20%' // optional
+	    });
+	  });
+	  </script>
 </head>
 <body class="hold-transition login-page">
