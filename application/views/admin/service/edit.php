@@ -35,13 +35,13 @@
         <label for="txtposition">Position:</label>
         <input type="text" class="form-control" value="<?= $item[0]->position ?>" name="txtposition" id="txtposition">
       </div>
-      <div class='form-group'>
+      <!--<div class='form-group'>
         <label for="txtservice_parent_id">Service Parent:</label>
         <select class="form-control textuppercase" name="txtservice_parent_id" id="txtservice_parent_id">
           <option value="0">Sin Padre</option>
           <?= $service_parent_select ?>
         </select>
-      </div>
+      </div>-->
       <div class='form-group'>
         <label for="txturl">Url:</label>
         <input type="text" class="form-control" value="<?= $item[0]->url ?>" name="txturl" id="txturl">

@@ -263,7 +263,7 @@ CREATE TABLE cm_user_instrument_answer(
  	CONSTRAINT fk_domain_level_id FOREIGN KEY (domain_level_id) REFERENCES cm_domain_level (domain_level_id) ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE = INNODB;
 
-INSERT INTO cm_company (value,name,short_name,phone,email) VALUES ('J00000000','COMPANY MODEL','CPM','00000000000','ADMINISTRATOR@COMPETENCY-MODEL.COM');
+INSERT INTO cm_company (value,name,short_name,phone,email) VALUES ('J00000000','COMP. MODEL','CPM','00000000000','ADMINISTRATOR@COMPETENCY-MODEL.COM');
 
 INSERT INTO cm_role (company_id, name) VALUES (1,'ADMINISTRATOR');
 

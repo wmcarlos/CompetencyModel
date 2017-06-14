@@ -19,7 +19,7 @@ class Service extends CI_Model{
 
 	public function add(){
 
-		$query = "INSERT INTO cm_service(company_id,name,servicetype,position,service_parent_id,url,icon_class) VALUES ($this->company_id,'$this->name','$this->servicetype',$this->position,$this->service_parent_id,'$this->url','$this->icon_class')";
+		$query = "INSERT INTO cm_service(company_id,name,servicetype,position,url,icon_class) VALUES ($this->company_id,'$this->name','$this->servicetype',$this->position,'$this->url','$this->icon_class')";
 
 		$this->db->trans_start();
 
@@ -75,7 +75,7 @@ class Service extends CI_Model{
 
 	public function update(){
 
-		$query = "UPDATE cm_service SET company_id = '$this->company_id', name = '$this->name', servicetype = '$this->servicetype', position = '$this->position', service_parent_id = $this->service_parent_id, url = '$this->url', icon_class = '$this->icon_class' WHERE service_id = $this->service_id";
+		$query = "UPDATE cm_service SET company_id = '$this->company_id', name = '$this->name', servicetype = '$this->servicetype', position = '$this->position', url = '$this->url', icon_class = '$this->icon_class' WHERE service_id = $this->service_id";
 
 		$this->db->trans_start();
 
@@ -105,6 +105,18 @@ class Service extends CI_Model{
 		}else{
 			return false;
 		}		
+	}
 
+	public function getServicesForRole($role_id){
+
+		$query = $this->db->query("SELECT 
+									s.name,
+									s.icon_class,
+									s.url
+									FROM cm_access as ac
+									INNER JOIN cm_service as s ON (ac.service_id = s.service_id)
+									WHERE ac.role_id = $role_id
+									ORDER BY s.position ASC");
+		return $query->result();
 	}
 }

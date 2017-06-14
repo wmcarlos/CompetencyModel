@@ -26,7 +26,14 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
+        <?php
+          $services = $this->Service->getServicesForRole($this->session->userdata("logged_in")->role_id);
+          foreach ($services AS $service) {
+            print '<li><a href="'.base_url().'index.php/'.$service->url.'"><i class="'.$service->icon_class.'"></i> '.$service->name.'</a></li>';
+          }
+        ?>
+        
+        <!--<li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -38,13 +45,11 @@
             <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li>
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
+
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
@@ -188,7 +193,7 @@
             </li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
-        </li>
+        </li>-->
       </ul>
     </section>
     <!-- /.sidebar -->
