@@ -21,7 +21,11 @@ class Role extends CI_Model{
 
 		$this->db->query($query);
 
-		foreach($this->services AS $service){
+		$role = $this->getData("byname");
+
+		$this->role_id = $role[0]->role_id;
+
+		foreach($this->services as $service){
 
 			$this->db->query("INSERT INTO cm_access (role_id,service_id) VALUES ($this->role_id, $service)");
 		

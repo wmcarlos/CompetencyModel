@@ -25,7 +25,7 @@ if ( ! function_exists('load_checkbox'))
     function load_checkbox($items,$name, $selecteds = NULL)
     {
         $cad = NULL;
-
+        $cont = 0;
 
         if($selecteds == NULL){
             foreach ($items as $item) {
@@ -36,16 +36,23 @@ if ( ! function_exists('load_checkbox'))
         }else{
             foreach($items as $item){
                 foreach ($selecteds as $selected) {
-                    if($selected->value == $item->value){
-                        $cad.="<div class='checkbox'>";
-                            $cad.='<label><input type="checkbox" name="txt'.$name.'" checked="checked" value="'.$item->value.'">'.$item->text.'</label>';
-                        $cad.="</div>";
-                    }else{
-                        $cad.="<div class='checkbox'>";
-                            $cad.='<label><input type="checkbox" name="txt'.$name.'" value="'.$item->value.'">'.$item->text.'</label>';
-                        $cad.="</div>";
-                    }
+                       if($item->value == $selected->value){
+                            $cont++;
+                       }
                 }
+
+                if($cont > 0){
+                    $chk = 'checked="checked"';
+                }else{
+                   $chk = ''; 
+                }
+
+
+                $cad.="<div class='checkbox'>";
+                     $cad.='<label><input type="checkbox" name="txt'.$name.'" '.$chk.' value="'.$item->value.'">'.$item->text.'</label>';
+                $cad.="</div>"; 
+
+                $cont = 0;
             }
         }
 

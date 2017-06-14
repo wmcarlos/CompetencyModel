@@ -29,7 +29,7 @@ class Roles extends CI_Controller{
 		$items = $this->Role->getData('get_companies'); 
 		$data['company_select'] = load_select($items);
 		$sitems = $this->Role->getData("get_services");
-		$data['services'] = load_checkbox($sitems,'services');
+		$data['services'] = load_checkbox($sitems,'services[]');
 		$this->load->view('admin/index', $data);
 	}
 
@@ -51,7 +51,7 @@ class Roles extends CI_Controller{
 
 		$this->session->set_flashdata('msj',$string);
 
-		//redirect('Roles','refresh');
+		redirect('Roles','refresh');
 
 	}
 
