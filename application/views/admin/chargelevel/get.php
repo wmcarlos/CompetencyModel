@@ -30,7 +30,7 @@
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
                       <a href='<?= base_url() ?>index.php/Chargelevels/edit/<?= $item->charge_level_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Nivel de Cargo?","<?= base_url() ?>/index.php/Chargelevels/inactive/<?= $item->charge_lavel_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Nivel de Cargo?","<?= base_url() ?>/index.php/Chargelevels/inactive/<?= $item->charge_level_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
                     <?php }else{ ?>
                       <a href='#' onclick='isconfirm("Estas seguro de Activar este Nivel de Cargo?","<?= base_url() ?>index.php/Chargelevels/active/<?= $item->charge_level_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
                     <?php } ?>

@@ -99,7 +99,7 @@ class Chargelevels extends CI_Controller{
 		redirect('Chargelevels','refresh');
 	}
 
-	public function inactive($chargelevel_id){
+	public function inactive($charge_level_id){
 
 		$this->Chargelevel->charge_level_id = $charge_level_id;
 
