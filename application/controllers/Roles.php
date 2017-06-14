@@ -71,7 +71,7 @@ class Roles extends CI_Controller{
 
 		$this->Role->role_id = $this->Role->getData('byid')[0]->role_id;
 		$saitems = $this->Role->getData("get_assigned_services");
-		$data['services'] = load_checkbox($sitems,'services',$saitems);
+		$data['services'] = load_checkbox($sitems,'services[]',$saitems);
 		
 		$data['item'] = $this->Role->getData('byid');
 		$this->load->view('admin/index', $data);
@@ -82,6 +82,7 @@ class Roles extends CI_Controller{
 		$this->Role->role_id = $this->input->post("txtrole_id");
 		$this->Role->company_id = $this->input->post("txtcompany_id");
 		$this->Role->name = strtoupper($this->input->post("txtname"));
+		$this->Role->services = $this->input->post("txtservices");
 
 		if($this->Role->update()){
 			$string = 'Rol modificado con Exito!!';

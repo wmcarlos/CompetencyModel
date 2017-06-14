@@ -89,6 +89,14 @@ class Role extends CI_Model{
 
 		$this->db->query($query);
 
+		$this->db->query("DELETE FROM cm_access WHERE role_id = $this->role_id");
+
+		foreach($this->services as $service){
+
+			$this->db->query("INSERT INTO cm_access (role_id,service_id) VALUES ($this->role_id,$service)");
+
+		}
+
 		$this->db->trans_complete();
 
 		if($this->db->trans_status() === TRUE){

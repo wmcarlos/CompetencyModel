@@ -47,7 +47,6 @@ if ( ! function_exists('load_checkbox'))
                    $chk = ''; 
                 }
 
-
                 $cad.="<div class='checkbox'>";
                      $cad.='<label><input type="checkbox" name="txt'.$name.'" '.$chk.' value="'.$item->value.'">'.$item->text.'</label>';
                 $cad.="</div>"; 
@@ -57,5 +56,5 @@ if ( ! function_exists('load_checkbox'))
         }
 
         return $cad;
-    }   
+    } 
 }
