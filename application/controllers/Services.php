@@ -92,7 +92,6 @@ class Services extends CI_Controller{
 			$string = 'Servicio modificado con Exito!!';
 		}else{
 			$string = 'Ocurrio un error al intentar modificar el Servicio!!';
-			//unlink($udata['full_path']);
 		}
 
 		$this->session->set_flashdata('msj',$string);

@@ -80,7 +80,6 @@ class Companies extends CI_Controller{
 			$string = 'Compa&ntilde;ia modificada con Exito!!';
 		}else{
 			$string = 'Ocurrio un error al intentar modificar la Compa&ntilde;ia!!';
-			//unlink($udata['full_path']);
 		}
 
 		$this->session->set_flashdata('msj',$string);

@@ -90,7 +90,6 @@ class Users extends CI_Controller{
 			$string = 'Usuario modificado con Exito!!';
 		}else{
 			$string = 'Ocurrio un error al intentar modificar el Usuario!!';
-			//unlink($udata['full_path']);
 		}
 
 		$this->session->set_flashdata('msj',$string);
