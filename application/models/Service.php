@@ -1,12 +1,15 @@
 <?php
-class Company extends CI_Model{
+class Service extends CI_Model{
 	
-	public $company_id,
-		   $value,
+	public $service_id,
+		   $company_id,
 		   $name,
-		   $short_name,
-		   $phone,
-		   $email,
+		   $servicetype,
+		   $position,
+		   $issumary,
+		   $service_parent_id,
+		   $url,
+		   $icon_class,
 		   $created,
 		   $updated,
 		   $isactive;
@@ -17,7 +20,7 @@ class Company extends CI_Model{
 
 	public function add(){
 
-		$query = "INSERT INTO cm_company(value,name,short_name,phone,email) VALUES ('$this->value','$this->name','$this->short_name','$this->phone','$this->email')";
+		$query = "INSERT INTO cm_service(company_id,name,servicetype,position,issumary,service_parent_id,url,icon_class) VALUES ($this->company_id,'$this->name','$this->servicetype',$this->position,'$this->issumary',$this->service_parent_id,'$this->url','$this->icon_class')";
 
 		$this->db->trans_start();
 
@@ -36,19 +39,16 @@ class Company extends CI_Model{
 
 		switch ($type) {
 			case 'all':
-				$query = "SELECT * FROM cm_company ORDER BY name ASC";
+				$query = "SELECT * FROM cm_service ORDER BY name ASC";
 			break;
 			case 'byname':
-				$query = "SELECT * FROM cm_company WHERE name = '$this->name' ORDER BY name ASC";
+				$query = "SELECT * FROM cm_service WHERE name = '$this->name' ORDER BY name ASC";
 			break;
 			case 'byid':
-				$query = "SELECT * FROM cm_company WHERE company_id = $this->company_id ORDER BY name ASC";
+				$query = "SELECT * FROM cm_service WHERE service_id = $this->service_id ORDER BY name ASC";
 			break;
-			case 'byvalue':
-				$query = "SELECT * FROM cm_company WHERE value = '$this->value' ORDER BY name ASC";
-			break;
-			case 'getshort_name':
-				$query = "SELECT short_name FROM cm_company WHERE company_id = $this->compnay_id";
+			case 'get_companies':
+				$query = "SELECT company_id AS value, name AS text FROM cm_company ORDER BY name ASC";
 			break;
 		}
 
@@ -60,7 +60,7 @@ class Company extends CI_Model{
 
 	public function update(){
 
-		$query = "UPDATE cm_company SET value = '$this->value', name = '$this->name', short_name = '$this->short_name', phone = '$this->phone', email = '$this->email' WHERE company_id = $this->company_id";
+		$query = "UPDATE cm_service SET value = '$this->value', name = '$this->name', short_name = '$this->short_name', phone = '$this->phone', email = '$this->email' WHERE company_id = $this->company_id";
 
 		$this->db->trans_start();
 
@@ -77,7 +77,7 @@ class Company extends CI_Model{
 
 	public function isactive($val){
 
-		$query = "UPDATE cm_company SET isactive = '$val' WHERE company_id = $this->company_id";
+		$query = "UPDATE cm_service SET isactive = '$val' WHERE company_id = $this->company_id";
 
 		$this->db->trans_start();
 

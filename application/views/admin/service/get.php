@@ -11,32 +11,35 @@
           <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
         <?php } ?>
 
-        <a href="<?= base_url() ?>index.php/companies/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Company</a>
+        <a href="<?= base_url() ?>index.php/Services/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Service</a>
         <br />
         <br />
         <table class="table table-bordered table-striped datatable">
           <thead>
-            <th>id</th>
-            <th>Value</th>
+            <th>ID</th>
+            <th>Company</th>
             <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
+            <th>Service Type</th>
+            <th>Position</th>
+            <th>Service Parent</th>
+            <th>Url</th>
             <th>Actions</th>
           </thead>
           <tbody>
             <?php foreach($items as $item){ ?>
               <tr>
+                <td><?= $item->service_id ?></td>
                 <td><?= $item->company_id ?></td>
-                <td><?= $item->value ?></td>
-                <td><?= $item->name ?></td>
-                <td><?= $item->phone ?></td>
-                <td><?= $item->email ?></td>
+                <td><?= $item->service_type ?></td>
+                <td><?= $item->position ?></td>
+                <td><?= $item->parent_service_id ?></td>
+                <td><?= $item->url ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
-                      <a href='<?= base_url() ?>index.php/companies/edit/<?= $item->company_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar esta Compa&ntilde;ia?","<?= base_url() ?>/index.php/companies/inactive/<?= $item->company_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='<?= base_url() ?>index.php/Services/edit/<?= $item->service_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Servicio?","<?= base_url() ?>/index.php/Services/inactive/<?= $item->service_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isconfirm("Estas seguro de Activar esta Compa&ntilde;ia?","<?= base_url() ?>index.php/companies/active/<?= $item->company_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Servicio?","<?= base_url() ?>index.php/Services/active/<?= $item->service_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
                     <?php } ?>
                 </td>
               </tr>

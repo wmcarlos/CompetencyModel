@@ -1,28 +1,28 @@
 <?php 
 defined('BASEPATH') OR exit ('No direct script access allowed');
 
-class Companies extends CI_Controller{
+class Services extends CI_Controller{
 
 	public function __construct(){
 
 		parent::__construct();
 
-		$this->load->model('Company');
+		$this->load->model('Service');
 
 	}
 
 	public function index(){
-		$data['title'] = 'Companies';
-		$data['path'] = 'admin/company';
+		$data['title'] = 'Services';
+		$data['path'] = 'admin/service';
 		$data['content'] = 'get';
-		$data['items'] = $this->Company->getData();
+		$data['items'] = $this->Service->getData();
 		$this->load->view('admin/index', $data);
 	}
 
 	public function create(){
 
-		$data['title'] = "New Company";
-		$data['path'] = 'admin/company';
+		$data['title'] = "New Service";
+		$data['path'] = 'admin/service';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
 
@@ -31,90 +31,96 @@ class Companies extends CI_Controller{
 
 	public function store(){
 
-		$this->Company->value = strtoupper($this->input->post("txtvalue"));
-		$this->Company->name = strtoupper($this->input->post("txtname"));
-		$this->Company->phone = $this->input->post("txtphone");
-		$this->Company->email = strtoupper($this->input->post("txtemail"));
-		$this->Company->short_name = strtoupper($this->input->post("txtshort_name"));
+		$this->Service->company_id = $this->input->post("txtcompany_id");
+		$this->Service->name = strtoupper($this->input->post("txtname"));
+		$this->Service->servicetype = $this->input->post("txtservicetype");
+		$this->Service->position = $this->input->post("txtposition");
+		$this->Service->issumary = strtoupper($this->input->post("txtissumary"));
+		$this->Service->service_parent_id = $this->input->post("txtservice_parent_id");
+		$this->Service->url = $this->input->post("txturl");
+		$this->Service->icon_class = $this->input->post("txticon_class");
 
-		if( count($this->Company->getData("byname")) > 0){
-			$string = 'Esta Copa&ntilde;ia ya se encuentra Registrada!!';
+		if( count($this->Service->getData("byname")) > 0){
+			$string = 'Este servicio ya se encuentra Registrado!!';
 		}else{
-			if($this->Company->add()){
-				$string = 'Compa&ntilde;ia registrada con Exito!!';
+			if($this->Service->add()){
+				$string = 'Servicio registrado con Exito!!';
 			}else{
-				$string = 'Ocurrio un error al intentar registrar la Compa&ntilde;ia!!';
+				$string = 'Ocurrio un error al intentar registrar el Servicio!!';
 			}
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Companies','refresh');
+		redirect('Services','refresh');
 
 	}
 
-	public function edit($company_id){
+	public function edit($service_id){
 
-		$this->Company->company_id = $company_id;
+		$this->Service->service_id = $service_id;
 
-		$data['title'] = "Edit Company";
-		$data['path'] = 'admin/company';
+		$data['title'] = "Edit Service";
+		$data['path'] = 'admin/service';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
-		$data['item'] = $this->Company->getData('byid');
+		$data['item'] = $this->Service->getData('byid');
 
 		$this->load->view('admin/index', $data);
 	}
 
 	public function update(){
 
-		$this->Company->company_id = $this->input->post("txtcompany_id");
-		$this->Company->value = strtoupper($this->input->post("txtvalue"));
-		$this->Company->name = strtoupper($this->input->post("txtname"));
-		$this->Company->phone = $this->input->post("txtphone");
-		$this->Company->email = strtoupper($this->input->post("txtemail"));
-		$this->Company->short_name = strtoupper($this->input->post("txtshort_name"));
+		$this->Service->service_id = $this->input->post("txtservice_id");
+		$this->Service->company_id = $this->input->post("txtcompany_id");
+		$this->Service->name = strtoupper($this->input->post("txtname"));
+		$this->Service->servicetype = $this->input->post("txtservicetype");
+		$this->Service->position = $this->input->post("txtposition");
+		$this->Service->issumary = strtoupper($this->input->post("txtissumary"));
+		$this->Service->service_parent_id = $this->input->post("txtservice_parent_id");
+		$this->Service->url = $this->input->post("txturl");
+		$this->Service->icon_class = $this->input->post("txticon_class");
 
 
-		if($this->Company->update()){
-			$string = 'Compa&ntilde;ia modificada con Exito!!';
+		if($this->Service->update()){
+			$string = 'Servicio modificado con Exito!!';
 		}else{
-			$string = 'Ocurrio un error al intentar modificar la Compa&ntilde;ia!!';
+			$string = 'Ocurrio un error al intentar modificar el Servicio!!';
 			//unlink($udata['full_path']);
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Companies','refresh');	
+		redirect('Services','refresh');	
 
 	}
 
-	public function active($company_id){
-		$this->Company->company_id = $company_id;
+	public function active($service_id){
+		$this->Service->service_id = $service_id;
 
-		if($this->Company->isactive('Y')){
-			$string = 'Compa&ntilde;ia activada con Exito!!';
+		if($this->Service->isactive('Y')){
+			$string = 'Servicio activado con Exito!!';
 		}else{
-			$string = 'Error al intentar activar la Compa&ntilde;ia!!';
+			$string = 'Error al intentar activar el Servicio!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Companies','refresh');
+		redirect('Services','refresh');
 	}
 
-	public function inactive($company_id){
+	public function inactive($service_id){
 
-		$this->Company->company_id = $company_id;
+		$this->Service->service_id = $service_id;
 
-		if($this->Company->isactive('N')){
-			$string = 'Compa&ntilde;ia Desactivada con Exito!!';
+		if($this->Service->isactive('N')){
+			$string = 'Servicio Desactivado con Exito!!';
 		}else{
-			$string = 'Error al intentar Desactivar la Compa&ntilde;ia!!';
+			$string = 'Error al intentar Desactivar el Servicio!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Companies','refresh');
+		redirect('Services','refresh');
 	}
 }
