@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2017 a las 07:23:27
+-- Tiempo de generación: 15-06-2017 a las 21:12:28
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -35,24 +35,26 @@ CREATE TABLE IF NOT EXISTS `cm_access` (
   PRIMARY KEY (`access_id`),
   KEY `fk_role_id01` (`role_id`),
   KEY `fk_service_id` (`service_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=74 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=87 ;
 
 --
 -- Volcado de datos para la tabla `cm_access`
 --
 
 INSERT INTO `cm_access` (`access_id`, `role_id`, `service_id`) VALUES
-(63, 1, 1),
-(64, 1, 2),
-(65, 1, 3),
-(66, 1, 4),
-(67, 1, 5),
-(68, 1, 6),
-(69, 1, 7),
-(70, 1, 8),
-(71, 1, 9),
-(72, 1, 10),
-(73, 1, 11);
+(74, 1, 1),
+(75, 1, 2),
+(76, 1, 3),
+(77, 1, 4),
+(78, 1, 5),
+(79, 1, 6),
+(80, 1, 7),
+(81, 1, 8),
+(82, 1, 9),
+(83, 1, 10),
+(84, 1, 11),
+(85, 1, 12),
+(86, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -165,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `cm_company` (
   `updated` timestamp NULL DEFAULT NULL,
   `isactive` char(1) NOT NULL DEFAULT 'Y',
   PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `cm_company`
@@ -404,7 +406,7 @@ CREATE TABLE IF NOT EXISTS `cm_service` (
   `isactive` char(1) NOT NULL DEFAULT 'Y',
   PRIMARY KEY (`service_id`),
   KEY `fk_company_id01` (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Volcado de datos para la tabla `cm_service`
@@ -421,7 +423,9 @@ INSERT INTO `cm_service` (`service_id`, `company_id`, `name`, `servicetype`, `po
 (8, 1, 'CHARGE', 'FO', 8, NULL, 'Charges', 'fa fa-address-card', '2017-06-14 21:21:11', NULL, 'Y'),
 (9, 1, 'DOMAIN LEVEL', 'FO', 9, NULL, 'Domainlevels', 'fa fa-hand-pointer-o', '2017-06-14 22:27:31', NULL, 'Y'),
 (10, 1, 'DEVELOPMENT LEVEL', 'FO', 10, NULL, 'Developmentlevels', 'fa fa-bar-chart', '2017-06-15 04:47:27', NULL, 'Y'),
-(11, 1, 'PERIOD', 'FO', 11, NULL, 'Periods', 'fa fa-calendar', '2017-06-15 05:19:45', NULL, 'Y');
+(11, 1, 'PERIOD', 'FO', 11, NULL, 'Periods', 'fa fa-calendar', '2017-06-15 05:19:45', NULL, 'Y'),
+(12, 1, 'COMPETENCY', 'FO', 12, NULL, 'Competencies', 'fa fa-car', '2017-06-15 18:42:04', NULL, 'Y'),
+(13, 1, 'INST. OF EVALUATION', 'FO', 13, NULL, 'Instrumentofevaluations', 'fa fa-file', '2017-06-15 18:42:43', NULL, 'Y');
 
 -- --------------------------------------------------------
 
