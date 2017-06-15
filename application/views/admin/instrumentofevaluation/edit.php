@@ -21,14 +21,14 @@
       </div>
       <div class='form-group'>
         <label for="txtdescription">Description:</label>
-        <texarea class="form-control textuppercase" name="txtdescription" id="txtdescription"><?= $item[0]->description ?></texarea>
+        <textarea class="form-control textuppercase" name="txtdescription" id="txtdescription"><?= $item[0]->description ?></textarea>
       </div>
       <div class='form-group'>
         <label for="txtinstruction">Instructions:</label>
-        <texarea class="form-control textuppercase" name="txtinstructions" id="txtinstructions"><?= $item[0]->instructions ?></texarea>
+        <textarea class="form-control textuppercase" name="txtinstructions" id="txtinstructions"><?= $item[0]->instructions ?></textarea>
       </div>
       <div class='form-group'>
-        <label for="txtinstruction">Evaluation Type:</label>
+        <label for="txtevaluationtype">Evaluation Type:</label>
         <div class="radio">
             <label><input type='radio' name='txtevaluationtype' checked="checked" value='UC' /> Cargo Arriba</label>
         </div>
@@ -45,6 +45,15 @@
             <option value="">Seleccione</option>
             <?= $chargelevels ?>
         </select>
+      </div>
+      <div class='form-group'>
+        <label for="txtstatus">Status:</label>
+        <div class="radio">
+            <label><input type='radio' name='txtstatus' checked="checked" value='DR' /> Borrador</label>
+        </div>
+        <div class="radio">
+            <label><input type='radio' name='txtstatus' <?= ($item[0]->status == 'CO') ? "checked='checked'" : ""; ?> value='CO' /> Completo</label>
+        </div>
       </div>
       <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
       <a class="btn btn-danger" href="<?= base_url() ?>index.php/Instrumentofevaluations"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>

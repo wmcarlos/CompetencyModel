@@ -19,7 +19,7 @@ class Instrumentofevaluation extends CI_Model{
 
 	public function add(){
 
-		$query = "INSERT INTO cm_instrument_of_evaluation(company_id,name,description,instruction,evaluationtype,charge_level_id,status) VALUES ($this->company_id,'$this->name','$this->description','$this->instructions',$this->charge_level_id,'$this->status')";
+		$query = "INSERT INTO cm_instrument_of_evaluation(company_id,name,description,instructions,evaluationtype,charge_level_id,status) VALUES ($this->company_id,'$this->name','$this->description','$this->instructions','$this->evaluationtype',$this->charge_level_id,'$this->status')";
 
 		$this->db->trans_start();
 
@@ -41,8 +41,13 @@ class Instrumentofevaluation extends CI_Model{
 				$query = "SELECT  
 						 	ioe.instrument_of_evaluation_id,
 						 	ioe.name,
-						 	ioe.evaluationtype,
-						 	ioe.status,
+						 	CASE WHEN ioe.evaluationtype = 'UC' THEN 'Cargo Arriba'
+						 		 WHEN ioe.evaluationtype = 'AE' THEN 'Auto Evaluacion'
+						 		 WHEN ioe.evaluationtype = 'AB' THEN 'Ambos'
+						 	END AS evaluationtype,
+						 	CASE WHEN ioe.status = 'DR' THEN 'Borrador'
+						 		 WHEN ioe.status = 'CO' THEN 'Completo'
+						 	END AS status,
 						 	ioe.isactive,
 						 	c.name AS company,
 						 	cl.name AS charge_level
@@ -55,7 +60,7 @@ class Instrumentofevaluation extends CI_Model{
 				$query = "SELECT * FROM cm_instrument_of_evaluation WHERE name = '$this->name' ORDER BY name ASC";
 			break;
 			case 'byid':
-				$query = "SELECT * FROM cm_instrument_of_evaluation WHERE instrument_of_evaluation_id = $this->istrument_of_evaluation_id ORDER BY name ASC";
+				$query = "SELECT * FROM cm_instrument_of_evaluation WHERE instrument_of_evaluation_id = $this->instrument_of_evaluation_id ORDER BY name ASC";
 			break;
 			case 'get_companies':
 				$query = "SELECT company_id AS value, name AS text FROM cm_company ORDER BY name ASC";
@@ -73,7 +78,7 @@ class Instrumentofevaluation extends CI_Model{
 
 	public function update(){
 
-		$query = "UPDATE cm_instrument_of_evaluation SET company_id = $this->company_id, name = '$this->name', description = '$this->description', instructions = '$this->instruction', evaluationtype = '$this->evaluationtype', $this->charge_level_id = $this->charge_level_id 
+		$query = "UPDATE cm_instrument_of_evaluation SET company_id = $this->company_id, name = '$this->name', description = '$this->description', instructions = '$this->instructions', evaluationtype = '$this->evaluationtype', charge_level_id = $this->charge_level_id, status = '$this->status'
 			  WHERE instrument_of_evaluation_id = $this->instrument_of_evaluation_id";
 
 		$this->db->trans_start();

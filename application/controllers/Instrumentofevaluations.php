@@ -61,7 +61,7 @@ class Instrumentofevaluations extends CI_Controller{
 
 	public function edit($instrument_of_evaluation_id){
 
-		$this->Instrumentofevaluation->Instrument_of_evaluation_id = $instrument_of_evaluation_id;
+		$this->Instrumentofevaluation->instrument_of_evaluation_id = $instrument_of_evaluation_id;
 
 		$data['title'] = "Edit Instrument of Evaluation";
 		$data['path'] = 'admin/instrumentofevaluation';
@@ -101,8 +101,8 @@ class Instrumentofevaluations extends CI_Controller{
 
 	}
 
-	public function active($nstrument_of_evaluation_id){
-		$this->Instrumentofevaluation->instrument_of_evaluation_id = $Iistrument_of_evaluation_id;
+	public function active($instrument_of_evaluation_id){
+		$this->Instrumentofevaluation->instrument_of_evaluation_id = $instrument_of_evaluation_id;
 
 		if($this->Instrumentofevaluation->isactive('Y')){
 			$string = 'Instrumento de Evaluacion activado con Exito!!';
