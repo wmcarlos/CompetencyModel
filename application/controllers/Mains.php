@@ -30,10 +30,13 @@ class Mains extends CI_Controller {
 
 	public function change_password(){
 
-		$this->form_validation->set_rules('txtcurrent_password','Contrase&ntilde;a Actual','required');
+		$this->form_validation->set_rules('txtcurrent_password','Contrase&ntilde;a Actual','required|validate_current_password');
 		$this->form_validation->set_rules('txtnew_password','Nueva Contrase&ntilde;a','required');
 		$this->form_validation->set_rules('txtrepeat_new_password','Confirmacion de la Nueva Contrase&ntilde;a','required|matches[txtnew_password]');
+
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert">&times;</a>', '</div>');
+
+		$this->form_validation->set_message('validate_current_password','Contrase&ntilde;a Actual Incorrecta!!');
 
 		if($this->form_validation->run() == FALSE){
 
@@ -50,7 +53,20 @@ class Mains extends CI_Controller {
 			$string = 'Perfil Actualizado con Exito!!';
 			$this->session->set_flashdata('msj',$string);
 			redirect("Mains/profile");
-			
+
+		}
+	}
+
+	public function validate_current_password($spws){
+
+		$gpws = strtoupper($this->User->getData("bypassword")[0]->password);
+
+		print $gpws.'='.strtoupper($spws);
+
+		if( $gpws == strtoupper($spws) ){
+			return true;
+		}else{
+			return false;
 		}
 	}
 }

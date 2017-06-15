@@ -64,6 +64,9 @@ class User extends CI_Model{
 			case 'get_roles':
 				$query = "SELECT role_id AS value, name AS text FROM cm_role ORDER BY name ASC";
 			break;
+			case 'bypassword':
+				$query = "SELECT password FROM cm_user WHERE user_id = ".$this->session->userdata("logged_in")->user_id;
+			break;
 		}
 
 		$query = $this->db->query($query);
