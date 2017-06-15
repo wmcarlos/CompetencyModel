@@ -109,7 +109,7 @@ class User extends CI_Model{
 
 	public function verify_user(){
 
-		$query = $this->db->query("SELECT 
+		$query = $this->db->query("SELECT
 								   u.company_id,
 								   c.name AS company,
 								   c.short_name,
