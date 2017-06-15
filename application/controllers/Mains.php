@@ -7,6 +7,8 @@ class Mains extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model("User");
+
+		$this->load->library("form_validation");
 	}
 
 	public function index(){
@@ -28,5 +30,20 @@ class Mains extends CI_Controller {
 
 	public function change_password(){
 
+		$this->form_validation->set_rules('txtcurrent_password','Current Password','required');
+		$this->form_validation->set_rules('txtnew_password','New Password','required');
+		$this->form_validation->set_rules('txtrepeat_new_password','Repeat New Password','required|matches[txtnew_password]');
+
+		if($this->form_validation->run() == FALSE){
+
+			$string = 'Existen Errores!!';
+			
+		}else{
+			$string = 'Perfil Actualizado con Exito!!';
+		}
+
+		$this->session->set_flashdata('msj',$string);
+
+		redirect('Mains/profile');
 	}
 }

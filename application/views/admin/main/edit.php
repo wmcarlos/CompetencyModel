@@ -5,6 +5,11 @@
         <h1><?= $title ?> (Only Change Password)</h1>
       </div>
       <div class="box-body">
+
+      <?php if( $this->session->flashdata('msj') ){ ?>
+        <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
+      <?php } ?>
+        
       <?= form_open_multipart("Mains/$action",array('autocomplete' => 'off')) ?>
       <div class='form-group'>
         <label for="txtcompany">Company:</label>
