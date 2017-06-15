@@ -5,35 +5,29 @@
         <h1><?= $title ?></h1>
       </div>
       <div class="box-body">
-      <?= form_open_multipart("Charges/$action",array('autocomplete' => 'off')) ?>
+      <?= form_open_multipart("Developmentlevels/$action",array('autocomplete' => 'off')) ?>
 
  			<div class='form-group'>
- 				<label for="txtdepartament_id">Departament:</label>
- 				<select class="form-control textuppercase" name="txtdepartament_id" id="txtdepartament_id">
+ 				<label for="txtcompany_id">Company:</label>
+ 				<select class="form-control textuppercase" name="txtcompany_id" id="txtcompany_id">
             <option value="">Seleccione</option>
-            <?= $departaments ?>
+            <?= $companies ?>
         </select>
  			</div>
- 			<div class='form-group'>
- 				<label for="txtname">Name:</label>
+      <div class='form-group'>
+        <label for="txtname">Name:</label>
         <input type="text" class="form-control textuppercase" name="txtname" id="txtname">
+      </div>
+ 			<div class='form-group'>
+ 				<label for="txtposition">Position:</label>
+        <input type="text" class="form-control textuppercase" name="txtposition" id="txtposition">
  			</div>
       <div class='form-group'>
-        <label for="txtcharge_parent_id">Charge Parent:</label>
-        <select class="form-control textuppercase" name="txtcharge_parent_id" id="txtcharge_parent_id">
-            <option value="0">NOT PARENT</option>
-            <?= $charges ?>
-        </select>
-      </div>
-      <div class='form-group'>
-        <label for="txtcharge_level_id">Charge Level:</label>
-        <select class="form-control textuppercase" name="txtcharge_level_id" id="txtcharge_level_id">
-            <option value="">Seleccione</option>
-            <?= $chargelevels ?>
-        </select>
+        <label for="txtvalue">Value:</label>
+        <input type="text" class="form-control textuppercase" name="txtvalue" id="txtvalue">
       </div>
  			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
- 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Charges"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
+ 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Developmentlevels"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
 
       <?= form_close() ?>
       </div>
