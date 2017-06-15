@@ -1,128 +1,120 @@
 <?php 
 defined('BASEPATH') OR exit ('No direct script access allowed');
 
-class Charges extends CI_Controller{
+class Periods extends CI_Controller{
 
 	public function __construct(){
 
 		parent::__construct();
 
-		$this->load->model('Charge');
+		$this->load->model('Period');
 		$this->load->helper('dfcontrol');
 
 	}
 
 	public function index(){
-		$data['title'] = 'Charges';
-		$data['path'] = 'admin/charge';
+		$data['title'] = 'Periods';
+		$data['path'] = 'admin/period';
 		$data['content'] = 'get';
-		$data['items'] = $this->Charge->getData();
+		$data['items'] = $this->Period->getData();
 		$this->load->view('admin/index', $data);
 	}
 
 	public function create(){
 
-		$data['title'] = "New Charge";
-		$data['path'] = 'admin/charge';
+		$data['title'] = "New Period";
+		$data['path'] = 'admin/period';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
-		$ditems = $this->Charge->getData("get_departaments");
-		$citems = $this->Charge->getData("get_charges");
-		$clitems = $this->Charge->getData("get_chargelevels");
-		$data['departaments'] = load_select($ditems);
-		$data['charges'] = load_select($citems);
-		$data['chargelevels'] = load_select($clitems);
+		$citems = $this->Period->getData("get_companies");
+		$data['companies'] = load_select($citems);
 		$this->load->view('admin/index', $data);
 	}
 
 	public function store(){
 
-		$this->Charge->departament_id = $this->input->post("txtdepartament_id");
-		$this->Charge->name = strtoupper($this->input->post("txtname"));
-		$this->Charge->charge_parent_id = $this->input->post("txtcharge_parent_id");
-		$this->Charge->charge_level_id = $this->input->post("txtcharge_level_id");
+		$this->Period->company_id = $this->input->post("txtcompany_id");
+		$this->Period->name = strtoupper($this->input->post("txtname"));
+		$this->Period->startdate = $this->input->post("txtstartdate");
+		$this->Period->enddate = $this->input->post("txtenddate");
 
-		if( count($this->Charge->getData("byname")) > 0){
-			$string = 'Este Cargo ya se encuentra Registrado!!';
+		if( count($this->Period->getData("byname")) > 0){
+			$string = 'Este Periodo ya se encuentra Registrado!!';
 		}else{
-			if($this->Charge->add()){
-				$string = 'Cargo registrado con Exito!!';
+			if($this->Period->add()){
+				$string = 'Periodo registrado con Exito!!';
 			}else{
-				$string = 'Ocurrio un error al intentar registrar el Cargo!!';
+				$string = 'Ocurrio un error al intentar registrar el Periodo!!';
 			}
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Charges','refresh');
+		redirect('Periods','refresh');
 
 	}
 
-	public function edit($charge_id){
+	public function edit($period_id){
 
-		$this->Charge->charge_id = $charge_id;
+		$this->Period->period_id = $period_id;
 
-		$data['title'] = "Edit charge";
-		$data['path'] = 'admin/charge';
+		$data['title'] = "Edit Period";
+		$data['path'] = 'admin/period';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
-		$ditems = $this->Charge->getData("get_departaments");
-		$citems = $this->Charge->getData("get_charges");
-		$clitems = $this->Charge->getData("get_chargelevels");
-		$data['departaments'] = load_select($ditems, $this->Charge->getData('byid')[0]->departament_id);
-		$data['charges'] = load_select($citems, $this->Charge->getData('byid')[0]->charge_parent_id);
-		$data['chargelevels'] = load_select($clitems, $this->Charge->getData('byid')[0]->charge_level_id);
-		$data['item'] = $this->Charge->getData('byid');
+		$citems = $this->Period->getData("get_companies");
+		$data['companies'] = load_select($citems, $this->Period->getData('byid')[0]->company_id);
+		$data['item'] = $this->Period->getData('byid');
 
 		$this->load->view('admin/index', $data);
 	}
 
 	public function update(){
 
-		$this->Charge->charge_id = $this->input->post("txtcharge_id");
-		$this->Charge->departament_id = $this->input->post("txtdepartament_id");
-		$this->Charge->name = strtoupper($this->input->post("txtname"));
-		$this->Charge->charge_parent_id = $this->input->post("txtcharge_parent_id");
-		$this->Charge->charge_level_id = $this->input->post("txtcharge_level_id");
+		$this->Period->period_id = $this->input->post("txtperiod_id");
+		$this->Period->company_id = $this->input->post("txtcompany_id");
+		$this->Period->name = strtoupper($this->input->post("txtname"));
+		$this->Period->startdate = $this->input->post("txtstartdate");
+		$this->Period->enddate = $this->input->post("txtenddate");
 
-		if($this->Charge->update()){
-			$string = 'Cargo modificado con Exito!!';
+		if($this->Period->update()){
+			$string = 'Periodo modificado con Exito!!';
 		}else{
-			$string = 'Ocurrio un error al intentar modificar el Cargo!!';
+			$string = 'Ocurrio un error al intentar modificar el Periodo!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Charges','refresh');	
+		redirect('Periods','refresh');	
 
 	}
 
-	public function active($charge_id){
-		$this->Charge->charge_id = $charge_id;
+	public function active($period_id){
+		$this->Period->period_id = $period_id;
 
-		if($this->Charge->isactive('Y')){
-			$string = 'Cargo activado con Exito!!';
+		if($this->Period->isactive('Y')){
+			$string = 'Periodo activado con Exito!!';
 		}else{
-			$string = 'Error al intentar activar el Cargo!!';
+			$string = 'Error al intentar activar el Periodo!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Charges','refresh');
+		redirect('Periods','refresh');
 	}
 
-	public function inactive($charge_id){
+	public function inactive($period_id){
 
-		$this->Charge->charge_id = $charge_id;
+		$this->Period->period_id = $period_id;
 
-		if($this->Charge->isactive('N')){
-			$string = 'Cargo Desactivado con Exito!!';
+		if($this->Period->isactive('N')){
+			$string = 'Periodo Desactivado con Exito!!';
 		}else{
-			$string = 'Error al intentar Desactivar el Cargo!!';
+			$string = 'Error al intentar Desactivar el Periodo!!';
 		}
 
 		$this->session->set_flashdata('msj',$string);
 
-		redirect('Charges','refresh');
+		redirect('Periods','refresh');
 	}
 }

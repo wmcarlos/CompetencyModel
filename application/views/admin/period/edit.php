@@ -5,14 +5,13 @@
         <h1><?= $title ?></h1>
       </div>
       <div class="box-body">
-      <?= form_open_multipart("Charges/$action",array('autocomplete' => 'off')) ?>
-
+      <?= form_open_multipart("Periods/$action",array('autocomplete' => 'off')) ?>
       <div class='form-group'>
-        <label for="txtdepartament_id">Departament:</label>
-        <input type="hidden" name="txtcharge_id" id="txtcharge_id" value="<?= $item[0]->charge_id ?>">
-        <select class="form-control textuppercase" name="txtdepartament_id" id="txtdepartament_id">
+        <label for="txtcompany_id">Company:</label>
+        <input type="hidden" name="txtperiod_id" id="txtperiod_id" value="<?= $item[0]->period_id ?>">
+        <select class="form-control textuppercase" name="txtcompany_id" id="txtcompany_id">
             <option value="">Seleccione</option>
-            <?= $departaments ?>
+            <?= $companies ?>
         </select>
       </div>
       <div class='form-group'>
@@ -20,22 +19,15 @@
         <input type="text" class="form-control textuppercase" value="<?= $item[0]->name ?>" name="txtname" id="txtname">
       </div>
       <div class='form-group'>
-        <label for="txtcharge_parent_id">Charge Parent:</label>
-        <select class="form-control textuppercase" name="txtcharge_parent_id" id="txtcharge_parent_id">
-            <option value="0">NOT PARENT</option>
-            <?= $charges ?>
-        </select>
+        <label for="txtstartdate">Start Date:</label>
+        <input type="text" class="form-control textuppercase" value="<?= $item[0]->startdate ?>" name="txtstartdate" id="txtstartdate">
       </div>
       <div class='form-group'>
-        <label for="txtcharge_level_id">Charge Level:</label>
-        <select class="form-control textuppercase" name="txtcharge_level_id" id="txtcharge_level_id">
-            <option value="">Seleccione</option>
-            <?= $chargelevels ?>
-        </select>
+        <label for="txtenddate">End Date:</label>
+        <input type="text" class="form-control textuppercase" value="<?= $item[0]->enddate ?>" name="txtenddate" id="txtenddate">
       </div>
       <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-      <a class="btn btn-danger" href="<?= base_url() ?>index.php/Charges"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
-
+      <a class="btn btn-danger" href="<?= base_url() ?>index.php/Periods"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
       <?= form_close() ?>
       </div>
     </div>
