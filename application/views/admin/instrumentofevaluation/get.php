@@ -11,7 +11,7 @@
           <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
         <?php } ?>
 
-        <a href="<?= base_url() ?>index.php/Departaments/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Departament</a>
+        <a href="<?= base_url() ?>index.php/Instrumentofevaluations/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Instrument of Evaluation</a>
         <br />
         <br />
         <table class="table table-bordered table-striped datatable">
@@ -19,22 +19,26 @@
             <th>ID</th>
             <th>Company</th>
             <th>Name</th>
-            <th>Parent Departament</th>
+            <th>Evaluation Type</th>
+            <th>Charge Level</th>
+            <th>Status</th>
             <th>Actions</th>
           </thead>
           <tbody>
             <?php foreach($items as $item){ ?>
               <tr>
-                <td><?= $item->departament_id ?></td>
+                <td><?= $item->instrument_of_evaluation_id ?></td>
                 <td><?= $item->company ?></td>
                 <td><?= $item->name ?></td>
-                <td><?= $item->parent ?></td>
+                <td><?= $item->evaluationtype ?></td>
+                <td><?= $item->charge_level ?></td>
+                <td><?= $item->status ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
-                      <a href='<?= base_url() ?>index.php/Departaments/edit/<?= $item->departament_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Departamento?","<?= base_url() ?>/index.php/Departaments/inactive/<?= $item->departament_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='<?= base_url() ?>index.php/Instrumentofevaluations/edit/<?= $item->instrument_of_evaluation_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Instrumento de Evaluacion?","<?= base_url() ?>/index.php/Instrumentofevaluations/inactive/<?= $item->instrument_of_evaluation_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Departamento?","<?= base_url() ?>index.php/Departaments/active/<?= $item->departament_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Instrumento de Evaluacion?","<?= base_url() ?>index.php/Instrumentofevaluations/active/<?= $item->instrument_of_evaluation_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
                     <?php } ?>
                 </td>
               </tr>
