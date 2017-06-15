@@ -35,6 +35,7 @@
         <input type="password" class="form-control textuppercase" id="txtrepeat_new_password" name="txtrepeat_new_password">
       </div>
       <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update Profile</button>
+      <a class="btn btn-danger" href="<?= base_url() ?>index.php/Mains"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
       <?= form_close() ?>
       </div>
     </div>
