@@ -65,7 +65,7 @@ class User extends CI_Model{
 				$query = "SELECT role_id AS value, name AS text FROM cm_role ORDER BY name ASC";
 			break;
 			case 'bypassword':
-				$query = "SELECT password FROM cm_user WHERE user_id = ".$this->session->userdata("logged_in")->user_id;
+				$query = "SELECT password FROM cm_user WHERE user_id = $this->user_id";
 			break;
 		}
 
@@ -113,6 +113,7 @@ class User extends CI_Model{
 	public function verify_user(){
 
 		$query = $this->db->query("SELECT
+								   u.user_id,
 								   u.company_id,
 								   c.name AS company,
 								   c.short_name,
@@ -127,5 +128,23 @@ class User extends CI_Model{
 								   AND u.password = MD5('$this->password')");
 
 		return $query->row();
+	}
+
+	public function change_password(){
+
+		$query = "UPDATE cm_user SET password = '$this->password' WHERE user_id = $this->user_id";
+
+		$this->db->trans_start();
+
+		$this->db->query($query);
+
+		$this->db->trans_complete();
+
+		if($this->db->trans_status() === TRUE){
+			return true;
+		}else{
+			return false;
+		}
+
 	}
 }
