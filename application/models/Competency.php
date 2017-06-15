@@ -6,6 +6,9 @@ class Competency extends CI_Model{
 		   $name,
 		   $definition,
 		   $charge_level_id,
+		   $descriptions,
+		   $developmentlevels,
+		   $positions,
 		   $created,
 		   $updated,
 		   $isactive;
@@ -57,6 +60,9 @@ class Competency extends CI_Model{
 			break;
 			case 'get_chargelevels':
 				$query = "SELECT charge_level_id AS value, name AS text FROM cm_charge_level ORDER BY name ASC";
+			break;
+			case 'get_developmentlevels':
+				$query = "SELECT development_level_id AS value, name AS text FROM cm_development_level ORDER BY name ASC";
 			break;
 		}
 

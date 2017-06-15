@@ -30,6 +30,8 @@ class Competencies extends CI_Controller{
 		$data['companies'] = load_select($citem);
 		$clitem = $this->Competency->getData('get_chargelevels');
 		$data['chargelevels'] = load_select($clitem);
+		$dlitem = $this->Competency->getData('get_developmentlevels');
+		$data["developmentlevels"] = load_select($dlitem );
 		$this->load->view('admin/index', $data);
 
 	}
