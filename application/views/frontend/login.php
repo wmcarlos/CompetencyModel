@@ -5,7 +5,7 @@
 ?>
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Competency</b> Model</a>
+    <a href="#"><center><img src="<?php echo base_url(); ?>public/img/competic_model.fw.png"></center></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
