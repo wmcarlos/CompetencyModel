@@ -22,7 +22,7 @@ class Roles extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Role";
+		$data['title'] = "Nuevo Rol";
 		$data['path'] = 'admin/role';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -59,7 +59,7 @@ class Roles extends CI_Controller{
 
 		$this->Role->role_id = $role_id;
 
-		$data['title'] = "Edit Role";
+		$data['title'] = "Editar Rol";
 		$data['path'] = 'admin/role';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

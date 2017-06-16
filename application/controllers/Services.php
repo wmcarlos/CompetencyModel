@@ -13,7 +13,7 @@ class Services extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Services';
+		$data['title'] = 'Servicios';
 		$data['path'] = 'admin/service';
 		$data['content'] = 'get';
 		$data['items'] = $this->Service->getData();
@@ -22,7 +22,7 @@ class Services extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Service";
+		$data['title'] = "Nuevo Servicios";
 		$data['path'] = 'admin/service';
 		$data['content'] = 'create';
 		$citems = $this->Service->getData('get_companies'); 
@@ -63,7 +63,7 @@ class Services extends CI_Controller{
 
 		$this->Service->service_id = $service_id;
 
-		$data['title'] = "Edit Service";
+		$data['title'] = "Editar Servicio";
 		$data['path'] = 'admin/service';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

@@ -16,7 +16,7 @@
         <br />
         <table class="datatable display responsive no-wrap" cellspacing="0" width="100%">
           <thead>
-            <th>id</th>
+            <th>ID</th>
             <th>Rif</th>
             <th>Razon Social</th>
             <th>Telefono</th>
