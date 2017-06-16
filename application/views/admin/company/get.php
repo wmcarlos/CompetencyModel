@@ -11,17 +11,17 @@
           <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
         <?php } ?>
 
-        <a href="<?= base_url() ?>index.php/Companies/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Company</a>
+        <a href="<?= base_url() ?>index.php/Companies/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva Compa&ntilde;ia</a>
         <br />
         <br />
         <table class="datatable display responsive no-wrap" cellspacing="0" width="100%">
           <thead>
             <th>id</th>
-            <th>Value</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Actions</th>
+            <th>Rif</th>
+            <th>Razon Social</th>
+            <th>Telefono</th>
+            <th>Correo Electronico</th>
+            <th>-</th>
           </thead>
           <tbody>
             <?php foreach($items as $item){ ?>
@@ -33,10 +33,10 @@
                 <td><?= $item->email ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
-                      <a href='<?= base_url() ?>index.php/Companies/edit/<?= $item->company_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar esta Compa&ntilde;ia?","<?= base_url() ?>/index.php/Companies/inactive/<?= $item->company_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='<?= base_url() ?>index.php/Companies/edit/<?= $item->company_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Editar</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar esta Compa&ntilde;ia?","<?= base_url() ?>/index.php/Companies/inactive/<?= $item->company_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Desactivar</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isconfirm("Estas seguro de Activar esta Compa&ntilde;ia?","<?= base_url() ?>index.php/Companies/active/<?= $item->company_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Activar esta Compa&ntilde;ia?","<?= base_url() ?>index.php/Companies/active/<?= $item->company_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Activar</a>
                     <?php } ?>
                 </td>
               </tr>

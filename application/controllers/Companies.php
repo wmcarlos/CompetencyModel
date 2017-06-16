@@ -12,7 +12,7 @@ class Companies extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Companies';
+		$data['title'] = 'Compa&ntilde;ias';
 		$data['path'] = 'admin/company';
 		$data['content'] = 'get';
 		$data['items'] = $this->Company->getData();
@@ -21,7 +21,7 @@ class Companies extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Company";
+		$data['title'] = "Nueva Compa&ntilde;ia";
 		$data['path'] = 'admin/company';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -57,7 +57,7 @@ class Companies extends CI_Controller{
 
 		$this->Company->company_id = $company_id;
 
-		$data['title'] = "Edit Company";
+		$data['title'] = "Editar Compa&ntilde;ia";
 		$data['path'] = 'admin/company';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
