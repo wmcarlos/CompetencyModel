@@ -5,4 +5,4 @@
     <strong>Copyright &copy; 2014-2016 <a href="#">Modelo de Competencia</a>.</strong> Todos los Derechos Reservados.
   </footer>
 </body>
-</html>WWW
+</html>
