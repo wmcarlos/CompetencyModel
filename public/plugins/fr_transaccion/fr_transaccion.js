@@ -6,6 +6,7 @@
 			//clonamos el tr padre al hijo
 			$(".fr_details").find('.tr_padre').clone().removeClass('tr_padre').addClass('tr_hijo').appendTo('.fr_details');
 			converter_value_angular();
+			clearfields();
 		});
 
 		$(document).on('click','.fr_button_remove',function(){
@@ -65,5 +66,11 @@
 				$(".fr_details tr.tr_padre").html(tr_padre_temp);
 			}
 		
+		}
+
+		function clearfields(){
+			for(i=0; i<valores_angular.length;i++){
+				$("#"+valores_angular[i]).val("");
+			}
 		}
 	});
