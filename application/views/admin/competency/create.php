@@ -76,8 +76,6 @@
           </tr>
         </tbody>
       </table>
-      <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-      <a class="btn btn-danger" href="<?= base_url() ?>index.php/Competencies"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
       <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
       <a class="btn btn-danger" href="<?= base_url() ?>index.php/Competencies"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
