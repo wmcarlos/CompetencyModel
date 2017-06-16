@@ -34,7 +34,7 @@
       <table class="table table-bordered table-striped">
         <thead>
           <th>Description</th>
-          <th>Development Level</th>
+          <th>Nivel de Desarrollo</th>
           <th>Position</th>
           <th>-</th>
         </thead>
