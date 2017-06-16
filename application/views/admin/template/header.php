@@ -36,7 +36,9 @@
   <script src="<?= base_url() ?>public/js/bootbox.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/jQueryValidate/dist/jquery.validate.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/jQueryValidate/dist/additional-methods.min.js"></script>
+  <script src="<?= base_url() ?>public/plugins/fr_transaccion/fr_transaccion.js"></script>
   <script src="<?= base_url() ?>public/js/global.js"></script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->

@@ -44,18 +44,35 @@
               <textarea class="form-control textuppercase" id="txtdescription"></textarea>
             </td>
             <td>
-              <select class="form-control textuppercase" id="txtdevelopment_level">
+              <select class="form-control textuppercase fr_select" id="txtdevelopment_level">
                 <option value="">-</option>
                 <?= $developmentlevels ?>
               </select>
             </td>
             <td><input type="text" class="form-control" id="txtposition"/></td>
-            <td><button class="btn btn-success" onclick="add();" type="button"><i class="fa fa-plus"></i></button></td>
+            <td><button class="btn btn-success fr_button_add"  type="button"><i class="fa fa-plus"></i></button></td>
           </tr>
         </tbody>
-        <tbody id="load_detail" class="fr_detail_tansaction">
-          <tr>
-            <td>{{txtdescription}}</td>
+
+        <style type="text/css">
+            .tr_padre{display: none;}
+        </style>
+
+        <tbody id="load_detail" class="fr_details">
+          <tr class="tr_padre">
+            <td>
+              {{txtdescription}}
+              <input type="hidden" name="txtdescriptions[]" value="{{txtdescription}}"> 
+            </td>
+            <td>
+                {{txtdevelopment_level}}
+                <input type="hidden" value="{{txtdevelopment_level-value}}">
+            </td>
+            <td>
+              {{txtposition}}
+              <input type="hidden" name="txtpositions[]" value="{{txtposition}}">
+            </td>
+            <td><button class="btn btn-danger fr_button_remove" type="button"><i class="fa fa-times"></i></button></td>
           </tr>
         </tbody>
       </table>
@@ -71,9 +88,9 @@
 <script type="text/javascript">
 
 
- function add(){
+ //function add(){
 
-    var des = document.getElementById("txtdescription").value;
+   /* var des = document.getElementById("txtdescription").value;
     var dvl = document.getElementById("txtdevelopment_level");
     var desdvl = dvl.options[dvl.selectedIndex].text;
     var desid = dvl.value;
@@ -99,5 +116,5 @@
       var tr = td.parentNode;
       var tbody = tr.parentNode;
       tbody.removeChild(tr);
-  }
+  }*/
 </script>
