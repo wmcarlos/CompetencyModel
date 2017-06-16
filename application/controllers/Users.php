@@ -30,6 +30,8 @@ class Users extends CI_Controller{
 		$ritems = $this->User->getData("get_roles");
 		$data['companies'] = load_select($citems);
 		$data['roles'] = load_select($ritems);
+		$citems = $this->User->getData("get_charges");
+		$data['charges'] = load_select($citems);
 		$this->load->view('admin/index', $data);
 	}
 
@@ -42,6 +44,11 @@ class Users extends CI_Controller{
 		$this->User->email = strtoupper($this->input->post("txtemail"));
 		$this->User->phone = strtoupper($this->input->post("txtphone"));
 		$this->User->password = md5(strtoupper($this->input->post("txtemail")));
+
+		$this->User->charges = $this->input->post("txtcharges");
+		$this->User->isactives = $this->input->post("txtisactives");
+		$this->User->startdates = $this->input->post("txtstartdates");
+		$this->User->enddates = $this->input->post("txtenddates");
 
 		if( count($this->User->getData("byemail")) > 0){
 			$string = 'Este Usuario ya se encuentra Registrado!!';
@@ -68,9 +75,16 @@ class Users extends CI_Controller{
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
 		$citems = $this->User->getData("get_companies");
-		$ritems = $this->User->getData("get_roles");
 		$data['companies'] = load_select($citems, $this->User->getData('byid')[0]->company_id);
+		
+		$ritems = $this->User->getData("get_roles");
 		$data['roles'] = load_select($ritems, $this->User->getData('byid')[0]->role_id);
+
+		$citems = $this->User->getData("get_charges");
+		$data['charges'] = load_select($citems);
+
+		$data["charge_assignets"] = $this->User->getData("get_assigned_charges");
+
 		$data['item'] = $this->User->getData('byid');
 
 		$this->load->view('admin/index', $data);
@@ -85,6 +99,11 @@ class Users extends CI_Controller{
 		$this->User->name = strtoupper($this->input->post("txtname"));
 		$this->User->email = strtoupper($this->input->post("txtemail"));
 		$this->User->phone = strtoupper($this->input->post("txtphone"));
+
+		$this->User->charges = $this->input->post("txtcharges");
+		$this->User->isactives = $this->input->post("txtisactives");
+		$this->User->startdates = $this->input->post("txtstartdates");
+		$this->User->enddates = $this->input->post("txtenddates");
 
 		if($this->User->update()){
 			$string = 'Usuario modificado con Exito!!';

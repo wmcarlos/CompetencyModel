@@ -10,6 +10,10 @@ class User extends CI_Model{
 		   $phone,
 		   $password,
 		   $avatar,
+		   $charges,
+		   $isactives,
+		   $startdates,
+		   $enddates,
 		   $created,
 		   $updated,
 		   $isactive;
@@ -25,6 +29,20 @@ class User extends CI_Model{
 		$this->db->trans_start();
 
 		$this->db->query($query);
+
+		$titem = $this->getData("byemail");
+
+		$this->user_id = $titem[0]->user_id;
+
+		for($i = 1; $i < count($this->charges); $i++){
+
+			if(!empty($this->enddates[$i])){
+				$this->db->query("INSERT INTO cm_charge_assigned (user_id,charge_id,startdate,enddate,isactive) VALUES ($this->user_id,".$this->charges[$i].",'".$this->startdates[$i]."','".$this->enddates[$i]."','".$this->isactives[$i]."')");
+			}else{
+				$this->db->query("INSERT INTO cm_charge_assigned (user_id,charge_id,startdate,isactive) VALUES ($this->user_id,".$this->charges[$i].",'".$this->startdates[$i]."','".$this->isactives[$i]."')");
+			}
+
+		}
 
 		$this->db->trans_complete();
 
@@ -67,6 +85,23 @@ class User extends CI_Model{
 			case 'bypassword':
 				$query = "SELECT password FROM cm_user WHERE user_id = $this->user_id";
 			break;
+			case 'get_charges':
+				$query = "SELECT charge_id AS value, name AS text FROM cm_charge ORDER BY name ASC";
+			break;
+			case 'get_assigned_charges':
+				$query = "SELECT
+							  ca.charge_id,
+							  c.name AS charge,
+							  CASE WHEN ca.isactive = 'Y' THEN 'SI'
+							  	   WHEN ca.isactive = 'N' THEN 'NO'
+							  END AS isactive,
+							  ca.isactive AS isactive_letter,
+							  ca.startdate,
+							  COALESCE(ca.enddate,'-') AS enddate
+						  FROM cm_charge_assigned AS ca
+						 	 INNER JOIN cm_charge AS c ON (c.charge_id = ca.charge_id)
+						  WHERE ca.user_id = $this->user_id";
+			break;
 		}
 
 		$query = $this->db->query($query);
@@ -82,6 +117,21 @@ class User extends CI_Model{
 		$this->db->trans_start();
 
 		$this->db->query($query);
+
+		if(count($this->charges) > 0){
+		$this->db->query("UPDATE cm_charge_assigned SET isactive = 'N' WHERE user_id = $this->user_id");
+		}
+
+		for($i = 1; $i < count($this->charges); $i++){	
+
+			if(!empty($this->enddates[$i])){
+				$this->db->query("INSERT INTO cm_charge_assigned (user_id,charge_id,startdate,enddate,isactive) VALUES ($this->user_id,".$this->charges[$i].",'".$this->startdates[$i]."','".$this->enddates[$i]."','".$this->isactives[$i]."')");
+			}else{
+				$this->db->query("INSERT INTO cm_charge_assigned (user_id,charge_id,startdate,isactive) VALUES ($this->user_id,".$this->charges[$i].",'".$this->startdates[$i]."','".$this->isactives[$i]."')");
+			}
+
+			
+		}
 
 		$this->db->trans_complete();
 
