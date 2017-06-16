@@ -37,7 +37,7 @@ class Departament extends CI_Model{
 				$query = "SELECT  
 						  d1.departament_id,
 						  d1.name,
-						  COALESCE(d2.name, 'NOT PARENT') AS parent,
+						  COALESCE(d2.name, 'SIN PADRE') AS parent,
 						  c.name AS company,
 						  d1.isactive
 						  FROM cm_departament AS d1

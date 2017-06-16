@@ -7,26 +7,26 @@
       <div class="box-body">
       <?= form_open_multipart("Periods/$action",array('autocomplete' => 'off')) ?>
  			<div class='form-group'>
- 				<label for="txtcompany_id">Company:</label>
+ 				<label for="txtcompany_id">Compa&ntilde;ia:</label>
  				<select class="form-control textuppercase" name="txtcompany_id" id="txtcompany_id">
             <option value="">Seleccione</option>
             <?= $companies ?>
         </select>
  			</div>
  			<div class='form-group'>
- 				<label for="txtname">Name:</label>
+ 				<label for="txtname">Nombre:</label>
         <input type="text" class="form-control textuppercase" name="txtname" id="txtname">
  			</div>
       <div class='form-group'>
-        <label for="txtstartdate">Start Date:</label>
+        <label for="txtstartdate">Fecha Inicio:</label>
         <input type="text" class="form-control textuppercase" name="txtstartdate" id="txtstartdate">
       </div>
       <div class='form-group'>
-        <label for="txtenddate">End Date:</label>
+        <label for="txtenddate">Fecha Final:</label>
         <input type="text" class="form-control textuppercase" name="txtenddate" id="txtenddate">
       </div>
- 			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
- 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Periods"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
+ 			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+ 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Periods"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
       <?= form_close() ?>
       </div>
     </div>

@@ -11,16 +11,16 @@
           <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
         <?php } ?>
 
-        <a href="<?= base_url() ?>index.php/Competencies/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Competency</a>
+        <a href="<?= base_url() ?>index.php/Competencies/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva Competencia</a>
         <br />
         <br />
         <table class="datatable display responsive no-wrap" cellspacing="0" width="100%">
           <thead>
             <th>ID</th>
-            <th>Company</th>
-            <th>Name</th>
-            <th>Charge Level</th>
-            <th>Actions</th>
+            <th>Compa&ntilde;ia</th>
+            <th>Nombre</th>
+            <th>Nivel de Cargo</th>
+            <th>-</th>
           </thead>
           <tbody>
             <?php foreach($items as $item){ ?>
@@ -31,10 +31,10 @@
                 <td><?= $item->charge_level ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
-                      <a href='<?= base_url() ?>index.php/Competencies/edit/<?= $item->competency_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar esta Competencia?","<?= base_url() ?>/index.php/Competencies/inactive/<?= $item->competency_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='<?= base_url() ?>index.php/Competencies/edit/<?= $item->competency_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Editar</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar esta Competencia?","<?= base_url() ?>/index.php/Competencies/inactive/<?= $item->competency_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Desactivar</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isconfirm("Estas seguro de Activar esta Competencia?","<?= base_url() ?>index.php/Competencies/active/<?= $item->competency_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Activar esta Competencia?","<?= base_url() ?>index.php/Competencies/active/<?= $item->competency_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Activar</a>
                     <?php } ?>
                 </td>
               </tr>

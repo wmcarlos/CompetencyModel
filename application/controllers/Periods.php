@@ -13,7 +13,7 @@ class Periods extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Periods';
+		$data['title'] = 'Periodos';
 		$data['path'] = 'admin/period';
 		$data['content'] = 'get';
 		$data['items'] = $this->Period->getData();
@@ -22,7 +22,7 @@ class Periods extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Period";
+		$data['title'] = "Nuevo Periodo";
 		$data['path'] = 'admin/period';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -58,7 +58,7 @@ class Periods extends CI_Controller{
 
 		$this->Period->period_id = $period_id;
 
-		$data['title'] = "Edit Period";
+		$data['title'] = "Editar Periodo";
 		$data['path'] = 'admin/period';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

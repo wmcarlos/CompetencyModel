@@ -13,7 +13,7 @@ class Instrumentofevaluations extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Instrument of Evaluation';
+		$data['title'] = 'Instrumentos de Evaluaci&oacute;n';
 		$data['path'] = 'admin/instrumentofevaluation';
 		$data['content'] = 'get';
 		$data['items'] = $this->Instrumentofevaluation->getData();
@@ -22,7 +22,7 @@ class Instrumentofevaluations extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Intrument of Evaluation";
+		$data['title'] = "Nuevo Intrumento de Evaluaci&oacute;n";
 		$data['path'] = 'admin/instrumentofevaluation';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -63,7 +63,7 @@ class Instrumentofevaluations extends CI_Controller{
 
 		$this->Instrumentofevaluation->instrument_of_evaluation_id = $instrument_of_evaluation_id;
 
-		$data['title'] = "Edit Instrument of Evaluation";
+		$data['title'] = "Editar Instrumento de Evaluaci&oacute;n";
 		$data['path'] = 'admin/instrumentofevaluation';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

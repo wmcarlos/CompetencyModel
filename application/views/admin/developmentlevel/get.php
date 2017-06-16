@@ -11,17 +11,17 @@
           <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
         <?php } ?>
 
-        <a href="<?= base_url() ?>index.php/Developmentlevels/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Development Level</a>
+        <a href="<?= base_url() ?>index.php/Developmentlevels/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Nivel de Desarrollo</a>
         <br />
         <br />
         <table class="datatable display responsive no-wrap" cellspacing="0" width="100%">
           <thead>
             <th>ID</th>
-            <th>Company</th>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Value</th>
-            <th>Options</th>
+            <th>Compa&ntilde;ia</th>
+            <th>Nombre</th>
+            <th>Posicion</th>
+            <th>Valor</th>
+            <th>-</th>
           </thead>
           <tbody>
             <?php foreach($items as $item){ ?>
@@ -33,10 +33,10 @@
                 <td><?= $item->value ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
-                      <a href='<?= base_url() ?>index.php/Developmentlevels/edit/<?= $item->development_level_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Nivel de Desarrollo?","<?= base_url() ?>/index.php/Developmentlevels/inactive/<?= $item->development_level_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='<?= base_url() ?>index.php/Developmentlevels/edit/<?= $item->development_level_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Editar</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Nivel de Desarrollo?","<?= base_url() ?>/index.php/Developmentlevels/inactive/<?= $item->development_level_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Desactivar</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Nivel de Desarrollo?","<?= base_url() ?>index.php/Developmentlevels/active/<?= $item->development_level_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Nivel de Desarrollo?","<?= base_url() ?>index.php/Developmentlevels/active/<?= $item->development_level_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Activar</a>
                     <?php } ?>
                 </td>
               </tr>

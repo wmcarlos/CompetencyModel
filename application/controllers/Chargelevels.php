@@ -13,7 +13,7 @@ class Chargelevels extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Charge level';
+		$data['title'] = 'Niveles de Cargo';
 		$data['path'] = 'admin/chargelevel';
 		$data['content'] = 'get';
 		$data['items'] = $this->Chargelevel->getData();
@@ -22,7 +22,7 @@ class Chargelevels extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Charge level";
+		$data['title'] = "Nuevo Nivel de Cargo";
 		$data['path'] = 'admin/chargelevel';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -56,7 +56,7 @@ class Chargelevels extends CI_Controller{
 
 		$this->Chargelevel->charge_level_id = $charge_level_id;
 
-		$data['title'] = "Edit Chargelevel";
+		$data['title'] = "Editar Nivel de Cargo";
 		$data['path'] = 'admin/chargelevel';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

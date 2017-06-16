@@ -13,7 +13,7 @@ class Charges extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Charges';
+		$data['title'] = 'Cargos';
 		$data['path'] = 'admin/charge';
 		$data['content'] = 'get';
 		$data['items'] = $this->Charge->getData();
@@ -22,7 +22,7 @@ class Charges extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Charge";
+		$data['title'] = "Nuevo Cargo";
 		$data['path'] = 'admin/charge';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -62,7 +62,7 @@ class Charges extends CI_Controller{
 
 		$this->Charge->charge_id = $charge_id;
 
-		$data['title'] = "Edit charge";
+		$data['title'] = "Editar Cargo";
 		$data['path'] = 'admin/charge';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';
