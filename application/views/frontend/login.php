@@ -16,11 +16,11 @@
 
     <?= form_open("Login/open_session", array('autocomplete' => 'off')); ?>
       <div class="form-group has-feedback">
-        <input type="email" name="txtemail" id="txtemail" class="form-control" placeholder="Email">
+        <input type="email" name="txtemail" id="txtemail" class="form-control" placeholder="Correo Electronico">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="txtpassword" id="txtpassword" class="form-control" placeholder="Password">
+        <input type="password" name="txtpassword" id="txtpassword" class="form-control" placeholder="Contrase&ntilde;a">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -37,7 +37,7 @@
         </div>
         <!-- /.col -->
       </div>
-    <a href="#">Recuperar Contrase&ntilde;a</a><br>
+    <a href="#">Recuperar Contrase&ntilde;a?</a><br>
     <?= form_close() ?>
   </div>
   <!-- /.login-box-body -->

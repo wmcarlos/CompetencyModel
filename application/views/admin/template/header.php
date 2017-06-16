@@ -69,18 +69,18 @@
               <span class="label label-warning">10</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header">Tienes 10 Notificaciones</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li>
                     <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                      <i class="fa fa-users text-aqua"></i> 5 Usuario se han Unido.
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+              <li class="footer"><a href="#">Ver Todos</a></li>
             </ul>
           </li>
           <!-- User Account: style can be found in dropdown.less -->
@@ -102,10 +102,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= base_url() ?>index.php/Mains/profile" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?= base_url() ?>index.php/Mains/profile" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= base_url() ?>index.php/Login/close_session" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?= base_url() ?>index.php/Login/close_session" class="btn btn-default btn-flat">Cerrar Sesi&oacute;n</a>
                 </div>
               </li>
             </ul>
