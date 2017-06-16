@@ -14,7 +14,7 @@ class Departaments extends CI_Controller{
 
 	public function index(){
 		$data['title'] = 'Departamentos';
-		$data['path'] = 'admin/Departament';
+		$data['path'] = 'admin/departament';
 		$data['content'] = 'get';
 		$data['items'] = $this->Departament->getData();
 		$this->load->view('admin/index', $data);

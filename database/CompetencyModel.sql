@@ -285,7 +285,7 @@ INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class) VAL
 	GESTION DE LA EVALUACION
 */
 (0,'NIV. DE DOMINIOS','FO',9,'Domainlevels','fa fa-hand-pointer-o'),
-(0,'NIV. DE DESARROLLO','FO',10,'Developtmentlevels','fa fa-bar-chart'),
+(0,'NIV. DE DESARROLLO','FO',10,'Developmentlevels','fa fa-bar-chart'),
 (0,'COMPETENCIAS','FO',11,'Competencies','fa fa-car'),
 (0,'INST. DE EVALUACION','FO',12,'Instrumentofevaluations','fa fa-file-text'),
 (0,'PERIODOS','FO',13,'Periods','fa fa-calendar');
