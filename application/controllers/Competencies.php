@@ -13,7 +13,7 @@ class Competencies extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Competencies';
+		$data['title'] = 'Competencias';
 		$data['path'] = 'admin/competency';
 		$data['content'] = 'get';
 		$data['items'] = $this->Competency->getData();
@@ -22,7 +22,7 @@ class Competencies extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Competency";
+		$data['title'] = "Nueva Competencia";
 		$data['path'] = 'admin/competency';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -63,7 +63,7 @@ class Competencies extends CI_Controller{
 
 		$this->Competency->competency_id = $competency_id;
 
-		$data['title'] = "Edit Competency";
+		$data['title'] = "Editar Competencia";
 		$data['path'] = 'admin/competency';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

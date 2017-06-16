@@ -13,7 +13,7 @@ class Domainlevels extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Domain Level';
+		$data['title'] = 'Niveles de Dominio';
 		$data['path'] = 'admin/domainlevel';
 		$data['content'] = 'get';
 		$data['items'] = $this->Domainlevel->getData();
@@ -22,7 +22,7 @@ class Domainlevels extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Domain Level";
+		$data['title'] = "Nuevo Nivel de Dominio";
 		$data['path'] = 'admin/domainlevel';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -59,7 +59,7 @@ class Domainlevels extends CI_Controller{
 
 		$this->Domainlevel->domain_level_id = $domain_level_id;
 
-		$data['title'] = "Edit Domain Level";
+		$data['title'] = "Editar Nivel de Dominio";
 		$data['path'] = 'admin/domainlevel';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

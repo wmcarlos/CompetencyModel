@@ -13,7 +13,7 @@ class Developmentlevels extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Development Level';
+		$data['title'] = 'Niveles de Desarrollo';
 		$data['path'] = 'admin/developmentlevel';
 		$data['content'] = 'get';
 		$data['items'] = $this->Developmentlevel->getData();
@@ -22,7 +22,7 @@ class Developmentlevels extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Development Level";
+		$data['title'] = "Nuevo Nivel de Desarrollo";
 		$data['path'] = 'admin/developmentlevel';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -58,7 +58,7 @@ class Developmentlevels extends CI_Controller{
 
 		$this->Developmentlevel->development_level_id = $development_level_id;
 
-		$data['title'] = "Edit Development Level";
+		$data['title'] = "Editar Nivel de Desarrollo";
 		$data['path'] = 'admin/developmentlevel';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

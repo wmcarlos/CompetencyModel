@@ -11,15 +11,15 @@
           <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
         <?php } ?>
 
-        <a href="<?= base_url() ?>index.php/Roles/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Role</a>
+        <a href="<?= base_url() ?>index.php/Roles/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Rol</a>
         <br />
         <br />
         <table class="datatable display responsive no-wrap" cellspacing="0" width="100%">
           <thead>
-            <th>id</th>
-            <th>Company</th>
-            <th>Name</th>
-            <th>Actions</th>
+            <th>ID</th>
+            <th>Compa&ntilde;ia</th>
+            <th>Nombre</th>
+            <th>-</th>
           </thead>
           <tbody>
             <?php foreach($items as $item){ ?>
@@ -29,10 +29,10 @@
                 <td><?= $item->name ?></td>
                 <td>
                     <?php if($item->isactive == 'Y'){ ?>
-                      <a href='<?= base_url() ?>index.php/Roles/edit/<?= $item->role_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Edit</a>
-                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Rol?","<?= base_url() ?>/index.php/Roles/inactive/<?= $item->role_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Inactive</a>
+                      <a href='<?= base_url() ?>index.php/Roles/edit/<?= $item->role_id ?>' class="btn btn-info"><i class='fa fa-pencil'></i> Editar</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Desactivar este Rol?","<?= base_url() ?>/index.php/Roles/inactive/<?= $item->role_id ?>");' class="btn btn-danger"><i class='fa fa-times'></i> Desactivar</a>
                     <?php }else{ ?>
-                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Rol?","<?= base_url() ?>index.php/Roles/active/<?= $item->role_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Active</a>
+                      <a href='#' onclick='isconfirm("Estas seguro de Activar este Rol?","<?= base_url() ?>index.php/Roles/active/<?= $item->role_id ?>");' class="btn btn-success"><i class="fa fa-check"></i> Activar</a>
                     <?php } ?>
                 </td>
               </tr>

@@ -13,7 +13,7 @@ class Users extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Users';
+		$data['title'] = 'Usuarios';
 		$data['path'] = 'admin/user';
 		$data['content'] = 'get';
 		$data['items'] = $this->User->getData();
@@ -22,7 +22,7 @@ class Users extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New User";
+		$data['title'] = "Nuevo Usuario";
 		$data['path'] = 'admin/user';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -63,7 +63,7 @@ class Users extends CI_Controller{
 
 		$this->User->user_id = $user_id;
 
-		$data['title'] = "Edit User";
+		$data['title'] = "Editar Usuario";
 		$data['path'] = 'admin/user';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

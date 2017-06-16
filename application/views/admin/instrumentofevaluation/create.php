@@ -8,26 +8,26 @@
       <?= form_open_multipart("Instrumentofevaluations/$action",array('autocomplete' => 'off')) ?>
 
  			<div class='form-group'>
- 				<label for="txtcompany_id">Company:</label>
+ 				<label for="txtcompany_id">Compa&ntilde;ia:</label>
  				<select class="form-control textuppercase" name="txtcompany_id" id="txtcompany_id">
             <option value="">Seleccione</option>
             <?= $companies ?>
         </select>
  			</div>
  			<div class='form-group'>
- 				<label for="txtname">Name:</label>
+ 				<label for="txtname">Nombre:</label>
         <input type="text" class="form-control textuppercase" name="txtname" id="txtname">
  			</div>
       <div class='form-group'>
-        <label for="txtdescription">Description:</label>
+        <label for="txtdescription">Descripcion:</label>
         <textarea class="form-control textuppercase" name="txtdescription" id="txtdescription"></textarea>
       </div>
       <div class='form-group'>
-        <label for="txtinstruction">Instructions:</label>
+        <label for="txtinstruction">Instrucciones:</label>
         <textarea class="form-control textuppercase" name="txtinstructions" id="txtinstructions"></textarea>
       </div>
       <div class='form-group'>
-        <label for="txtevaluationtype">Evaluation Type:</label>
+        <label for="txtevaluationtype">Tipo de Evaluacion:</label>
         <div class="radio">
             <label><input type='radio' name='txtevaluationtype' checked="checked" value='UC' /> Cargo Arriba</label>
         </div>
@@ -39,14 +39,14 @@
         </div>
       </div>
       <div class='form-group'>
-        <label for="txtcharge_level_id">Charge Level:</label>
+        <label for="txtcharge_level_id">Nivel de Cargo:</label>
         <select class="form-control textuppercase" name="txtcharge_level_id" id="txtcharge_level_id">
             <option value="">Seleccione</option>
             <?= $chargelevels ?>
         </select>
       </div>
       <div class='form-group'>
-        <label for="txtstatus">Status:</label>
+        <label for="txtstatus">Estatus:</label>
         <div class="radio">
             <label><input type='radio' name='txtstatus' checked="checked" value='DR' /> Borrador</label>
         </div>
@@ -54,8 +54,8 @@
             <label><input type='radio' name='txtstatus' value='CO' /> Completo</label>
         </div>
       </div>
- 			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
- 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Instrumentofevaluations"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
+ 			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+ 			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Instrumentofevaluations"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
       <?= form_close() ?>
       </div>

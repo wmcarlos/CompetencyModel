@@ -13,8 +13,8 @@ class Departaments extends CI_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Departaments';
-		$data['path'] = 'admin/Departament';
+		$data['title'] = 'Departamentos';
+		$data['path'] = 'admin/departament';
 		$data['content'] = 'get';
 		$data['items'] = $this->Departament->getData();
 		$this->load->view('admin/index', $data);
@@ -22,7 +22,7 @@ class Departaments extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = "New Departament";
+		$data['title'] = "Nuevo Departamento";
 		$data['path'] = 'admin/departament';
 		$data['content'] = 'create';
 		$data['action'] = 'store';
@@ -59,7 +59,7 @@ class Departaments extends CI_Controller{
 
 		$this->Departament->departament_id = $departament_id;
 
-		$data['title'] = "Edit Departament";
+		$data['title'] = "Editar Departamento";
 		$data['path'] = 'admin/departament';
 		$data['content'] = 'edit';
 		$data['action'] = 'update';

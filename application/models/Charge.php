@@ -40,7 +40,7 @@ class Charge extends CI_Model{
 						  ch.name,
 						  ch.isactive,
 						  d.name AS departament,
-						  COALESCE(ch2.name, 'NOT PARENT') AS parent,
+						  COALESCE(ch2.name, 'SIN PADRE') AS parent,
 						  cl.name AS charge_level
 						  FROM cm_charge AS ch 
 						  INNER JOIN cm_departament AS d ON (d.departament_id = ch.departament_id)

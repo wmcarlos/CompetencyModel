@@ -261,36 +261,47 @@ CREATE TABLE cm_user_instrument_answer(
  	CONSTRAINT fk_domain_level_id FOREIGN KEY (domain_level_id) REFERENCES cm_domain_level (domain_level_id) ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE = INNODB;
 
-INSERT INTO cm_company (value,name,short_name,phone,email) VALUES ('J407008544','FRONTUARI','FTI','02556217144','ADMINISTRADOR@FRONTUARI.COM');
 
-INSERT INTO cm_role (company_id, name) VALUES (1,'ADMINISTRATOR');
+INSERT INTO cm_company (company_id,value,name,short_name,phone,email) VALUES (0,'J00000000','GLOBAL','GBL','00000000000','SUPERADMIN@GLOBAL.COM');
+INSERT INTO cm_role (role_id,company_id, name) VALUES (0,0,'SUPER ADMIN');
+INSERT INTO cm_user (user_id,company_id, role_id, value, name, email, phone, password) VALUES (0,0,0,'V00000000','SUPER ADMIN','SUPERADMIN@GLOBAL.COM','00000000000',MD5('5up3r4dm1n'));
 
-INSERT INTO cm_user (company_id, role_id, value, name, email, phone, password) VALUES (1,1,'V19455541','CARLOS VARGAS','CVARGAS@FRONTUARI.COM','04160984343',MD5('CVARGAS@FRONTUARI.COM'));
-INSERT INTO cm_user (company_id, role_id, value, name, email, phone, password) VALUES (1,1,'V20467209','ALBERTO VARGAS','AVARGAS@FRONTUARI.COM','02556217144',MD5('AVARGAS@FRONTUARI.COM'));
-INSERT INTO cm_user (company_id, role_id, value, name, email, phone, password) VALUES (1,1,'V20389586','JORGE COLMENAREZ','JCOLMENAREZ@FRONTUARI.COM','04149739547',MD5('JCOLMENAREZ@FRONTUARI.COM'));
+INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class) VALUES 
+/* 
+	GESTION DE COMPANIA
+*/
+(0,'ESCRITORIO','FO',1,'Mains','fa fa-dashboard'),
+(0,'COMPANIAS','FO',2,'Companies','fa fa-building'),
+(0,'DEPARTAMENTOS','FO',3,'Departaments','fa fa-home'),
+(0,'NIVELES DE CARGO','FO',4,'Chargelevels','fa fa-level-up'),
+(0,'CARGOS','FO',5,'Charges','fa fa-address-card'),
+/* 
+	GESTION DE SEGURIDAD Y CONFIGURACION DE SITIO
+*/
+(0,'SERVICIOS','FO',6,'Services','fa fa-link'),
+(0,'ROLES','FO',7,'Roles','fa fa-universal-access'),
+(0,'USUARIOS','FO',8,'Users','fa fa-user'),
+/* 
+	GESTION DE LA EVALUACION
+*/
+(0,'NIV. DE DOMINIOS','FO',9,'Domainlevels','fa fa-hand-pointer-o'),
+(0,'NIV. DE DESARROLLO','FO',10,'Developmentlevels','fa fa-bar-chart'),
+(0,'COMPETENCIAS','FO',11,'Competencies','fa fa-car'),
+(0,'INST. DE EVALUACION','FO',12,'Instrumentofevaluations','fa fa-file-text'),
+(0,'PERIODOS','FO',13,'Periods','fa fa-calendar');
 
-INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
-			VALUES (1,'DASHBOARD','FO',1,'Mains','fa fa-dashboard');
+INSERT INTO cm_access (role_id,service_id) VALUES 
+(0,1),
+(0,2),
+(0,3),
+(0,4),
+(0,5),
+(0,6),
+(0,7),
+(0,8),
+(0,9),
+(0,10),
+(0,11),
+(0,12),
+(0,13);
 
-INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
-			VALUES (1,'COMPANY','FO',2,'Companies','fa fa-building');
-
-INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
-			VALUES (1,'ROLE','FO',3,'Roles','fa fa-universal-access');
-
-INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
-			VALUES (1,'USER','FO',4,'Users','fa fa-user');
-
-INSERT INTO cm_service (company_id,name,servicetype,position,url,icon_class)
-			VALUES (1,'SERVICE','FO',5,'Services','fa fa-link');
-
-INSERT INTO cm_access (role_id,service_id)
-			VALUES (1,1);
-INSERT INTO cm_access (role_id,service_id)
-			VALUES (1,2);
-INSERT INTO cm_access (role_id,service_id)
-			VALUES (1,3);
-INSERT INTO cm_access (role_id,service_id)
-			VALUES (1,4);
-INSERT INTO cm_access (role_id,service_id)
-			VALUES (1,5);
