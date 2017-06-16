@@ -43,6 +43,10 @@ class Competencies extends CI_Controller{
 		$this->Competency->definition = $this->input->post("txtdefinition");
 		$this->Competency->charge_level_id = $this->input->post("txtcharge_level_id");
 
+		$this->Competency->descriptions = $this->input->post("txtdescriptions");
+		$this->Competency->developmentlevels = $this->input->post("txtdevelopment_level");
+		$this->Competency->positions = $this->input->post("txtpositions");
+
 		if( count($this->Competency->getData("byname")) > 0){
 			$string = 'Este Competencia ya se encuentra Registrado!!';
 		}else{
@@ -71,6 +75,9 @@ class Competencies extends CI_Controller{
 		$data['companies'] = load_select($citem, $this->Competency->getData('byid')[0]->company_id);
 		$clitem = $this->Competency->getData('get_chargelevels');
 		$data['chargelevels'] = load_select($clitem, $this->Competency->getData('byid')[0]->charge_level_id);
+		$dlitem = $this->Competency->getData('get_developmentlevels');
+		$data["developmentlevels"] = load_select($dlitem);
+		$data['dtlitems'] = $this->Competency->getData("get_behavioral_indicators");
 		$data['item'] = $this->Competency->getData('byid');
 		$this->load->view('admin/index', $data);
 	}
@@ -82,6 +89,10 @@ class Competencies extends CI_Controller{
 		$this->Competency->name = strtoupper($this->input->post("txtname"));
 		$this->Competency->definition = $this->input->post("txtdefinition");
 		$this->Competency->charge_level_id = $this->input->post("txtcharge_level_id");
+
+		$this->Competency->descriptions = $this->input->post("txtdescriptions");
+		$this->Competency->developmentlevels = $this->input->post("txtdevelopment_level");
+		$this->Competency->positions = $this->input->post("txtpositions");
 
 		if($this->Competency->update()){
 			$string = 'Competencia modificada con Exito!!';

@@ -25,6 +25,14 @@ class Competency extends CI_Model{
 
 		$this->db->query($query);
 
+		$tdata = $this->getData("byname");
+
+		$this->competency_id = $tdata[0]->competency_id;
+		for($i = 1; $i < count($this->descriptions); $i++){
+			$this->db->query("INSERT INTO cm_behavioral_indicator(competency_id,description,development_level_id,position) 
+				VALUES ($this->competency_id,'".$this->descriptions[$i]."',".$this->developmentlevels[$i].",".$this->positions[$i].")");
+		}
+
 		$this->db->trans_complete();
 
 		if($this->db->trans_status() === TRUE){
@@ -64,6 +72,16 @@ class Competency extends CI_Model{
 			case 'get_developmentlevels':
 				$query = "SELECT development_level_id AS value, name AS text FROM cm_development_level ORDER BY name ASC";
 			break;
+			case 'get_behavioral_indicators':
+				$query = "SELECT 
+						  bi.description,
+						  bi.development_level_id,
+						  dl.name AS development_level,
+						  bi.position
+					      FROM cm_behavioral_indicator AS bi
+					      INNER JOIN cm_development_level AS dl ON (dl.development_level_id = bi.development_level_id)
+					      WHERE bi.competency_id = $this->competency_id";
+			break;
 		}
 
 		$query = $this->db->query($query);
@@ -79,6 +97,14 @@ class Competency extends CI_Model{
 		$this->db->trans_start();
 
 		$this->db->query($query);
+
+		$this->db->query("DELETE FROM cm_behavioral_indicator WHERE competency_id = $this->competency_id");
+		
+		for($i = 1; $i < count($this->descriptions); $i++){
+
+			$this->db->query("INSERT INTO cm_behavioral_indicator(competency_id,description,development_level_id,position) 
+				VALUES ($this->competency_id,'".$this->descriptions[$i]."',".$this->developmentlevels[$i].",".$this->positions[$i].")");
+		}
 
 		$this->db->trans_complete();
 
