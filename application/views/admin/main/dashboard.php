@@ -2,7 +2,7 @@
 <section class="content">
   <div class="box">
     <div class="box-header with-border">
-      <h1>Panel de Administraci&oacute;n</h1>
+      <h1>Escritorio</h1>
 
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="box-body">
-      
+      Bienvenidos al Panel de Administracion del Modelo de Competencia!!
     </div>
   </div>
 </section>
