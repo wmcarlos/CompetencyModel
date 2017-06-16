@@ -66,7 +66,7 @@
             </td>
             <td>
                 {{txtdevelopment_level}}
-                <input type="hidden" value="{{txtdevelopment_level-value}}">
+                <input type="hidden" name="txtdevelopment_level[]" value="{{txtdevelopment_level-value}}">
             </td>
             <td>
               {{txtposition}}
@@ -75,6 +75,8 @@
             <td><button class="btn btn-danger fr_button_remove" type="button"><i class="fa fa-times"></i></button></td>
           </tr>
         </tbody>
+
+
       </table>
       <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
       <a class="btn btn-danger" href="<?= base_url() ?>index.php/Competencies"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
