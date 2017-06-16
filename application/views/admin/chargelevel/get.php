@@ -14,7 +14,7 @@
         <a href="<?= base_url() ?>index.php/Chargelevels/create" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> New Charge Level</a>
         <br />
         <br />
-        <table class="table table-bordered table-striped datatable">
+        <table class="datatable display responsive no-wrap" cellspacing="0" width="100%">
           <thead>
             <th>ID</th>
             <th>Company</th>

@@ -21,12 +21,14 @@
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/ionicons-2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/css/skins/_all-skins.min.css">
   <!-- jQuery 3.1.1-->
   <script src="<?= base_url() ?>public/plugins/jQuery/jquery-3.1.1.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/bootstrap/js/bootstrap.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url() ?>public/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/fastclick/fastclick.js"></script>
   <script src="<?= base_url() ?>public/js/adminlte.min.js"></script>
