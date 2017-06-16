@@ -53,7 +53,11 @@
             <td><button class="btn btn-success" onclick="add();" type="button"><i class="fa fa-plus"></i></button></td>
           </tr>
         </tbody>
-        <tbody id="load_detail"></tbody>
+        <tbody id="load_detail" class="fr_detail_tansaction">
+          <tr>
+            <td>{{txtdescription}}</td>
+          </tr>
+        </tbody>
       </table>
  			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
  			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Competencies"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>
@@ -65,7 +69,9 @@
 </div>
 
 <script type="text/javascript">
-  function add(){
+
+
+ function add(){
 
     var des = document.getElementById("txtdescription").value;
     var dvl = document.getElementById("txtdevelopment_level");

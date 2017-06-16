@@ -9,7 +9,7 @@ class Charge extends CI_Model{
 		   $created,
 		   $updated,
 		   $isactive;
-
+		  
 	public function __construct(){
 		parent::__construct();
 	}
