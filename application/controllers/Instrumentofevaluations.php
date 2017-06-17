@@ -43,6 +43,9 @@ class Instrumentofevaluations extends CI_Controller{
 		$this->Instrumentofevaluation->charge_level_id = $this->input->post("txtcharge_level_id");
 		$this->Instrumentofevaluation->status = strtoupper($this->input->post("txtstatus"));
 
+		$this->Instrumentofevaluation->chargelevels = $this->input->post("txtchargelevels");
+		$this->Instrumentofevaluation->values = $this->input->post("txtvalues");
+
 		if( count($this->Instrumentofevaluation->getData("byname")) > 0){
 			$string = 'Este Instrumento de Evaluacion ya se encuentra Registrado!!';
 		}else{
@@ -74,6 +77,8 @@ class Instrumentofevaluations extends CI_Controller{
 		$data['chargelevels'] = load_select($clitem, $this->Instrumentofevaluation->getData('byid')[0]->charge_level_id);
 
 		$data['item'] = $this->Instrumentofevaluation->getData('byid');
+		$data['chargelevels2'] = load_select($clitem);
+		$data['dtcharge_ponderations'] = $this->Instrumentofevaluation->getData("get_ponderation_levels");
 
 		$this->load->view('admin/index', $data);
 	}
@@ -88,6 +93,9 @@ class Instrumentofevaluations extends CI_Controller{
 		$this->Instrumentofevaluation->evaluationtype = strtoupper($this->input->post("txtevaluationtype"));
 		$this->Instrumentofevaluation->charge_level_id = $this->input->post("txtcharge_level_id");
 		$this->Instrumentofevaluation->status = strtoupper($this->input->post("txtstatus"));
+
+		$this->Instrumentofevaluation->chargelevels = $this->input->post("txtchargelevels");
+		$this->Instrumentofevaluation->values = $this->input->post("txtvalues");
 
 		if($this->Instrumentofevaluation->update()){
 			$string = 'Instrumento de Evaluacion modificado con Exito!!';

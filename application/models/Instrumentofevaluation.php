@@ -8,6 +8,8 @@ class Instrumentofevaluation extends CI_Model{
 		   $instructions,
 		   $evaluationtype,
 		   $charge_level_id,
+		   $chargelevels,
+		   $values,
 		   $status,
 		   $created,
 		   $updated,
@@ -24,6 +26,15 @@ class Instrumentofevaluation extends CI_Model{
 		$this->db->trans_start();
 
 		$this->db->query($query);
+
+		$titem = $this->getData("byname");
+
+		$this->instrument_of_evaluation_id = $titem[0]->instrument_of_evaluation_id;
+
+		for($i = 1; $i < count($this->chargelevels); $i++){
+
+			$this->db->query("INSERT INTO cm_ponderation_charge_level (instrument_of_evaluation_id,charge_level_id,value) VALUES (".$this->instrument_of_evaluation_id.",".$this->chargelevels[$i].",".$this->values[$i].")");
+		}
 
 		$this->db->trans_complete();
 
@@ -68,6 +79,15 @@ class Instrumentofevaluation extends CI_Model{
 			case 'get_chargelevels':
 				$query = "SELECT charge_level_id AS value, name AS text FROM cm_charge_level ORDER BY name ASC";
 			break;
+			case 'get_ponderation_levels':
+				$query = "SELECT 
+						  cp.charge_level_id,
+						  cp.value,
+						  cl.name AS charge_level
+					      FROM cm_ponderation_charge_level AS cp
+					      INNER JOIN cm_charge_level AS cl ON (cl.charge_level_id = cp.charge_level_id)
+					      WHERE cp.instrument_of_evaluation_id = $this->instrument_of_evaluation_id";
+			break;
 		}
 
 		$query = $this->db->query($query);
@@ -84,6 +104,13 @@ class Instrumentofevaluation extends CI_Model{
 		$this->db->trans_start();
 
 		$this->db->query($query);
+
+		$this->db->query("DELETE FROM cm_ponderation_charge_level WHERE instrument_of_evaluation_id = $this->instrument_of_evaluation_id");
+
+		for($i = 1; $i < count($this->chargelevels); $i++){
+
+			$this->db->query("INSERT INTO cm_ponderation_charge_level (instrument_of_evaluation_id,charge_level_id,value) VALUES (".$this->instrument_of_evaluation_id.",".$this->chargelevels[$i].",".$this->values[$i].")");
+		}
 
 		$this->db->trans_complete();
 
