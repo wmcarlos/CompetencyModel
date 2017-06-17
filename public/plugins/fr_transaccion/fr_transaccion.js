@@ -31,8 +31,10 @@
 						cont_validate_errors++;
 						$("span.doc_"+$(this).attr('id')).remove();
 					 	$(this).before("<span class='hint--top span_clasic doc_"+$(this).attr('id')+"'  data-hint='Solo se permiten numeros'></span>");
+				 		$(this).css({'border':'1px solid #DD4B39'});
 				 	}else{
-						$("span.doc_"+$(this).attr('id')).remove();
+						$("span.doc_"+$(this).attr('id')).fadeOut(500).delay(100).remove();
+				 		$(this).css({'border':'1px solid #D2D6DE'});
 				 	}
 				}//##solonumeros closed
 
@@ -42,8 +44,10 @@
 						cont_validate_errors++;
 						$("span.doc_"+$(this).attr('id')).remove();
 					 	$(this).before("<span class='hint--top span_clasic doc_"+$(this).attr('id')+"'  data-hint='Solo se permiten letras'></span>");
+				 		$(this).css({'border':'1px solid #DD4B39'});
 				 	}else{
-						$("span.doc_"+$(this).attr('id')).remove();
+						$("span.doc_"+$(this).attr('id')).fadeOut(500).delay(100).remove();
+				 		$(this).css({'border':'1px solid #D2D6DE'});
 				 	}
 				}//##sololetras closed
 
@@ -53,8 +57,10 @@
 						cont_validate_errors++;
 						$("span.doc_"+$(this).attr('id')).remove();
 					 	$(this).before("<span class='hint--top span_clasic doc_"+$(this).attr('id')+"'  data-hint='El campo no puede quedar vacio'></span>");
+				 		$(this).css({'border':'1px solid #DD4B39'});
 				 	}else{
-						$("span.doc_"+$(this).attr('id')).remove();
+						$("span.doc_"+$(this).attr('id')).fadeOut(500).delay(100).remove();
+				 		$(this).css({'border':'1px solid #D2D6DE'});
 				 	}
 				}//##solovacio closed
 
@@ -62,6 +68,7 @@
 				if(parseInt($(this).val().length)<=0 && $(this).hasClass("nobligatorio")){
 					cont_validate_errors--;
 					$("span.doc_"+$(this).attr('id')).remove();
+				 	$(this).css({'border':'1px solid #D2D6DE'});
 				}
 
 			});
