@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>public/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>public/css/style.css">
   <!-- jQuery 3.1.1-->
   <script src="<?= base_url() ?>public/plugins/jQuery/jquery-3.1.1.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/bootstrap/js/bootstrap.min.js"></script>

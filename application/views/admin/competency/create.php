@@ -41,15 +41,15 @@
         <tbody>
           <tr>
             <td>
-              <textarea class="form-control textuppercase" id="txtdescription"></textarea>
+              <textarea class="fr_validate solovacio form-control textuppercase" id="txtdescription"></textarea>
             </td>
             <td>
-              <select class="form-control textuppercase fr_select" id="txtdevelopment_level">
+              <select class="fr_validate solovacio form-control textuppercase fr_select" id="txtdevelopment_level">
                 <option value="">-</option>
                 <?= $developmentlevels ?>
               </select>
             </td>
-            <td><input type="text" class="form-control" id="txtposition"/></td>
+            <td><input type="text" class="fr_validate solonumeros form-control" id="txtposition"/></td>
             <td><button class="btn btn-success fr_button_add"  type="button"><i class="fa fa-plus"></i></button></td>
           </tr>
         </tbody>
