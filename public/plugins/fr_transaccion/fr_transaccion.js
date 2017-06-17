@@ -19,22 +19,7 @@
 		/*------------------------------------*/
 
 
-		$(document).on('click','.fr_button_add',function(){
-			/*si la validacion no devolvio nimgun error entra*/
-			if(fr_validate()==0){
-				//clonamos el tr padre al hijo
-				$(".fr_details").find('.tr_padre').clone().removeClass('tr_padre').addClass('tr_hijo').appendTo('.fr_details');
-				converter_value_angular();
-				clearfields();
-			}
-			
-		});
-
-		$(document).on('click','.fr_button_remove',function(){
-			$(this).parent().parent().remove();
-		});	
-
-
+		
 		/*funcion para validar los campos*/
 		function fr_validate(){
 			cont_validate_errors = 0;
@@ -145,4 +130,24 @@
 			}
 			
 		}
+
+
+		/*EVENTOS*/
+		$(document).on('click','.fr_button_add',function(){
+			/*si la validacion no devolvio nimgun error entra*/
+			if(fr_validate()==0){
+				//clonamos el tr padre al hijo
+				$(".fr_details").find('.tr_padre').clone().removeClass('tr_padre').addClass('tr_hijo').appendTo('.fr_details');
+				converter_value_angular();
+				clearfields();
+			}
+			
+		});
+
+		$(document).on('click','.fr_button_remove',function(){
+			$(this).parent().parent().remove();
+		});	
+
+
+
 	});
