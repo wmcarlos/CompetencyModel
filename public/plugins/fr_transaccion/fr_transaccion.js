@@ -21,57 +21,66 @@
 
 		
 		/*funcion para validar los campos*/
-		function fr_validate(){
+		function fr_validate(valor_validate){
 			cont_validate_errors = 0;
-			$(".fr_validate").each(function(){
+			
+
+				$(".fr_validate").each(function(){
+				if(valor_validate!='button-click'){
+					fr_data_field = valor_validate;
+				}else{
+					fr_data_field  = $(this);
+				}
 				/*comenzamos las validaciones*/
 				//##solonumeros
-				if($(this).hasClass('solonumeros')){
-					if(!solonumeros($(this).val())){
+				if(fr_data_field.hasClass('solonumeros')){
+					if(!solonumeros(fr_data_field.val())){
 						cont_validate_errors++;
-						$("span.doc_"+$(this).attr('id')).remove();
-					 	$(this).before("<span class='hint--top span_clasic doc_"+$(this).attr('id')+"'  data-hint='Solo se permiten numeros'></span>");
-				 		$(this).css({'border':'1px solid #DD4B39'});
+						$("span.doc_"+fr_data_field.attr('id')).remove();
+					 	fr_data_field.before("<span class='hint--top span_clasic doc_"+fr_data_field.attr('id')+"'  data-hint='Solo se permiten numeros'></span>");
+				 		fr_data_field.css({'border':'1px solid #DD4B39'});
 				 	}else{
-						$("span.doc_"+$(this).attr('id')).fadeOut(500).delay(100).remove();
-				 		$(this).css({'border':'1px solid #D2D6DE'});
+						$("span.doc_"+fr_data_field.attr('id')).fadeOut(500).delay(100).remove();
+				 		fr_data_field.css({'border':'1px solid #D2D6DE'});
 				 	}
 				}//##solonumeros closed
 
 				/*#sololetras*/
-				if($(this).hasClass('sololetras')){
-					if(!sololetras($(this).val())){
+				if(fr_data_field.hasClass('sololetras')){
+					if(!sololetras(fr_data_field.val())){
 						cont_validate_errors++;
-						$("span.doc_"+$(this).attr('id')).remove();
-					 	$(this).before("<span class='hint--top span_clasic doc_"+$(this).attr('id')+"'  data-hint='Solo se permiten letras'></span>");
-				 		$(this).css({'border':'1px solid #DD4B39'});
+						$("span.doc_"+fr_data_field.attr('id')).remove();
+					 	fr_data_field.before("<span class='hint--top span_clasic doc_"+fr_data_field.attr('id')+"'  data-hint='Solo se permiten letras'></span>");
+				 		fr_data_field.css({'border':'1px solid #DD4B39'});
 				 	}else{
-						$("span.doc_"+$(this).attr('id')).fadeOut(500).delay(100).remove();
-				 		$(this).css({'border':'1px solid #D2D6DE'});
+						$("span.doc_"+fr_data_field.attr('id')).fadeOut(500).delay(100).remove();
+				 		fr_data_field.css({'border':'1px solid #D2D6DE'});
 				 	}
 				}//##sololetras closed
 
 				/*#solovacio*/
-				if($(this).hasClass('solovacio')){
-					if(!solovacio($(this).val())){
+				if(fr_data_field.hasClass('solovacio')){
+					if(!solovacio(fr_data_field.val())){
 						cont_validate_errors++;
-						$("span.doc_"+$(this).attr('id')).remove();
-					 	$(this).before("<span class='hint--top span_clasic doc_"+$(this).attr('id')+"'  data-hint='El campo no puede quedar vacio'></span>");
-				 		$(this).css({'border':'1px solid #DD4B39'});
+						$("span.doc_"+fr_data_field.attr('id')).remove();
+					 	fr_data_field.before("<span class='hint--top span_clasic doc_"+fr_data_field.attr('id')+"'  data-hint='El campo no puede quedar vacio'></span>");
+				 		fr_data_field.css({'border':'1px solid #DD4B39'});
 				 	}else{
-						$("span.doc_"+$(this).attr('id')).fadeOut(500).delay(100).remove();
-				 		$(this).css({'border':'1px solid #D2D6DE'});
+						$("span.doc_"+fr_data_field.attr('id')).fadeOut(500).delay(100).remove();
+				 		fr_data_field.css({'border':'1px solid #D2D6DE'});
 				 	}
 				}//##solovacio closed
 
 				/*si el campo esta vacio pero no es obligatorio no entra en la validacion*/
-				if(parseInt($(this).val().length)<=0 && $(this).hasClass("nobligatorio")){
+				if(parseInt(fr_data_field.val().length)<=0 && fr_data_field.hasClass("nobligatorio")){
 					cont_validate_errors--;
-					$("span.doc_"+$(this).attr('id')).remove();
-				 	$(this).css({'border':'1px solid #D2D6DE'});
+					$("span.doc_"+fr_data_field.attr('id')).remove();
+				 	fr_data_field.css({'border':'1px solid #D2D6DE'});
 				}
 
-			});
+			
+				});
+			
 			return cont_validate_errors;
 		}/*------CIERRE DE LA FUNCION DE VALIDACIONES---*/
 
@@ -142,7 +151,7 @@
 		/*EVENTOS*/
 		$(document).on('click','.fr_button_add',function(){
 			/*si la validacion no devolvio nimgun error entra*/
-			if(fr_validate()==0){
+			if(fr_validate('button-click')==0){
 				//clonamos el tr padre al hijo
 				$(".fr_details").find('.tr_padre').clone().removeClass('tr_padre').addClass('tr_hijo').appendTo('.fr_details');
 				converter_value_angular();
@@ -155,6 +164,12 @@
 			$(this).parent().parent().remove();
 		});	
 
+		$(".fr_validate").keyup(function(){
+			fr_validate($(this));
+		});
+		$(".fr_validate").change(function(){
+			fr_validate($(this));
+		});
 
 
 	});
