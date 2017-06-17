@@ -49,8 +49,8 @@
                 <?= $developmentlevels ?>
               </select>
             </td>
-            <td><input type="text" class="fr_validate solonumeros nobligatorio form-control" id="txtposition"/></td>
-            <td><button class="btn btn-success fr_button_add" tagbutton="detalle_1"  type="button"><i class="fa fa-plus"></i></button></td>
+            <td><input type="text" class="fr_validate solonumeros  form-control" id="txtposition"/></td>
+            <td><button class="btn btn-success fr_button_add"   type="button"><i class="fa fa-plus"></i></button></td>
           </tr>
         </tbody>
 
@@ -76,6 +76,8 @@
           </tr>
         </tbody>
       </table>
+
+      
       
       <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
       <a class="btn btn-danger" href="<?= base_url() ?>index.php/Competencies"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>

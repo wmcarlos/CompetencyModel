@@ -21,11 +21,11 @@
 
 		
 		/*funcion para validar los campos*/
-		function fr_validate(valor_validate){
+		function fr_validate(valor_validate,tagbutton_validate){
 			cont_validate_errors = 0;
-			
+							
 
-				$(".fr_validate").each(function(){
+				$(tagbutton_validate).find('tbody tr td .fr_validate').each(function(){
 				if(valor_validate!='button-click'){
 					fr_data_field = valor_validate;
 				}else{
@@ -168,7 +168,9 @@
 			/*si la validacion no devolvio nimgun error entra*/
 			tagbutton = $(this).parent().parent().parent().parent().find('.fr_details').attr("id");
 
-			if(fr_validate('button-click')==0){
+			tagbutton_validate = $(this).parent().parent().parent().parent(); 
+
+			if(fr_validate('button-click',tagbutton_validate)==0){
 				//clonamos el tr padre al hijo
 				$("#"+tagbutton).find('.tr_padre').clone().removeClass('tr_padre').addClass('tr_hijo').appendTo('#'+tagbutton);
 				converter_value_angular(tagbutton);
@@ -182,10 +184,13 @@
 		});	
 
 		$(".fr_validate").keyup(function(){
-			fr_validate($(this));
+			tagbutton_validate = $(this).parent().parent().parent().parent(); 
+			fr_validate($(this),tagbutton_validate);
 		});
+
 		$(".fr_validate").change(function(){
-			fr_validate($(this));
+			tagbutton_validate = $(this).parent().parent().parent().parent(); 
+			fr_validate($(this),tagbutton_validate);
 		});
 
 

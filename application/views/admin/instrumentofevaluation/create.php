@@ -57,6 +57,7 @@
       <h3>Ponderacion por Nivel de Cargo</h3>
       <hr />
       <table class="table table-bordered table-striped">
+
         <thead>
           <th>Nivel de Cargo</th>
           <th>Ponderacion</th>
@@ -71,10 +72,10 @@
               </select>
             </td>
             <td>
-              <input type="text" class="form-control" id="txtvalue" value="">
+              <input type="text" class="form-control" id="txtvalue">
             </td>
             <td>
-              <button class="btn btn-success fr_button_add"  type="button"><i class="fa fa-plus"></i></button>
+              <button class="btn btn-success fr_button_add" type="button"><i class="fa fa-plus"></i></button>
             </td>
           </tr>
         </tbody>
@@ -83,7 +84,7 @@
             .tr_padre{display: none;}
         </style>
 
-        <tbody id="detalle_1" class="fr_details">
+        <tbody id="load_detail" class="fr_details">
             <tr class="tr_padre">
               <td>
                 {{txtdtcharge_level_id}}
@@ -100,57 +101,6 @@
         </tbody>
         
       </table>
-
-      <BR>
-      <BR>
-        <h3>Detalle 2</h3>
-      <hr />
-      <table class="table table-bordered table-striped">
-        <thead>
-          <th>Nivel de Cargo</th>
-          <th>Ponderacion</th>
-          <th>-</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <select class="form-control fr_select" id="txtdtcharge_level_id2">
-                <option value="">-</option>
-                <?= $chargelevels ?>
-              </select>
-            </td>
-            <td>
-              <input type="text" class="form-control" id="txtvalue2">
-            </td>
-            <td>
-              <button class="btn btn-success fr_button_add" tagbutton="detalle_2" type="button"><i class="fa fa-plus"></i></button>
-            </td>
-          </tr>
-        </tbody>
-
-        <style type="text/css">
-            .tr_padre{display: none;}
-        </style>
-
-        <tbody id="detalle_2" class="fr_details">
-            <tr class="tr_padre">
-              <td>
-                {{txtdtcharge_level_id2}}
-                <input type="hidden" name="txtchargelevels[]" value="{{txtdtcharge_level_id2-value}}">
-              </td>
-              <td>
-                {{txtvalue2}}
-                <input type="hidden" name="txtvalues[]" value="{{txtvalue2}}">
-              </td>
-              <td>
-                <button class="btn btn-danger fr_button_remove" type="button"><i class="fa fa-times"></i></button>
-              </td>
-            </tr>
-        </tbody>
-        
-      </table>
-
-
  			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
  			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Instrumentofevaluations"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
