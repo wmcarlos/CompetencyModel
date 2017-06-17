@@ -31,7 +31,7 @@
       </div>
       <h3>Indicadores Conductuales</h3>
       <hr/>
-      <table class="table table-bordered table-striped">
+      <table class="table table-bordered table-striped" id="detalle_1">
         <thead>
           <th>Description</th>
           <th>Nivel de Desarrollo</th>
@@ -49,8 +49,8 @@
                 <?= $developmentlevels ?>
               </select>
             </td>
-            <td><input type="text" class="fr_validate solonumeros form-control" id="txtposition"/></td>
-            <td><button class="btn btn-success fr_button_add"  type="button"><i class="fa fa-plus"></i></button></td>
+            <td><input type="text" class="fr_validate solonumeros nobligatorio form-control" id="txtposition"/></td>
+            <td><button class="btn btn-success fr_button_add" tagbutton="detalle_1"  type="button"><i class="fa fa-plus"></i></button></td>
           </tr>
         </tbody>
 
