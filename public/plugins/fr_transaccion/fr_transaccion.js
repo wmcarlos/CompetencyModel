@@ -113,7 +113,7 @@
 				idnewtext = $("#"+valores_angular[i]).attr('id');
 
 				//alert("text "+$("#"+idnewtext).text());
-				if(typeof idnewtext !=='undefined'){
+
 
 					if($("#"+idnewtext).text()){
 						new_text =  $("#"+idnewtext).text();
@@ -124,17 +124,17 @@
 						new_text = $("#"+idnewtext).val();
 					}
 
-				}
+				
 
 				/*preguntaremos si el select es un hijo*/
-				if(typeof idnewtext !=='undefined'){
+				
 					if(valores_angular[i].indexOf('-value')>-1){
 						array_fr_select = valores_angular[i].split("-");
 						new_text_value = $("#"+array_fr_select[0]).val();
 					}else{
 						new_text_value = '';
 					}
-				}
+				
 
 				/*reemplazamos el texto*/
 				//console.log($("#"+tagbutton).html());
