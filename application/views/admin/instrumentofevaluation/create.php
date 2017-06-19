@@ -54,53 +54,103 @@
             <label><input type='radio' name='txtstatus' value='CO' /> Completo</label>
         </div>
       </div>
-      <h3>Ponderacion por Nivel de Cargo</h3>
-      <hr />
-      <table class="table table-bordered table-striped">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#ponderaciones">Ponderaciones segun Nivel de Cargo</a></li>
+        <li><a data-toggle="tab" href="#competencias">Competencias</a></li>
+      </ul>
 
-        <thead>
-          <th>Nivel de Cargo</th>
-          <th>Ponderacion</th>
-          <th>-</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <select class="form-control fr_select" id="txtdtcharge_level_id">
-                <option value="">-</option>
-                <?= $chargelevels ?>
-              </select>
-            </td>
-            <td>
-              <input type="text" class="form-control" id="txtvalue">
-            </td>
-            <td>
-              <button class="btn btn-success fr_button_add" type="button"><i class="fa fa-plus"></i></button>
-            </td>
-          </tr>
-        </tbody>
+      <div class="tab-content">
+        <div id="ponderaciones" class="tab-pane fade in active">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <th>Nivel de Cargo</th>
+                <th>Ponderacion</th>
+                <th>-</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <select class="form-control fr_select" id="txtdtcharge_level_id">
+                      <option value="">-</option>
+                      <?= $chargelevels ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="txtvalue">
+                  </td>
+                  <td>
+                    <button class="btn btn-success fr_button_add" type="button"><i class="fa fa-plus"></i></button>
+                  </td>
+                </tr>
+              </tbody>
 
-        <style type="text/css">
-            .tr_padre{display: none;}
-        </style>
+              <style type="text/css">
+                  .tr_padre{display: none;}
+              </style>
 
-        <tbody id="load_detail" class="fr_details">
-            <tr class="tr_padre">
-              <td>
-                {{txtdtcharge_level_id}}
-                <input type="hidden" name="txtchargelevels[]" value="{{txtdtcharge_level_id-value}}">
-              </td>
-              <td>
-                {{txtvalue}}
-                <input type="hidden" name="txtvalues[]" value="{{txtvalue}}">
-              </td>
-              <td>
-                <button class="btn btn-danger fr_button_remove" type="button"><i class="fa fa-times"></i></button>
-              </td>
-            </tr>
-        </tbody>
-        
-      </table>
+              <tbody id="load_detail" class="fr_details">
+                  <tr class="tr_padre">
+                    <td>
+                      {{txtdtcharge_level_id}}
+                      <input type="hidden" name="txtchargelevels[]" value="{{txtdtcharge_level_id-value}}">
+                    </td>
+                    <td>
+                      {{txtvalue}}
+                      <input type="hidden" name="txtvalues[]" value="{{txtvalue}}">
+                    </td>
+                    <td>
+                      <button class="btn btn-danger fr_button_remove" type="button"><i class="fa fa-times"></i></button>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+        <div id="competencias" class="tab-pane fade">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <th>Competencia</th>
+                <th>Posicion</th>
+                <th>-</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <select class="form-control fr_select" id="txtcompetency_id">
+                      <option value="">-</option>
+                      
+                    </select>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="txtposition">
+                  </td>
+                  <td>
+                    <button class="btn btn-success fr_button_add" type="button"><i class="fa fa-plus"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+
+              <style type="text/css">
+                  .tr_padre{display: none;}
+              </style>
+
+              <tbody id="load_detail" class="fr_details">
+                  <tr class="tr_padre">
+                    <td>
+                      {{txtcompetency_id}}
+                      <input type="hidden" name="txtcompetencies[]" value="{{txtcompetency_id-value}}">
+                    </td>
+                    <td>
+                      {{txtposition}}
+                      <input type="hidden" name="txtpositions[]" value="{{txtposition}}">
+                    </td>
+                    <td>
+                      <button class="btn btn-danger fr_button_remove" type="button"><i class="fa fa-times"></i></button>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
  			<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
  			<a class="btn btn-danger" href="<?= base_url() ?>index.php/Instrumentofevaluations"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
