@@ -154,12 +154,13 @@
 			valores_angular.length=0;
 		}
 
-		function clearfields(){
-			for(i=0; i<valores_angular.length;i++){
-				$("#"+valores_angular[i]).val("");
+		function clearfields(dc){
+
+			var data = dc.split(",");
+
+			for(var i = 0; i < data.length; i++){
+				document.getElementById(data[i]).value = '';
 			}
-			valores_angular.length = 0;
-			
 		}
 
 
@@ -168,13 +169,15 @@
 			/*si la validacion no devolvio nimgun error entra*/
 			tagbutton = $(this).parent().parent().parent().parent().find('.fr_details').attr("id");
 
+			dc = $(this).attr("data-clean");
+
 			tagbutton_validate = $(this).parent().parent().parent().parent(); 
 
 			if(fr_validate('button-click',tagbutton_validate)==0){
 				//clonamos el tr padre al hijo
 				$("#"+tagbutton).find('.tr_padre').clone().removeClass('tr_padre').addClass('tr_hijo').appendTo('#'+tagbutton);
 				converter_value_angular(tagbutton);
-				clearfields();
+				clearfields(dc);
 			}
 			
 		});

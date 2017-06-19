@@ -79,7 +79,7 @@
                     <input type="text" class="form-control" id="txtvalue">
                   </td>
                   <td>
-                    <button class="btn btn-success fr_button_add" type="button"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-success fr_button_add" data-clean='txtdtcharge_level_id,txtvalue' type="button"><i class="fa fa-plus"></i></button>
                   </td>
                 </tr>
               </tbody>
@@ -88,7 +88,7 @@
                   .tr_padre{display: none;}
               </style>
 
-              <tbody id="load_detail" class="fr_details">
+              <tbody id="load_detail_ponderation" class="fr_details">
                   <tr class="tr_padre">
                     <td>
                       {{txtdtcharge_level_id}}
@@ -99,7 +99,7 @@
                       <input type="hidden" name="txtvalues[]" value="{{txtvalue}}">
                     </td>
                     <td>
-                      <button class="btn btn-danger fr_button_remove" type="button"><i class="fa fa-times"></i></button>
+                      <button class="btn btn-danger fr_button_remove" id= type="button"><i class="fa fa-times"></i></button>
                     </td>
                   </tr>
               </tbody>
@@ -124,7 +124,7 @@
                     <input type="text" class="form-control" id="txtposition">
                   </td>
                   <td>
-                    <button class="btn btn-success fr_button_add" type="button"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-success fr_button_add" data-clean='txtcompetency_id,txtposition' type="button"><i class="fa fa-plus"></i></button>
                   </td>
                 </tr>
               </tbody>
@@ -133,7 +133,7 @@
                   .tr_padre{display: none;}
               </style>
 
-              <tbody id="load_detail" class="fr_details">
+              <tbody id="load_detail_competency" class="fr_details">
                   <tr class="tr_padre">
                     <td>
                       {{txtcompetency_id}}
