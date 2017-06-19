@@ -29,7 +29,9 @@ class Instrumentofevaluations extends CI_Controller{
 		$citem = $this->Instrumentofevaluation->getData('get_companies');
 		$data['companies'] = load_select($citem);
 		$clitem = $this->Instrumentofevaluation->getData('get_chargelevels');
+		$coitem = $this->Instrumentofevaluation->getData('get_competencies');
 		$data['chargelevels'] = load_select($clitem);
+		$data['competencies'] = load_select($coitem);
 		$this->load->view('admin/index', $data);
 	}
 
@@ -45,6 +47,9 @@ class Instrumentofevaluations extends CI_Controller{
 
 		$this->Instrumentofevaluation->chargelevels = $this->input->post("txtchargelevels");
 		$this->Instrumentofevaluation->values = $this->input->post("txtvalues");
+
+		$this->Instrumentofevaluation->competencies = $this->input->post('txtcompetencies');
+		$this->Instrumentofevaluation->positions = $this->input->post('txtpositions');
 
 		if( count($this->Instrumentofevaluation->getData("byname")) > 0){
 			$string = 'Este Instrumento de Evaluacion ya se encuentra Registrado!!';
@@ -80,6 +85,11 @@ class Instrumentofevaluations extends CI_Controller{
 		$data['chargelevels2'] = load_select($clitem);
 		$data['dtcharge_ponderations'] = $this->Instrumentofevaluation->getData("get_ponderation_levels");
 
+		$data['dtcompetencies'] = $this->Instrumentofevaluation->getData('get_competencies_assigned');
+
+		$coitem = $this->Instrumentofevaluation->getData('get_competencies');
+		$data['competencies'] = load_select($coitem);
+
 		$this->load->view('admin/index', $data);
 	}
 
@@ -96,6 +106,9 @@ class Instrumentofevaluations extends CI_Controller{
 
 		$this->Instrumentofevaluation->chargelevels = $this->input->post("txtchargelevels");
 		$this->Instrumentofevaluation->values = $this->input->post("txtvalues");
+
+		$this->Instrumentofevaluation->competencies = $this->input->post('txtcompetencies');
+		$this->Instrumentofevaluation->positions = $this->input->post('txtpositions');
 
 		if($this->Instrumentofevaluation->update()){
 			$string = 'Instrumento de Evaluacion modificado con Exito!!';

@@ -117,7 +117,7 @@
                   <td>
                     <select class="form-control fr_select" id="txtcompetency_id">
                       <option value="">-</option>
-                      
+                      <?= $competencies ?>
                     </select>
                   </td>
                   <td>

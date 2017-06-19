@@ -215,7 +215,7 @@ CREATE TABLE cm_ponderation_charge_level(
 	CONSTRAINT fk_charge_level_id02 FOREIGN KEY (charge_level_id) REFERENCES cm_charge_level (charge_level_id) ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE = INNODB;
 
-CREATE TABLE competency_instrument(
+CREATE TABLE cm_competency_instrument(
 	competency_instrument_id INT AUTO_INCREMENT NOT NULL,
 	instrument_of_evaluation_id INT NOT NULL,
 	competency_id INT NOT NULL,
