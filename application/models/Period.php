@@ -6,6 +6,7 @@ class Period extends CI_Model{
 		   $name,
 		   $startdate,
 		   $enddate,
+		   $instruments_of_evaluations,
 		   $created,
 		   $updated,
 		   $isactive;
@@ -21,6 +22,15 @@ class Period extends CI_Model{
 		$this->db->trans_start();
 
 		$this->db->query($query);
+
+		$temdata = $this->getData("byname");
+
+		$this->period_id = $temdata[0]->period_id;
+
+		for($i = 1; $i < count($this->instruments_of_evaluations); $i++){
+			$this->db->query("INSERT INTO cm_instrument_period (instrument_of_evaluation_id, period_id) VALUES (".$this->instruments_of_evaluations[$i].",$this->period_id)");
+		}
+
 
 		$this->db->trans_complete();
 
@@ -55,6 +65,17 @@ class Period extends CI_Model{
 			case 'get_companies':
 				$query = "SELECT company_id AS value, name AS text FROM cm_company ORDER BY name ASC";
 			break;
+			case 'get_instruments':
+				$query = "SELECT instrument_of_evaluation_id AS value, name AS text FROM cm_instrument_of_evaluation ORDER BY name ASC";
+			break;
+			case 'get_instruments_used':
+				$query = "SELECT
+						  ip.instrument_of_evaluation_id,
+						  ioe.name
+						  FROM cm_instrument_period AS ip
+						  INNER JOIN cm_instrument_of_evaluation AS ioe ON (ioe.instrument_of_evaluation_id = ip.instrument_of_evaluation_id)
+						  WHERE ip.period_id = $this->period_id";
+			break;
 		}
 
 		$query = $this->db->query($query);
@@ -71,6 +92,12 @@ class Period extends CI_Model{
 		$this->db->trans_start();
 
 		$this->db->query($query);
+
+		$this->db->query("DELETE FROM cm_instrument_period WHERE period_id = $this->period_id");
+
+		for($i = 1; $i < count($this->instruments_of_evaluations); $i++){
+			$this->db->query("INSERT INTO cm_instrument_period (instrument_of_evaluation_id, period_id) VALUES (".$this->instruments_of_evaluations[$i].",$this->period_id)");
+		}
 
 		$this->db->trans_complete();
 

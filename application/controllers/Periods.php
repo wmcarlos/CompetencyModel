@@ -28,6 +28,8 @@ class Periods extends CI_Controller{
 		$data['action'] = 'store';
 		$citems = $this->Period->getData("get_companies");
 		$data['companies'] = load_select($citems);
+		$iitems = $this->Period->getData("get_instruments");
+		$data['instruments_of_evaluations'] = load_select($iitems);
 		$this->load->view('admin/index', $data);
 	}
 
@@ -37,6 +39,8 @@ class Periods extends CI_Controller{
 		$this->Period->name = strtoupper($this->input->post("txtname"));
 		$this->Period->startdate = $this->input->post("txtstartdate");
 		$this->Period->enddate = $this->input->post("txtenddate");
+
+		$this->Period->instruments_of_evaluations = $this->input->post("txtinstrumentsofevaluation");
 
 		if( count($this->Period->getData("byname")) > 0){
 			$string = 'Este Periodo ya se encuentra Registrado!!';
@@ -65,6 +69,9 @@ class Periods extends CI_Controller{
 		$citems = $this->Period->getData("get_companies");
 		$data['companies'] = load_select($citems, $this->Period->getData('byid')[0]->company_id);
 		$data['item'] = $this->Period->getData('byid');
+		$iitems = $this->Period->getData("get_instruments");
+		$data['instruments_of_evaluations'] = load_select($iitems);
+		$data['insofeva'] = $this->Period->getData('get_instruments_used');
 
 		$this->load->view('admin/index', $data);
 	}
@@ -76,6 +83,8 @@ class Periods extends CI_Controller{
 		$this->Period->name = strtoupper($this->input->post("txtname"));
 		$this->Period->startdate = $this->input->post("txtstartdate");
 		$this->Period->enddate = $this->input->post("txtenddate");
+
+		$this->Period->instruments_of_evaluations = $this->input->post("txtinstrumentsofevaluation");
 
 		if($this->Period->update()){
 			$string = 'Periodo modificado con Exito!!';
