@@ -8,6 +8,9 @@
             <h1>Mis Evaluaciones</h1>
           </div>
           <div class="box-body">
+            <?php if( $this->session->flashdata('msj') ){ ?>
+              <script type="text/javascript"> isalert('<?= $this->session->flashdata('msj') ?>'); </script>
+            <?php } ?>
             <table class="datatable display responsive no-wrap" cellspacing="0" width="100%">
               <thead>
                 <th>Evaluacion</th>
@@ -17,7 +20,7 @@
               <?php foreach($instruments AS $instrument){ ?>
                 <tr>
                   <td><?= $instrument->instrumentdes ?></td>
-                  <td><a href="<?= base_url() ?>index.php/Mains/view_evaluation/<?= $instrument->instrument_of_evaluation_id ?>/<?= $this->session->userdata('logged_in')->user_id ?>"><i class="fa fa-eye"></i></a></td>
+                  <td><a href="<?= base_url() ?>index.php/Mains/view_evaluation/<?= $instrument->instrument_of_evaluation_id ?>/<?= $this->session->userdata('logged_in')->user_id ?>/<?= $this->session->userdata('logged_in')->user_evaluated ?>"><i class="fa fa-eye"></i></a></td>
                 </tr>
               <?php } ?>
               </tbody>

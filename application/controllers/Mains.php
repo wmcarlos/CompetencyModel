@@ -85,12 +85,18 @@ class Mains extends CI_Controller {
 		$data['content'] = "evaluation";
 		$this->User->user_id = $user_evaluated_id;
 		$data['user_evaluated'] = $this->User->getData('get_user_info_complete');
+
 		$this->User->user_id = $user_evaluator_id;
 		$data['user_evaluator'] = $this->User->getData('get_user_info_complete');
 
 		$this->Instrumentofevaluation->instrument_of_evaluation_id = $instrument_id;
 		$data['instrument'] = $this->Instrumentofevaluation->getData('get_instrument_info');
 		$data['competencies'] = $this->Instrumentofevaluation->getData('get_competencies_of_evaluation');
+
+		if($user_evaluator_id == -1){
+			$this->session->set_flashdata('msj','No se puede evaluar a este participante ya que su cargo no depeten de Otro!!');
+			redirect("Mains");
+		}
 
 		$this->load->view("admin/index.php",$data);
 	}

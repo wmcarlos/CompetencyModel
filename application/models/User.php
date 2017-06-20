@@ -183,12 +183,16 @@ class User extends CI_Model{
 								   u.email,
 								   COALESCE(ch.name,'Sin Cargo') AS charge_assigned,
 								   COALESCE(ch.charge_id,-1) AS charge_id,
-								   COALESCE(ch.charge_level_id,-1) AS charge_level_id
+								   COALESCE(ch.charge_level_id,-1) AS charge_level_id,
+								   COALESCE(ch.charge_parent_id,-1) AS charge_parent_id,
+								   COALESCE(u2.user_id,-1) AS user_evaluated
 								   FROM cm_user AS u
 								   INNER JOIN cm_company AS c ON (c.company_id = u.company_id)
 								   INNER JOIN cm_role AS r ON (r.role_id = u.role_id)
 								   LEFT JOIN cm_charge_assigned AS ca ON (ca.user_id = u.user_id)
 								   LEFT JOIN cm_charge AS ch ON (ch.charge_id = ca.charge_id)
+								   LEFT JOIN cm_charge_assigned AS ca2 ON (ca2.charge_id = ch.charge_parent_id)
+								   LEFT JOIN cm_user AS u2 ON (u2.user_id = ca2.user_id)
 								   WHERE u.email = '$this->email' 
 								   AND u.password = MD5('$this->password')");
 

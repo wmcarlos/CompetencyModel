@@ -128,7 +128,7 @@ class Instrumentofevaluation extends CI_Model{
 							  INNER JOIN cm_charge_assigned AS ca ON (ca.charge_id = c.charge_id)
 							  INNER JOIN cm_user AS u ON (u.user_id = ca.user_id)
 							  INNER JOIN cm_instrument_of_evaluation AS ioe ON (ioe.charge_level_id = c.charge_level_id)
-						  WHERE c.charge_parent_id = ".$this->session->userdata("logged_in")->charge_id;
+						  WHERE ioe.status = 'CO' AND c.charge_parent_id = ".$this->session->userdata("logged_in")->charge_id;
 			break;
 			case 'get_instrument_info':
 				$query = "SELECT  
