@@ -6,6 +6,7 @@
         <h2><?= $instrument[0]->name ?></h2>
       </div>
       <div class="box-body">
+        <?= form_open('Mains/evaluate') ?>
         <h4>Periodo a Evaluar</h4>
         <hr/>
         <div class="form-group">
@@ -95,7 +96,8 @@
           <?php } ?>
           </tbody>
         </table>
-
+        <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i> Guardar Evaluaci&oacute;n</button>
+        <?= form_close() ?>
       </div>
     </div>
   </section>
