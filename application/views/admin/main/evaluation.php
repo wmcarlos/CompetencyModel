@@ -59,54 +59,40 @@
         <hr/>
         <table class="table table-bordered table-striped">
           <tbody>
+          <?php foreach($competencies AS $competency){ ?>
             <tr>
-              <td colspan="2">Competencia: ORIENTACION AL CLIENTE </td>
+              <td colspan="2"><b>Competencia:</b> <?= $competency->name ?></td>
               <td rowspan="2" colspan="5" align="center" valign="bottom">Nivel de Dominio</td>
             </tr>
             <tr>
-              <td colspan="2">Definicion: Es la capacidad para resolver los requerimientos de nuestros clientes internos, externos y consumidores de forma oportuna y con calidad. Implica conocer y demostrar sensibilidad ante sus características, necesidades y demandas generando soluciones que incrementen sus niveles de satisfacción y construyendo relaciones de confianza a largo plazo.</td>
+              <td colspan="2"><b>Definicion:</b> <?= $competency->definition ?></td>
             </tr>
             <tr>
-              <td colspan="2">ORIENTACION AL CLIENTE</td>
+              <td colspan="2"><b><?= $competency->name ?></b></td>
               <td>1</td>
               <td>2</td>
               <td>3</td>
               <td>4</td>
               <td>Total</td>
             </tr>
-            <tr>
-              <td rowspan="4" align="center" valign="middle">Nivel 1</td>
-              <td>Cumple con lo ofrecido al cliente en calidad y tiempos de respuesta</td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Sabe diferenciar las necesidades y caracteristicas de cada cliente</td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Ofrece soluciones adaptadas a las necesidades de los clientes</td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td><input type="radio"/></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td align="right"><i><b>Nivel 1 de Desarrollo</b></i></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+
+              <?php $data = $this->Instrumentofevaluation->getBehaviorIndicators($competency->competency_id); ?>
+
+              <?php for($i = 0; $i < count($data); $i++){ ?>
+
+                  <tr>
+                    <td><?= $data[$i]->level ?></td>
+                    <td><?= $data[$i]->description ?></td>
+                    <td><input name='<?= $data[0]->behavioral_indicator_id ?>_<?= $data[$i]->level ?>' type="radio"/></td>
+                    <td><input name='<?= $data[0]->behavioral_indicator_id ?>_<?= $data[$i]->level ?>' type="radio"/></td>
+                    <td><input name='<?= $data[0]->behavioral_indicator_id ?>_<?= $data[$i]->level ?>' type="radio"/></td>
+                    <td><input name='<?= $data[0]->behavioral_indicator_id ?>_<?= $data[$i]->level ?>' type="radio"/></td>
+                    <td></td>
+                  </tr>
+
+              <?php } ?>
+
+          <?php } ?>
           </tbody>
         </table>
 

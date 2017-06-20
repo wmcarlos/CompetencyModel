@@ -141,6 +141,16 @@ class Instrumentofevaluation extends CI_Model{
 						  INNER JOIN cm_period AS p ON (p.period_id = ip.period_id)
 						  WHERE ioe.instrument_of_evaluation_id = $this->instrument_of_evaluation_id ORDER BY name ASC";
 			break;
+			case 'get_competencies_of_evaluation':
+				$query = "SELECT
+							 c.competency_id,
+						 	 c.name,
+						 	 c.definition
+						  FROM cm_competency AS c
+						 	 INNER JOIN cm_competency_instrument AS ci ON (ci.competency_id = c.competency_id)
+						  WHERE ci.instrument_of_evaluation_id = $this->instrument_of_evaluation_id
+						  ORDER BY ci.position ASC";
+			break;
 		}
 
 		$query = $this->db->query($query);
@@ -196,5 +206,17 @@ class Instrumentofevaluation extends CI_Model{
 			return false;
 		}		
 
+	}
+
+	public function getBehaviorIndicators($competency_id){
+		$query = $this->db->query("SELECT
+					hi.behavioral_indicator_id,
+					dl.name AS level,
+					hi.description
+				  FROM cm_behavioral_indicator AS hi 
+				  INNER JOIN cm_development_level AS dl ON (dl.development_level_id = hi.development_level_id)
+				  WHERE hi.competency_id = ".$competency_id);
+
+		return $query->result();
 	}
 }

@@ -90,6 +90,7 @@ class Mains extends CI_Controller {
 
 		$this->Instrumentofevaluation->instrument_of_evaluation_id = $instrument_id;
 		$data['instrument'] = $this->Instrumentofevaluation->getData('get_instrument_info');
+		$data['competencies'] = $this->Instrumentofevaluation->getData('get_competencies_of_evaluation');
 
 		$this->load->view("admin/index.php",$data);
 	}
