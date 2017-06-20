@@ -8,13 +8,17 @@ class Mains extends CI_Controller {
 
 		$this->load->model("User");
 
+		$this->load->model("Instrumentofevaluation");
+
 		$this->load->library("form_validation");
 	}
 
 	public function index(){
-		$data['title'] = "Dashboard";
+		$data['title'] = "Escritorio";
 		$data['path'] = "admin/main";
 		$data['content'] = "dashboard";
+		$data['instruments'] = $this->Instrumentofevaluation->getData('get_my_evaluations');
+		$data['other_evaluations'] = $this->Instrumentofevaluation->getData('get_other_evaluations');
 		$this->load->view("admin/index.php",$data);
 	}
 
@@ -72,5 +76,25 @@ class Mains extends CI_Controller {
 		}else{
 			return FALSE;
 		}
+	}
+
+	public function view_evaluation($instrument_id, $user_evaluated_id,$user_evaluator_id){
+		$data['title'] = "Evaluaci&oacute;n";
+		$data['path'] = "admin/main";
+		$data['action'] = "evaluate";
+		$data['content'] = "evaluation";
+		$this->User->user_id = $user_evaluated_id;
+		$data['user_evaluated'] = $this->User->getData('get_user_info_complete');
+		$this->User->user_id = $user_evaluator_id;
+		$data['user_evaluator'] = $this->User->getData('get_user_info_complete');
+
+		$this->Instrumentofevaluation->instrument_of_evaluation_id = $instrument_id;
+		$data['instrument'] = $this->Instrumentofevaluation->getData('get_instrument_info');
+
+		$this->load->view("admin/index.php",$data);
+	}
+
+	public function evaluate(){
+
 	}
 }

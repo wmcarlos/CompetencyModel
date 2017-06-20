@@ -107,6 +107,40 @@ class Instrumentofevaluation extends CI_Model{
 							  INNER JOIN cm_competency AS c ON (c.competency_id = ci.competency_id)
 						  WHERE ci.instrument_of_evaluation_id = $this->instrument_of_evaluation_id";
 			break;
+			case 'get_my_evaluations':
+				$query = "SELECT 
+						  ioe.instrument_of_evaluation_id,
+						  ioe.name AS instrumentdes
+						  FROM cm_instrument_of_evaluation AS ioe
+						  INNER JOIN cm_instrument_period AS ip ON (ip.instrument_of_evaluation_id = ioe.instrument_of_evaluation_id)
+						  INNER JOIN cm_period AS p ON (p.period_id = ip.period_id)
+						  WHERE ioe.status = 'CO' AND ioe.charge_level_id = ".$this->session->userdata("logged_in")->charge_level_id;
+			break;
+
+			case 'get_other_evaluations':
+				$query = "SELECT
+							u.user_id,
+							ioe.instrument_of_evaluation_id,
+							u.name AS user,
+							c.name AS charge,
+							ioe.name AS evaluation
+						  FROM cm_charge AS c
+							  INNER JOIN cm_charge_assigned AS ca ON (ca.charge_id = c.charge_id)
+							  INNER JOIN cm_user AS u ON (u.user_id = ca.user_id)
+							  INNER JOIN cm_instrument_of_evaluation AS ioe ON (ioe.charge_level_id = c.charge_level_id)
+						  WHERE c.charge_parent_id = ".$this->session->userdata("logged_in")->charge_id;
+			break;
+			case 'get_instrument_info':
+				$query = "SELECT  
+						  ioe.instructions,
+						  ioe.name,
+						  p.startdate,
+						  p.enddate
+						  FROM cm_instrument_of_evaluation AS ioe
+						  INNER JOIN cm_instrument_period AS ip ON (ip.instrument_of_evaluation_id = ioe.instrument_of_evaluation_id)
+						  INNER JOIN cm_period AS p ON (p.period_id = ip.period_id)
+						  WHERE ioe.instrument_of_evaluation_id = $this->instrument_of_evaluation_id ORDER BY name ASC";
+			break;
 		}
 
 		$query = $this->db->query($query);

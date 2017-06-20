@@ -102,6 +102,16 @@ class User extends CI_Model{
 						 	 INNER JOIN cm_charge AS c ON (c.charge_id = ca.charge_id)
 						  WHERE ca.user_id = $this->user_id";
 			break;
+			case 'get_user_info_complete':
+				$query = "SELECT 
+						  u.name AS name,
+						  u.value,
+						  c.name AS charge
+						  FROM cm_user AS u
+						  INNER JOIN cm_charge_assigned AS ca ON (ca.user_id = u.user_id)
+						  INNER JOIN cm_charge as c ON (c.charge_id = ca.charge_id)
+						  WHERE u.user_id = $this->user_id";
+			break;
 		}
 
 		$query = $this->db->query($query);
@@ -170,10 +180,15 @@ class User extends CI_Model{
 								   u.role_id, 
 								   r.name as role,
 								   u.name, 
-								   u.email 
+								   u.email,
+								   COALESCE(ch.name,'Sin Cargo') AS charge_assigned,
+								   COALESCE(ch.charge_id,0) AS charge_id,
+								   COALESCE(ch.charge_level_id,0) AS charge_level_id
 								   FROM cm_user AS u
 								   INNER JOIN cm_company AS c ON (c.company_id = u.company_id)
 								   INNER JOIN cm_role AS r ON (r.role_id = u.role_id)
+								   LEFT JOIN cm_charge_assigned AS ca ON (ca.user_id = u.user_id)
+								   LEFT JOIN cm_charge AS ch ON (ch.charge_id = ca.charge_id)
 								   WHERE u.email = '$this->email' 
 								   AND u.password = MD5('$this->password')");
 

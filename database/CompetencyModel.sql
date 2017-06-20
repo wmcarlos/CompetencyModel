@@ -247,7 +247,7 @@ CREATE TABLE cm_user_instrument(
 	CONSTRAINT pk_user_instrument_id PRIMARY KEY (user_instrument_id),
 	CONSTRAINT fk_instrument_of_evaluation_id04 FOREIGN KEY (instrument_of_evaluation_id) REFERENCES cm_instrument_of_evaluation (instrument_of_evaluation_id) ON UPDATE CASCADE ON DELETE RESTRICT,
 	CONSTRAINT fk_user_evaluated_id FOREIGN KEY (user_evaluated_id) REFERENCES cm_user (user_id) ON UPDATE CASCADE ON DELETE RESTRICT,
-	CONSTRAINT fk_user_evaluator_id FOREIGN KEY (user_evaluated_id) REFERENCES cm_user (user_id) ON UPDATE CASCADE ON DELETE RESTRICT
+	CONSTRAINT fk_user_evaluator_id FOREIGN KEY (user_evaluator_id) REFERENCES cm_user (user_id) ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE = INNODB;
 
 CREATE TABLE cm_user_instrument_answer(

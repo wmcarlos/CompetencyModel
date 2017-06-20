@@ -6,7 +6,7 @@
         </div>
         <div class="pull-left info">
           <p><?= $this->session->userdata("logged_in")->name ?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> En Linea</a>
+          <a href="#"><i class="fa fa-id-card-o"></i> <?= $this->session->userdata('logged_in')->charge_assigned ?></a>
         </div>
       </div>
       <form action="#" method="get" class="sidebar-form">
