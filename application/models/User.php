@@ -112,7 +112,7 @@ class User extends CI_Model{
 
 	public function update(){
 
-		$query = "UPDATE cm_user SET company_id = $this->company_id, role_id = $this->role_id, value = '$this->value', name = '$this->name', email = '$this->email', phone = '$this->phone', password = '$this->password' WHERE user_id = $this->user_id";
+		$query = "UPDATE cm_user SET company_id = $this->company_id, role_id = $this->role_id, value = '$this->value', name = '$this->name', email = '$this->email', phone = '$this->phone' WHERE user_id = $this->user_id";
 
 		$this->db->trans_start();
 
