@@ -10,6 +10,9 @@
         <h4>Periodo a Evaluar</h4>
         <hr/>
         <div class="form-group">
+          <input type="hidden" name="txtinstrument_id" value="<?= $instrument[0]->instrument_of_evaluation_id ?>">
+          <input type="hidden" name="txtuser_evaluated_id" value="<?= $user_evaluated[0]->user_id ?>">
+          <input type="hidden" name="txtuser_evaluator_id" value="<?= $user_evaluator[0]->user_id ?>">
           <label for="startdate">Desde:</label>
           <input type="text" name="startdate" value="<?= $instrument[0]->startdate ?>" readonly="readonly" class="form-control" id="startdate">
         </div>
@@ -70,10 +73,9 @@
             </tr>
             <tr>
               <td colspan="2"><b><?= $competency->name ?></b></td>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
+              <?php foreach($domain_levels AS $domain_level){ ?>
+              <td><?= $domain_level->position ?></td>
+              <?php } ?>
               <td>Total</td>
             </tr>
 
@@ -82,12 +84,15 @@
               <?php for($i = 0; $i < count($data); $i++){ ?>
 
                   <tr>
-                    <td><?= $data[$i]->level ?></td>
+                    <td><input type="hidden" name="txtindicators[]" value="<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>"><?= $data[$i]->level ?>
+                    </td>
                     <td><?= $data[$i]->description ?></td>
-                    <td><input name='<?= $data[0]->behavioral_indicator_id ?>_<?= $data[$i]->level ?>' type="radio"/></td>
-                    <td><input name='<?= $data[0]->behavioral_indicator_id ?>_<?= $data[$i]->level ?>' type="radio"/></td>
-                    <td><input name='<?= $data[0]->behavioral_indicator_id ?>_<?= $data[$i]->level ?>' type="radio"/></td>
-                    <td><input name='<?= $data[0]->behavioral_indicator_id ?>_<?= $data[$i]->level ?>' type="radio"/></td>
+                    <?php foreach($domain_levels AS $domain_level){ ?>
+
+                    <td>
+                      <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' type="radio"/></td>
+
+                    <?php } ?>
                     <td></td>
                   </tr>
 

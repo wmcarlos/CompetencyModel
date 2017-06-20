@@ -132,6 +132,7 @@ class Instrumentofevaluation extends CI_Model{
 			break;
 			case 'get_instrument_info':
 				$query = "SELECT  
+						  ioe.instrument_of_evaluation_id,
 						  ioe.instructions,
 						  ioe.name,
 						  p.startdate,
@@ -150,6 +151,9 @@ class Instrumentofevaluation extends CI_Model{
 						 	 INNER JOIN cm_competency_instrument AS ci ON (ci.competency_id = c.competency_id)
 						  WHERE ci.instrument_of_evaluation_id = $this->instrument_of_evaluation_id
 						  ORDER BY ci.position ASC";
+			break;
+			case 'get_domain_levels':
+				$query = "SELECT domain_level_id,name,position FROM cm_domain_level ORDER BY position ASC";
 			break;
 		}
 
@@ -218,5 +222,45 @@ class Instrumentofevaluation extends CI_Model{
 				  WHERE hi.competency_id = ".$competency_id);
 
 		return $query->result();
+	}
+
+	public function insert_evaluation_header($data){
+	    $query = "INSERT INTO cm_user_instrument (instrument_of_evaluation_id,user_evaluated_id,user_evaluator_id,evaluationdate,status)VALUES ($this->instrument_of_evaluation_id,".$data['user_evaluated_id'].",".$data['user_evaluator_id'].",NOW(),'CO')";
+
+		$this->db->trans_start();
+
+		$this->db->query($query);
+
+		$this->db->trans_complete();
+
+		if($this->db->trans_status() === TRUE){
+			return true;
+		}else{
+			return false;
+		}	
+	}
+
+	public function getLastIdFromEvaluation($data){
+		$query = $this->db->query("SELECT 
+		          user_instrument_id 
+				  FROM cm_user_instrument 
+				  WHERE	instrument_of_evaluation_id = $this->instrument_of_evaluation_id AND user_evaluated_id = ".$data['user_evaluated_id']." AND user_evaluator_id = ".$data['user_evaluator_id']);
+		return $query->row();
+	}
+
+	public function insert_evaluation_detail($user_instrument_id,$behavioral_indicator_id,$domain_level_id){
+	    $query = "INSERT INTO cm_user_instrument_answer (user_instrument_id,behavioral_indicator_id,domain_level_id) VALUES (".$user_instrument_id.",".$behavioral_indicator_id.",".$domain_level_id.")";
+
+		$this->db->trans_start();
+
+		$this->db->query($query);
+
+		$this->db->trans_complete();
+
+		if($this->db->trans_status() === TRUE){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

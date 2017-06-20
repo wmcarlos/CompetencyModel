@@ -93,6 +93,8 @@ class Mains extends CI_Controller {
 		$data['instrument'] = $this->Instrumentofevaluation->getData('get_instrument_info');
 		$data['competencies'] = $this->Instrumentofevaluation->getData('get_competencies_of_evaluation');
 
+		$data['domain_levels'] = $this->Instrumentofevaluation->getData("get_domain_levels");
+
 		if($user_evaluator_id == -1){
 			$this->session->set_flashdata('msj','No se puede evaluar a este participante ya que su cargo no depeten de Otro!!');
 			redirect("Mains");
@@ -103,5 +105,42 @@ class Mains extends CI_Controller {
 
 	public function evaluate(){
 
+		$this->Instrumentofevaluation->instrument_of_evaluation_id = $this->input->post("txtinstrument_id");
+
+		$data = Array(
+			'user_evaluated_id' => $this->input->post("txtuser_evaluated_id"),
+			'user_evaluator_id' => $this->input->post("txtuser_evaluator_id")
+		);
+
+		if($this->Instrumentofevaluation->getLastIdFromEvaluation($data)){
+			$string = "Ya has Realizado esta Evaluacion!!";
+		}else{
+			if($this->Instrumentofevaluation->insert_evaluation_header($data)){
+
+				$indicators = $this->input->post("txtindicators");
+
+				$getID = $this->Instrumentofevaluation->getLastIdFromEvaluation($data);
+			
+				for($i = 0; $i < count($indicators); $i++){
+
+					$behavioral_indicator = $this->input->post("txtbeharvioral_indicator".$indicators[$i]);
+
+					for($t = 0; $t < count($behavioral_indicator); $t++){
+						
+						$expl = explode("_", $behavioral_indicator[$t]);
+
+						$this->Instrumentofevaluation->insert_evaluation_detail($getID->user_instrument_id,$expl[1],$expl[2]);
+
+					}
+				}
+				$string = "Evaluacion Registrada con Exito!!";
+			}else{
+				$string = "Error al Registrar la Evaluacion!!";
+			}
+		}
+
+		$this->session->set_flashdata('msj',$string);
+
+		redirect("Mains");
 	}
 }

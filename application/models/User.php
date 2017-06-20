@@ -104,6 +104,7 @@ class User extends CI_Model{
 			break;
 			case 'get_user_info_complete':
 				$query = "SELECT 
+						  u.user_id,
 						  u.name AS name,
 						  u.value,
 						  c.name AS charge
