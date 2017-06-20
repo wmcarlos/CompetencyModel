@@ -182,8 +182,8 @@ class User extends CI_Model{
 								   u.name, 
 								   u.email,
 								   COALESCE(ch.name,'Sin Cargo') AS charge_assigned,
-								   COALESCE(ch.charge_id,0) AS charge_id,
-								   COALESCE(ch.charge_level_id,0) AS charge_level_id
+								   COALESCE(ch.charge_id,-1) AS charge_id,
+								   COALESCE(ch.charge_level_id,-1) AS charge_level_id
 								   FROM cm_user AS u
 								   INNER JOIN cm_company AS c ON (c.company_id = u.company_id)
 								   INNER JOIN cm_role AS r ON (r.role_id = u.role_id)
