@@ -28,13 +28,13 @@ $(document).ready(function () {
 		}
     });
 
-    $(function () {
+    /*$(function () {
 	    $('input').iCheck({
 	      checkboxClass: 'icheckbox_square-blue',
 	      radioClass: 'iradio_square-blue',
 	      increaseArea: '20%' // optional
 	    });
-	});
+	});*/
     
 });
 
@@ -67,4 +67,13 @@ function isconfirm(message,url){
 	    }
 	});
 
+}
+
+function set_calculate(e,dolv,delv){
+	var forid = e.getAttribute("data-calculate");
+	var multiple = dolv * delv;
+	var getVal = (document.getElementById(forid).innerHTML) ? document.getElementById(forid).innerHTML : 0;
+	var total = parseInt(getVal) + parseInt(multiple);
+
+	document.getElementById(forid).innerHTML = total;
 }

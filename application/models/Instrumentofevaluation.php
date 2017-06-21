@@ -153,7 +153,7 @@ class Instrumentofevaluation extends CI_Model{
 						  ORDER BY ci.position ASC";
 			break;
 			case 'get_domain_levels':
-				$query = "SELECT domain_level_id,name,position FROM cm_domain_level ORDER BY position ASC";
+				$query = "SELECT domain_level_id,name,position,value FROM cm_domain_level ORDER BY position ASC";
 			break;
 		}
 
@@ -216,6 +216,8 @@ class Instrumentofevaluation extends CI_Model{
 		$query = $this->db->query("SELECT
 					hi.behavioral_indicator_id,
 					dl.name AS level,
+					dl.value,
+					dl.development_level_id,
 					hi.description
 				  FROM cm_behavioral_indicator AS hi 
 				  INNER JOIN cm_development_level AS dl ON (dl.development_level_id = hi.development_level_id)

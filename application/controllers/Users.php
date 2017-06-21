@@ -43,7 +43,7 @@ class Users extends CI_Controller{
 		$this->User->name = strtoupper($this->input->post("txtname"));
 		$this->User->email = strtoupper($this->input->post("txtemail"));
 		$this->User->phone = strtoupper($this->input->post("txtphone"));
-		$this->User->password = md5(strtoupper($this->input->post("txtemail")));
+		$this->User->password = md5($this->input->post("txtemail"));
 
 		$this->User->charges = $this->input->post("txtcharges");
 		$this->User->isactives = $this->input->post("txtisactives");

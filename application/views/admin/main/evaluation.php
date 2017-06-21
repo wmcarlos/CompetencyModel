@@ -92,7 +92,7 @@
                       <?php foreach($domain_levels AS $domain_level){ ?>
 
                       <td>
-                        <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' type="radio"/></td>
+                        <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" type="radio"/></td>
                       <?php } ?>
                       <td></td>
                     </tr>
@@ -106,7 +106,7 @@
                       <?php foreach($domain_levels AS $domain_level){ ?>
 
                       <td>
-                        <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' type="radio"/></td>
+                        <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" type="radio"/></td>
                       <?php } ?>
 
                       <td></td>
@@ -114,7 +114,7 @@
                     <tr>
                       <td colspan="2" align="right"><b><?= $data[$i]->level ?> de Desarrollo</b></td>
                         <?php foreach($domain_levels AS $domain_level){ ?>
-                          <td></td>
+                          <td id='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>'></td>
                         <?php } ?>
                       <td></td>
                     </tr>
@@ -123,7 +123,7 @@
 
               <?php } ?>
                 <tr>
-                  <td colspan="2" align="right"><b>TOTAL<?= $competency->name ?></b></td>
+                  <td colspan="2" align="right"><b>TOTAL <?= $competency->name ?></b></td>
                   <td colspan="4"></td>
                   <td></td>
                 </tr>
