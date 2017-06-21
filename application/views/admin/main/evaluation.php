@@ -83,21 +83,50 @@
 
               <?php for($i = 0; $i < count($data); $i++){ ?>
 
-                  <tr>
-                    <td><input type="hidden" name="txtindicators[]" value="<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>"><?= $data[$i]->level ?>
-                    </td>
-                    <td><?= $data[$i]->description ?></td>
-                    <?php foreach($domain_levels AS $domain_level){ ?>
+                  <?php if(isset($data[$i+1]->level) AND $data[$i]->level == $data[$i+1]->level){ ?>
 
-                    <td>
-                      <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' type="radio"/></td>
+                    <tr>
+                      <td><input type="hidden" name="txtindicators[]" value="<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>"><?= $data[$i]->level ?>
+                      </td>
+                      <td><?= $data[$i]->description ?></td>
+                      <?php foreach($domain_levels AS $domain_level){ ?>
 
-                    <?php } ?>
-                    <td></td>
-                  </tr>
+                      <td>
+                        <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' type="radio"/></td>
+                      <?php } ?>
+                      <td></td>
+                    </tr>
+
+                  <?php }else{ ?>
+
+                    <tr>
+                      <td><input type="hidden" name="txtindicators[]" value="<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>"><?= $data[$i]->level ?>
+                      </td>
+                      <td><?= $data[$i]->description ?></td>
+                      <?php foreach($domain_levels AS $domain_level){ ?>
+
+                      <td>
+                        <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' type="radio"/></td>
+                      <?php } ?>
+
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="right"><b><?= $data[$i]->level ?> de Desarrollo</b></td>
+                        <?php foreach($domain_levels AS $domain_level){ ?>
+                          <td></td>
+                        <?php } ?>
+                      <td></td>
+                    </tr>
+                   <?php } ?>
+
 
               <?php } ?>
-
+                <tr>
+                  <td colspan="2" align="right"><b>TOTAL<?= $competency->name ?></b></td>
+                  <td colspan="4"></td>
+                  <td></td>
+                </tr>
           <?php } ?>
           </tbody>
         </table>
