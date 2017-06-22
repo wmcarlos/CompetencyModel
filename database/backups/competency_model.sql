@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 19-06-2017 a las 18:25:12
+-- Tiempo de generación: 22-06-2017 a las 08:07:14
 -- Versión del servidor: 10.1.22-MariaDB-cll-lve
 -- Versión de PHP: 5.6.20
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `cm_behavioral_indicator` (
   PRIMARY KEY (`behavioral_indicator_id`),
   KEY `fk_competency_id` (`competency_id`),
   KEY `fk_development_level_id` (`development_level_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=148 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=199 ;
 
 --
 -- Volcado de datos para la tabla `cm_behavioral_indicator`
@@ -116,18 +116,6 @@ INSERT INTO `cm_behavioral_indicator` (`behavioral_indicator_id`, `competency_id
 (49, 3, 'Modela acciones que promueven la calidad en los resultados .', 4, 1, '2017-06-19 14:29:18', NULL, 'Y'),
 (50, 3, 'Es un referente en el logro de los objetivos potenciando los resultados organizacionales.', 4, 2, '2017-06-19 14:29:18', NULL, 'Y'),
 (51, 3, 'Fomenta la implementación de soluciones innovadoras para mantener liderazgo de la organización en el mercado.', 4, 3, '2017-06-19 14:29:18', NULL, 'Y'),
-(52, 4, 'Está atento a las órdenes y cumple con su trabajo básico  entendiendo que forma parte de un equipo.', 1, 1, '2017-06-19 14:32:07', NULL, 'Y'),
-(53, 4, 'Coopera activamente con los miembros del equipo.', 1, 2, '2017-06-19 14:32:07', NULL, 'Y'),
-(54, 4, 'Conoce como se relaciona su actividad con las de su equipo.', 1, 3, '2017-06-19 14:32:07', NULL, 'Y'),
-(55, 4, 'Interactúa con los demás integrantes del equipo para el logro de los objetivos.', 2, 1, '2017-06-19 14:32:07', NULL, 'Y'),
-(56, 4, 'Crea canales de comunicación para el intercambio de ideas e información.', 2, 2, '2017-06-19 14:32:07', NULL, 'Y'),
-(57, 4, 'Identifica el impacto de sus acciones en otras áreas de la organización.', 2, 3, '2017-06-19 14:32:07', NULL, 'Y'),
-(58, 4, 'Promueve la formación de equipos multifuncionales de trabajo para agregar valor a los resultados grupales.', 3, 1, '2017-06-19 14:32:07', NULL, 'Y'),
-(59, 4, 'Impulsa alianzas productivas con personas de otras áreas claves para el logro de objetivos.', 3, 2, '2017-06-19 14:32:07', NULL, 'Y'),
-(60, 4, 'Prevé el impacto de las acciones del equipo en otras áreas de la organización.', 3, 3, '2017-06-19 14:32:07', NULL, 'Y'),
-(61, 4, 'Fomenta la generación de sinergias entre equipos para el logro de los objetivos comunes.', 4, 1, '2017-06-19 14:32:07', NULL, 'Y'),
-(62, 4, 'Incentiva la cooperación entre las áreas de la organización', 4, 2, '2017-06-19 14:32:07', NULL, 'Y'),
-(63, 4, 'Implementa estrategias que sirven de referencia a otros equipos de trabajo.', 4, 3, '2017-06-19 14:32:07', NULL, 'Y'),
 (64, 5, 'Conoce sus reacciones emocionales, formas de pensar y actuar.', 1, 1, '2017-06-19 15:06:18', NULL, 'Y'),
 (65, 5, 'Identifica sus fortalezas y oportunidades de mejora.', 1, 2, '2017-06-19 15:06:18', NULL, 'Y'),
 (66, 5, 'Conoce sus propias emociones y respeta la forma de pensar de los demás', 1, 3, '2017-06-19 15:06:18', NULL, 'Y'),
@@ -187,7 +175,55 @@ INSERT INTO `cm_behavioral_indicator` (`behavioral_indicator_id`, `competency_id
 (144, 9, 'Propone estrategias que rompen el esquema de las existentes .', 3, 3, '2017-06-19 15:20:34', NULL, 'Y'),
 (145, 9, 'Es un referente rompiendo paradigmas al generar soluciones innovadoras.', 4, 1, '2017-06-19 15:20:34', NULL, 'Y'),
 (146, 9, 'Promueve el asumir riesgos para adaptarse a un entorno exigente y cambiante.', 4, 2, '2017-06-19 15:20:34', NULL, 'Y'),
-(147, 9, 'Fomenta el desarrollo de estrategias innovadoras que posicionen los productos en el mercado.', 4, 3, '2017-06-19 15:20:34', NULL, 'Y');
+(147, 9, 'Fomenta el desarrollo de estrategias innovadoras que posicionen los productos en el mercado.', 4, 3, '2017-06-19 15:20:34', NULL, 'Y'),
+(148, 4, 'Está atento a las órdenes y cumple con su trabajo básico  entendiendo que forma parte de un equipo.', 1, 1, '2017-06-20 22:39:35', NULL, 'Y'),
+(149, 4, 'Coopera activamente con los miembros del equipo.', 1, 2, '2017-06-20 22:39:35', NULL, 'Y'),
+(150, 4, 'Conoce como se relaciona su actividad con las de su equipo.', 1, 3, '2017-06-20 22:39:35', NULL, 'Y'),
+(151, 4, 'Interactúa con los demás integrantes del equipo para el logro de los objetivos.', 2, 1, '2017-06-20 22:39:35', NULL, 'Y'),
+(152, 4, 'Crea canales de comunicación para el intercambio de ideas e información.', 2, 2, '2017-06-20 22:39:35', NULL, 'Y'),
+(153, 4, 'Identifica el impacto de sus acciones en otras áreas de la organización.', 2, 3, '2017-06-20 22:39:35', NULL, 'Y'),
+(154, 4, 'Promueve la formación de equipos multifuncionales de trabajo para agregar valor a los resultados grupales.', 3, 1, '2017-06-20 22:39:35', NULL, 'Y'),
+(155, 4, 'Impulsa alianzas productivas con personas de otras áreas claves para el logro de objetivos.', 3, 2, '2017-06-20 22:39:35', NULL, 'Y'),
+(156, 4, 'Prevé el impacto de las acciones del equipo en otras áreas de la organización.', 3, 3, '2017-06-20 22:39:35', NULL, 'Y'),
+(157, 4, 'Fomenta la generación de sinergias entre equipos para el logro de los objetivos comunes.', 4, 1, '2017-06-20 22:39:35', NULL, 'Y'),
+(158, 4, 'Incentiva la cooperación entre las áreas de la organización', 4, 2, '2017-06-20 22:39:35', NULL, 'Y'),
+(159, 4, 'Implementa estrategias que sirven de referencia a otros equipos de trabajo.', 4, 3, '2017-06-20 22:39:35', NULL, 'Y'),
+(163, 13, 'Conoce el impacto de su función en el negocio y de las variables del entorno en el negocio.', 1, 1, '2017-06-22 00:38:11', NULL, 'Y'),
+(164, 13, 'Busca nuevos negocios alineados a la visión del negocio.', 1, 2, '2017-06-22 00:38:11', NULL, 'Y'),
+(165, 13, 'Identifica las fortalezas y debilidades que impactan los resultados del negocio.', 1, 3, '2017-06-22 00:38:11', NULL, 'Y'),
+(166, 13, 'Promueve estrategias diferenciadoras que capitalizan las oportunidades del entorno.', 2, 1, '2017-06-22 00:38:11', NULL, 'Y'),
+(167, 13, 'Transforma debilidades en oportunidades de negocio.', 2, 2, '2017-06-22 00:38:11', NULL, 'Y'),
+(168, 13, 'Se mantiene actualizado acerca de las estrategias del entorno.', 2, 3, '2017-06-22 00:38:11', NULL, 'Y'),
+(169, 13, 'Diseña estrategias considerando las características del entorno para impulsar el negocio.', 3, 1, '2017-06-22 00:38:11', NULL, 'Y'),
+(170, 13, 'Monitorea la dinámica del entorno para identificar oportunidades de negocio.', 3, 2, '2017-06-22 00:38:11', NULL, 'Y'),
+(171, 13, 'Modifica las estrategias para enfrentar las demandas cambiantes del entorno.', 3, 3, '2017-06-22 00:38:11', NULL, 'Y'),
+(172, 13, 'Formula planes a corto y mediano plazo para potenciar el posicionamiento de la organización.', 4, 1, '2017-06-22 00:38:11', NULL, 'Y'),
+(173, 13, 'Integra mejores prácticas en la generación de nuevos negocios.', 4, 2, '2017-06-22 00:38:11', NULL, 'Y'),
+(174, 13, 'Propicia cambios organizacionales para responder a las exigencias del entorno.', 4, 3, '2017-06-22 00:38:11', NULL, 'Y'),
+(175, 14, 'Crea un ambiente propicio para la negociación de acuerdo a los lineamientos establecidos por la organización', 1, 1, '2017-06-22 00:41:57', NULL, 'Y'),
+(176, 14, 'Obtiene información relevante para la toma de decisiones.', 1, 2, '2017-06-22 00:41:57', NULL, 'Y'),
+(177, 14, 'Toma decisiones de manera efectiva y acertada para el logro de los objetivos estratégicos', 1, 3, '2017-06-22 00:41:57', NULL, 'Y'),
+(178, 14, 'Concreta acuerdos beneficiosos para ambas partes.', 2, 1, '2017-06-22 00:41:57', NULL, 'Y'),
+(179, 14, 'Elige la alternativas más adecuada asegurándose que se  ejecute correctamente.', 2, 2, '2017-06-22 00:41:57', NULL, 'Y'),
+(180, 14, 'Visualiza el impacto de sus decisiones en la estrategia organizacional.', 2, 3, '2017-06-22 00:41:57', NULL, 'Y'),
+(181, 14, 'Identifica los intereses propios y de la contraparte.', 3, 1, '2017-06-22 00:41:57', NULL, 'Y'),
+(182, 14, 'Analiza información objetiva de una situación para evaluar alternativas.', 3, 2, '2017-06-22 00:41:57', NULL, 'Y'),
+(183, 14, 'Toma decisiones con un impacto positivo a largo plazo en los objetivos del negocio.', 3, 3, '2017-06-22 00:41:57', NULL, 'Y'),
+(184, 14, 'Desarrolla estrategias de negociación ganar-ganar exitosas.', 4, 1, '2017-06-22 00:41:57', NULL, 'Y'),
+(185, 14, 'Genera nuevos procedimientos para el análisis de alternativas.', 4, 2, '2017-06-22 00:41:57', NULL, 'Y'),
+(186, 14, 'Toma decisiones sobre metas y objetivos convirtiéndolos en planes estratégicos.', 4, 3, '2017-06-22 00:41:57', NULL, 'Y'),
+(187, 15, 'Hace uso de sus fortalezas para influir en los demás.', 1, 1, '2017-06-22 00:49:13', NULL, 'Y'),
+(188, 15, 'Está consciente del impacto que tiene sobre otros.', 1, 2, '2017-06-22 00:49:13', NULL, 'Y'),
+(189, 15, 'Busca el momento propicio para plantear sus ideas.', 1, 3, '2017-06-22 00:49:13', NULL, 'Y'),
+(190, 15, 'Ajusta su estilo de comunicación a sus interlocutores.', 2, 1, '2017-06-22 00:49:13', NULL, 'Y'),
+(191, 15, 'Argumenta sus ideas de forma persuasiva.', 2, 2, '2017-06-22 00:49:13', NULL, 'Y'),
+(192, 15, 'Desarrolla redes de contactos para el logro de los objetivos.', 2, 3, '2017-06-22 00:49:13', NULL, 'Y'),
+(193, 15, 'Diseña con anticipación su estrategia para lograr convencer a otros.', 3, 1, '2017-06-22 00:49:13', NULL, 'Y'),
+(194, 15, 'Logra acuerdos y compromisos entre distintas personas y áreas.', 3, 2, '2017-06-22 00:49:13', NULL, 'Y'),
+(195, 15, 'Genera alianzas efectivas que favorezcan el logro de los objetivos organizacionales.', 3, 3, '2017-06-22 00:49:13', NULL, 'Y'),
+(196, 15, 'Evalúa estrategias de influencia escogiendo la de mayor impacto de acuerdo a sus interlocutores.', 4, 1, '2017-06-22 00:49:13', NULL, 'Y'),
+(197, 15, 'Es un referente obteniendo compromisos como resultado de sus argumentos y propuestas.', 4, 2, '2017-06-22 00:49:13', NULL, 'Y'),
+(198, 15, 'Consolida vínculos para mantener relaciones una vez alcanzados los objetivos establecidos.', 4, 3, '2017-06-22 00:49:13', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -207,15 +243,17 @@ CREATE TABLE IF NOT EXISTS `cm_charge` (
   PRIMARY KEY (`charge_id`),
   KEY `fk_departament_id` (`departament_id`),
   KEY `fk_charge_level_id04` (`charge_level_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `cm_charge`
 --
 
 INSERT INTO `cm_charge` (`charge_id`, `departament_id`, `name`, `charge_parent_id`, `charge_level_id`, `created`, `updated`, `isactive`) VALUES
-(1, 1, 'GERENTE TI', 0, 3, '2017-06-16 17:26:11', NULL, 'Y'),
-(2, 1, 'PROGRAMADOR', 1, 1, '2017-06-16 17:26:26', NULL, 'Y');
+(1, 1, 'GERENTE', 3, 3, '2017-06-16 17:26:11', NULL, 'Y'),
+(2, 1, 'PROGRAMADOR', 1, 1, '2017-06-16 17:26:26', NULL, 'Y'),
+(3, 2, 'DIRECTOR', 4, 2, '2017-06-21 23:29:51', NULL, 'Y'),
+(4, 3, 'PRESIDENTE', 0, 4, '2017-06-22 00:16:20', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -235,15 +273,21 @@ CREATE TABLE IF NOT EXISTS `cm_charge_assigned` (
   PRIMARY KEY (`charge_assigned_id`),
   KEY `fk_user_id` (`user_id`),
   KEY `fk_charge_id` (`charge_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `cm_charge_assigned`
 --
 
 INSERT INTO `cm_charge_assigned` (`charge_assigned_id`, `user_id`, `charge_id`, `startdate`, `enddate`, `created`, `updated`, `isactive`) VALUES
-(1, 1, 2, '2015-05-18', NULL, '2017-06-19 22:17:57', NULL, 'Y'),
-(2, 2, 1, '1995-05-12', NULL, '2017-06-19 22:19:19', NULL, 'Y');
+(1, 1, 2, '2015-05-18', NULL, '2017-06-19 22:17:57', NULL, 'N'),
+(2, 2, 1, '1995-05-12', NULL, '2017-06-19 22:19:19', NULL, 'N'),
+(3, 3, 3, '2015-05-05', NULL, '2017-06-21 23:30:58', NULL, 'N'),
+(4, 4, 4, '1980-01-01', NULL, '2017-06-22 00:20:57', NULL, 'Y'),
+(5, 5, 2, '2015-01-01', NULL, '2017-06-22 00:21:45', NULL, 'Y'),
+(6, 6, 2, '2015-02-02', NULL, '2017-06-22 00:22:22', NULL, 'Y'),
+(7, 7, 2, '2016-06-01', NULL, '2017-06-22 02:01:48', NULL, 'Y'),
+(8, 8, 2, '2016-02-02', NULL, '2017-06-22 02:02:31', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -260,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `cm_charge_level` (
   `isactive` char(1) NOT NULL DEFAULT 'Y',
   PRIMARY KEY (`charge_level_id`),
   KEY `fk_company_id05` (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `cm_charge_level`
@@ -269,7 +313,8 @@ CREATE TABLE IF NOT EXISTS `cm_charge_level` (
 INSERT INTO `cm_charge_level` (`charge_level_id`, `name`, `company_id`, `created`, `updated`, `isactive`) VALUES
 (1, 'GENERALES', 1, '2017-06-16 17:22:44', NULL, 'Y'),
 (2, 'DIRECTIVOS', 1, '2017-06-16 17:23:35', NULL, 'Y'),
-(3, 'GERENCIALES SUPERVISORIAS', 1, '2017-06-16 17:25:34', NULL, 'Y');
+(3, 'GERENCIALES SUPERVISORIAS', 1, '2017-06-16 17:25:34', NULL, 'Y'),
+(4, 'NO APLICA', 1, '2017-06-22 00:16:00', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -316,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `cm_competency` (
   PRIMARY KEY (`competency_id`),
   KEY `fk_company_id07` (`company_id`),
   KEY `fk_charge_level_id03` (`charge_level_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `cm_competency`
@@ -331,7 +376,10 @@ INSERT INTO `cm_competency` (`competency_id`, `name`, `definition`, `company_id`
 (7, 'LIDERAZGO', 'Es la capacidad para orientar e inspirar las acciones del grupo de trabajo, impartir instrucciones con conocimiento y claridad, en función de los objetivos de un área de trabajo, integrando los recursos disponibles y las habilidades de los miembros del grupo.', 1, 3, '2017-06-16 17:40:54', NULL, 'Y'),
 (8, 'GERENCIA DEL CAMBIO', 'Capacidad para entender y ajustarse eficazmente a situaciones de cambio, requeridas por la organización y por el puesto de trabajo. Implica ajustar conductas y formas de pensar en forma rápida y eficiente, generando estrategias de negocio que se adapten a la dinámica de los cambios para potenciar el logro de objetivos.', 1, 3, '2017-06-16 17:41:33', NULL, 'Y'),
 (9, 'INNOVACION', 'Es la capacidad de idear soluciones y propuestas nuevas y diferentes para situaciones requeridas por el propio puesto, su equipo de trabajo, la organización, el cliente o los competidores.', 1, 3, '2017-06-16 17:42:56', NULL, 'Y'),
-(12, 'ÉTICA PROFESIONAL', 'Es la capacidad para sentir y actuar en todo momento consecuentemente con los valores morales y las buenas costumbres y prácticas profesionales, respetando las políticas organizacionales. Es actuar con honestidad para construir a largo plazo.', 1, 1, '2017-06-16 18:46:13', NULL, 'Y');
+(12, 'ÉTICA PROFESIONAL', 'Es la capacidad para sentir y actuar en todo momento consecuentemente con los valores morales y las buenas costumbres y prácticas profesionales, respetando las políticas organizacionales. Es actuar con honestidad para construir a largo plazo.', 1, 1, '2017-06-16 18:46:13', NULL, 'Y'),
+(13, 'PENSAMIENTO ESTRATEGICO', 's la capacidad para comprender los cambios del entorno, visualizar oportunidades y amenazas, reconocer las fortalezas y debilidades, a fin de establecer metas, objetivos y estrategias que generen nuevos negocios y mantengan el liderazgo en el mercado.', 1, 2, '2017-06-22 00:26:41', NULL, 'Y'),
+(14, 'NEGOCIACION Y MANEJO DE CONFLICTOS', 'Es la capacidad para lograr acuerdos duraderos, creando para ello un ambiente propicio, utilizando estrategias de ganar–ganar que fortalezcan relaciones productivas. Implica entender una situación, evaluar alternativas de solución y tomar de decisiones con criterios de calidad que respondan a los objetivos de la organización.', 1, 2, '2017-06-22 00:41:57', NULL, 'Y'),
+(15, 'IMPACTO E INLUENCIA', 'Es la capacidad de influir de forma positiva en otros para generar cambios y reorientar acciones. Implica persuadir, impactar y convencer a los demás para que contribuyan a alcanzar los objetivos organizacionales.', 1, 2, '2017-06-22 00:49:13', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -347,27 +395,39 @@ CREATE TABLE IF NOT EXISTS `cm_competency_instrument` (
   PRIMARY KEY (`competency_instrument_id`),
   KEY `fk_instrument_of_evaluation_id01` (`instrument_of_evaluation_id`),
   KEY `fk_competency_id01` (`competency_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Volcado de datos para la tabla `cm_competency_instrument`
 --
 
 INSERT INTO `cm_competency_instrument` (`competency_instrument_id`, `instrument_of_evaluation_id`, `competency_id`, `position`) VALUES
-(1, 1, 1, 1),
-(2, 1, 12, 2),
-(3, 1, 3, 3),
-(4, 1, 4, 4),
-(5, 1, 5, 5),
-(6, 2, 1, 1),
-(7, 2, 12, 2),
-(8, 2, 3, 3),
-(9, 2, 4, 4),
-(10, 2, 5, 5),
-(11, 2, 7, 6),
-(12, 2, 6, 7),
-(13, 2, 8, 8),
-(14, 2, 9, 9);
+(20, 2, 1, 1),
+(21, 2, 12, 2),
+(22, 2, 3, 3),
+(23, 2, 4, 4),
+(24, 2, 5, 5),
+(25, 2, 7, 6),
+(26, 2, 6, 7),
+(27, 2, 8, 8),
+(28, 2, 9, 9),
+(29, 1, 1, 1),
+(30, 1, 12, 2),
+(31, 1, 3, 3),
+(32, 1, 4, 4),
+(33, 1, 5, 5),
+(34, 3, 1, 1),
+(35, 3, 12, 2),
+(36, 3, 3, 3),
+(37, 3, 4, 4),
+(38, 3, 5, 5),
+(39, 3, 7, 6),
+(40, 3, 6, 7),
+(41, 3, 8, 8),
+(42, 3, 9, 9),
+(43, 3, 13, 10),
+(44, 3, 14, 11),
+(45, 3, 15, 12);
 
 -- --------------------------------------------------------
 
@@ -385,14 +445,16 @@ CREATE TABLE IF NOT EXISTS `cm_departament` (
   `isactive` char(1) NOT NULL DEFAULT 'Y',
   PRIMARY KEY (`departament_id`),
   KEY `fk_company_id03` (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `cm_departament`
 --
 
 INSERT INTO `cm_departament` (`departament_id`, `company_id`, `name`, `departament_parent_id`, `created`, `updated`, `isactive`) VALUES
-(1, 1, 'TI', 0, '2017-06-16 17:22:19', NULL, 'Y');
+(1, 1, 'INFORMATICA', 2, '2017-06-16 17:22:19', NULL, 'Y'),
+(2, 1, 'DIRECTIVA', 3, '2017-06-21 23:28:32', NULL, 'Y'),
+(3, 1, 'PRESIDENCIA', 0, '2017-06-22 00:13:05', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -451,7 +513,7 @@ INSERT INTO `cm_domain_level` (`domain_level_id`, `company_id`, `name`, `scale`,
 (1, 1, 'CASI NUNCA', '1', 1, '1', '2017-06-16 17:27:09', NULL, 'Y'),
 (2, 1, 'AVECES', '2', 2, '2', '2017-06-16 17:27:34', NULL, 'Y'),
 (3, 1, 'FRECUENTEMENTE', '3', 3, '3', '2017-06-16 17:27:50', NULL, 'Y'),
-(4, 1, 'SIEMPPRE', '4', 4, '4', '2017-06-16 17:28:04', NULL, 'Y');
+(4, 1, 'SIEMPRE', '4', 4, '4', '2017-06-16 17:28:04', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -474,15 +536,16 @@ CREATE TABLE IF NOT EXISTS `cm_instrument_of_evaluation` (
   PRIMARY KEY (`instrument_of_evaluation_id`),
   KEY `fk_company_id08` (`company_id`),
   KEY `fk_charge_level_id01` (`charge_level_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `cm_instrument_of_evaluation`
 --
 
 INSERT INTO `cm_instrument_of_evaluation` (`instrument_of_evaluation_id`, `company_id`, `name`, `description`, `instructions`, `evaluationtype`, `charge_level_id`, `status`, `created`, `updated`, `isactive`) VALUES
-(1, 1, 'INSTRUMENTO DE EVALUACION BASE', 'INSTRUMENTO DE EVALUACION BASE', 'A.- LA ESCALA  ES DEL 1 AL 4, SIENDO: 1 (CASI NUNCA) ;  2 (A VECES); 3 (FRECUENTEMENTE);  4 (CASI SIEMPRE).\r\nB.-SEA OBJETIVO EN LA EVALUACION.\r\nC.- MARQUE CON UN (X) LA CASILLA DE ACUERDO AL NIVEL DE DOMINIO QUE TIENE EL EVALUADO.\r\nD.- DISCUTA LOS RESULTADOS DE LA EVALUACIóN CON SU SUPERVISADO.\r\nE.-SEA DISCRETO EVITANDO COMENTARIOS SOBRE LOS RESULTADOS DE ESTA EVALUACIóN.', 'UC', 1, 'DR', '2017-06-19 22:04:17', NULL, 'Y'),
-(2, 1, 'INSTRUMENTO DE EVALUACION GERENTES', 'INSTRUMENTO DE EVALUACION GERENTES', 'A.- LA ESCALA  ES DEL 1 AL 4, SIENDO: 1 (CASI NUNCA) ;  2 (A VECES); 3 (FRECUENTEMENTE);  4 (CASI SIEMPRE).\r\nB.-SEA OBJETIVO EN LA EVALUACION.\r\nC.- MARQUE CON UNA (X) LA CASILLA DE ACUERDO AL NIVEL DE DOMINIO QUE TIENE EL EVALUADO.\r\nD.- DISCUTA LOS RESULTADOS DE LA EVALUACIóN CON SU SUPERVISADO.\r\nE.- SEA DISCRETO EVITANDO COMENTARIOS SOBRE LOS RESULTADOS DE ESTA EVALUACIóN.', 'UC', 3, 'DR', '2017-06-19 22:08:45', NULL, 'Y');
+(1, 1, 'INSTRUMENTO DE EVALUACION BASE', 'INSTRUMENTO DE EVALUACION BASE', 'A.- LA ESCALA  ES DEL 1 AL 4, SIENDO: 1 (CASI NUNCA) ;  2 (A VECES); 3 (FRECUENTEMENTE);  4 (CASI SIEMPRE).\r\nB.-SEA OBJETIVO EN LA EVALUACION.\r\nC.- MARQUE CON UN (X) LA CASILLA DE ACUERDO AL NIVEL DE DOMINIO QUE TIENE EL EVALUADO.\r\nD.- DISCUTA LOS RESULTADOS DE LA EVALUACIóN CON SU SUPERVISADO.\r\nE.-SEA DISCRETO EVITANDO COMENTARIOS SOBRE LOS RESULTADOS DE ESTA EVALUACIóN.', 'UC', 1, 'CO', '2017-06-19 22:04:17', NULL, 'Y'),
+(2, 1, 'INSTRUMENTO DE EVALUACION GERENTES', 'INSTRUMENTO DE EVALUACION GERENTES', 'A.- LA ESCALA  ES DEL 1 AL 4, SIENDO: 1 (CASI NUNCA) ;  2 (A VECES); 3 (FRECUENTEMENTE);  4 (CASI SIEMPRE).\r\nB.-SEA OBJETIVO EN LA EVALUACION.\r\nC.- MARQUE CON UNA (X) LA CASILLA DE ACUERDO AL NIVEL DE DOMINIO QUE TIENE EL EVALUADO.\r\nD.- DISCUTA LOS RESULTADOS DE LA EVALUACIóN CON SU SUPERVISADO.\r\nE.- SEA DISCRETO EVITANDO COMENTARIOS SOBRE LOS RESULTADOS DE ESTA EVALUACIóN.', 'UC', 3, 'CO', '2017-06-19 22:08:45', NULL, 'Y'),
+(3, 1, 'INSTRUMENTO DE EVALUACION DIRECTIVOS', 'INSTRUMENTO DE EVALUACION DIRECTIVOS', 'A.- LA ESCALA  ES DEL 1 AL 4, SIENDO: 1 (CASI NUNCA) ;  2 (A VECES); 3 (FRECUENTEMENTE);  4 (CASI SIEMPRE).\r\nB.- SEA OBJETIVO EN LA EVALUACION.\r\nC.- MARQUE CON UNA (X) LA CASILLA DE ACUERDO AL NIVEL DE DOMINIO QUE TIENE EL EVALUADO.\r\nD.- DISCUTA LOS RESULTADOS DE LA EVALUACIóN CON SU SUPERVISADO.\r\nE.- SEA DISCRETO EVITANDO COMENTARIOS SOBRE LOS RESULTADOS DE ESTA EVALUACIóN.', 'UC', 2, 'CO', '2017-06-22 00:53:36', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -497,15 +560,16 @@ CREATE TABLE IF NOT EXISTS `cm_instrument_period` (
   PRIMARY KEY (`instrument_period_id`),
   KEY `fk_period_id` (`period_id`),
   KEY `fk_instrument_of_evaluation_id03` (`instrument_of_evaluation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `cm_instrument_period`
 --
 
 INSERT INTO `cm_instrument_period` (`instrument_period_id`, `instrument_of_evaluation_id`, `period_id`) VALUES
-(1, 1, 1),
-(2, 2, 1);
+(3, 1, 1),
+(4, 2, 1),
+(5, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -547,16 +611,19 @@ CREATE TABLE IF NOT EXISTS `cm_ponderation_charge_level` (
   PRIMARY KEY (`ponderation_charge_level_id`),
   KEY `fk_instrument_of_evaluation_id` (`instrument_of_evaluation_id`),
   KEY `fk_charge_level_id02` (`charge_level_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `cm_ponderation_charge_level`
 --
 
 INSERT INTO `cm_ponderation_charge_level` (`ponderation_charge_level_id`, `instrument_of_evaluation_id`, `charge_level_id`, `value`) VALUES
-(1, 1, 1, '60'),
-(2, 2, 1, '60'),
-(3, 2, 3, '40');
+(5, 2, 1, '60'),
+(6, 2, 3, '40'),
+(7, 1, 1, '60'),
+(8, 3, 1, '40'),
+(9, 3, 3, '30'),
+(10, 3, 2, '30');
 
 -- --------------------------------------------------------
 
@@ -610,7 +677,7 @@ CREATE TABLE IF NOT EXISTS `cm_service` (
 --
 
 INSERT INTO `cm_service` (`service_id`, `company_id`, `name`, `servicetype`, `position`, `service_parent_id`, `url`, `icon_class`, `created`, `updated`, `isactive`) VALUES
-(1, 0, 'ESCRITORIO', 'FO', 1, NULL, 'Mains', 'fa fa-dashboard', '2017-06-16 17:18:38', NULL, 'Y'),
+(1, 0, 'DASHBOARD', 'FO', 1, NULL, 'Mains', 'fa fa-dashboard', '2017-06-16 17:18:38', NULL, 'Y'),
 (2, 0, 'COMPANIAS', 'FO', 2, NULL, 'Companies', 'fa fa-building', '2017-06-16 17:18:38', NULL, 'Y'),
 (3, 0, 'DEPARTAMENTOS', 'FO', 3, NULL, 'Departaments', 'fa fa-home', '2017-06-16 17:18:38', NULL, 'Y'),
 (4, 0, 'NIVELES DE CARGO', 'FO', 4, NULL, 'Chargelevels', 'fa fa-level-up', '2017-06-16 17:18:38', NULL, 'Y'),
@@ -646,7 +713,7 @@ CREATE TABLE IF NOT EXISTS `cm_user` (
   PRIMARY KEY (`user_id`),
   KEY `fk_company_id02` (`company_id`),
   KEY `fk_role_id` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `cm_user`
@@ -654,8 +721,14 @@ CREATE TABLE IF NOT EXISTS `cm_user` (
 
 INSERT INTO `cm_user` (`user_id`, `company_id`, `role_id`, `value`, `name`, `email`, `phone`, `password`, `avatar`, `created`, `updated`, `isactive`) VALUES
 (0, 0, 0, 'V00000000', 'SUPER ADMIN', 'SUPERADMIN@GLOBAL.COM', '00000000000', 'c984ba46695ca7738f862023c0cee8fc', NULL, '2017-06-16 17:18:38', NULL, 'Y'),
-(1, 1, 1, 'V19455541', 'CARLOS VARGAS', 'CVARGAS@EMPRESA.COM', '04160984343', '167ff7dd5614f4e7e82769403caad891', NULL, '2017-06-19 22:17:57', NULL, 'Y'),
-(2, 1, 1, 'V10546354', 'ANGEL MUNOZ', 'AMUNOZ@EMPRESAA.COM', '04160876543', '0dac383265a6c2d073563a685b3acc93', NULL, '2017-06-19 22:19:19', NULL, 'Y');
+(1, 1, 1, 'V00000001', 'EMPLEADO 1', 'EMPLEADO1@EMPRESAA.COM', '00000000001', '827ccb0eea8a706c4c34a16891f84e7b', NULL, '2017-06-19 22:17:57', NULL, 'Y'),
+(2, 1, 1, 'V00000002', 'GERENTE 1', 'GERENTE1@EMPRESAA.COM', '00000000002', '827ccb0eea8a706c4c34a16891f84e7b', NULL, '2017-06-19 22:19:19', NULL, 'Y'),
+(3, 1, 1, 'V00000003', 'DIRECTOR 1', 'DIRECTOR1@EMPRESAA.COM', '00000000003', '827ccb0eea8a706c4c34a16891f84e7b', NULL, '2017-06-21 23:30:58', NULL, 'Y'),
+(4, 1, 1, 'V00000004', 'PRESIDENTE 1', 'PRESIDENTE1@EMPRESAA.COM', '00000000004', '827ccb0eea8a706c4c34a16891f84e7b', NULL, '2017-06-22 00:20:57', NULL, 'Y'),
+(5, 1, 1, 'V00000005', 'EMPLEADO 2', 'EMPLEADO2@EMPRESAA.COM', '00000000005', '827ccb0eea8a706c4c34a16891f84e7b', NULL, '2017-06-22 00:21:45', NULL, 'Y'),
+(6, 1, 1, 'V00000006', 'EMPLEADO 3', 'EMPLEADO3@EMPRESAA.COM', '00000000006', '827ccb0eea8a706c4c34a16891f84e7b', NULL, '2017-06-22 00:22:22', NULL, 'Y'),
+(7, 1, 1, 'V00000007', 'EMPLEADO 4', 'EMPLEADO4@EMPRESAA.COM', '00000000007', '827ccb0eea8a706c4c34a16891f84e7b', NULL, '2017-06-22 02:01:48', NULL, 'Y'),
+(8, 1, 1, 'V00000008', 'EMPLEADO 5', 'EMPLEADO5@EMPRESAA.COM', '00000000008', '827ccb0eea8a706c4c34a16891f84e7b', NULL, '2017-06-22 02:02:31', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -676,7 +749,18 @@ CREATE TABLE IF NOT EXISTS `cm_user_instrument` (
   PRIMARY KEY (`user_instrument_id`),
   KEY `fk_instrument_of_evaluation_id04` (`instrument_of_evaluation_id`),
   KEY `fk_user_evaluator_id` (`user_evaluated_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `cm_user_instrument`
+--
+
+INSERT INTO `cm_user_instrument` (`user_instrument_id`, `instrument_of_evaluation_id`, `user_evaluated_id`, `user_evaluator_id`, `evaluationdate`, `status`, `created`, `updated`, `isactive`) VALUES
+(1, 1, 1, 2, '2017-06-21', 'CO', '2017-06-22 03:58:53', NULL, 'Y'),
+(2, 1, 5, 2, '2017-06-22', 'CO', '2017-06-22 04:01:23', NULL, 'Y'),
+(3, 1, 6, 2, '2017-06-22', 'CO', '2017-06-22 04:04:33', NULL, 'Y'),
+(4, 1, 7, 2, '2017-06-22', 'CO', '2017-06-22 04:06:47', NULL, 'Y'),
+(5, 1, 8, 2, '2017-06-22', 'CO', '2017-06-22 04:07:42', NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -693,7 +777,312 @@ CREATE TABLE IF NOT EXISTS `cm_user_instrument_answer` (
   KEY `fk_user_instrument_id` (`user_instrument_id`),
   KEY `fk_behavioral_indicator_id` (`behavioral_indicator_id`),
   KEY `fk_domain_level_id` (`domain_level_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=300 ;
+
+--
+-- Volcado de datos para la tabla `cm_user_instrument_answer`
+--
+
+INSERT INTO `cm_user_instrument_answer` (`user_instrument_answer_id`, `user_instrument_id`, `behavioral_indicator_id`, `domain_level_id`) VALUES
+(1, 1, 13, 3),
+(2, 1, 14, 2),
+(3, 1, 15, 4),
+(4, 1, 16, 1),
+(5, 1, 17, 2),
+(6, 1, 18, 4),
+(7, 1, 19, 3),
+(8, 1, 20, 3),
+(9, 1, 21, 2),
+(10, 1, 22, 2),
+(11, 1, 23, 2),
+(12, 1, 24, 3),
+(13, 1, 28, 2),
+(14, 1, 29, 2),
+(15, 1, 30, 3),
+(16, 1, 31, 3),
+(17, 1, 32, 4),
+(18, 1, 33, 4),
+(19, 1, 34, 3),
+(20, 1, 35, 3),
+(21, 1, 36, 4),
+(22, 1, 37, 3),
+(23, 1, 38, 4),
+(24, 1, 39, 3),
+(25, 1, 40, 3),
+(26, 1, 41, 3),
+(27, 1, 42, 4),
+(28, 1, 43, 3),
+(29, 1, 44, 4),
+(30, 1, 45, 3),
+(31, 1, 46, 3),
+(32, 1, 47, 3),
+(33, 1, 48, 3),
+(34, 1, 49, 2),
+(35, 1, 50, 2),
+(36, 1, 51, 4),
+(37, 1, 148, 2),
+(38, 1, 149, 3),
+(39, 1, 150, 2),
+(40, 1, 151, 3),
+(41, 1, 152, 3),
+(42, 1, 153, 2),
+(43, 1, 154, 3),
+(44, 1, 155, 3),
+(45, 1, 156, 3),
+(46, 1, 157, 2),
+(47, 1, 158, 2),
+(48, 1, 159, 4),
+(49, 1, 64, 4),
+(50, 1, 65, 4),
+(51, 1, 66, 3),
+(52, 1, 67, 3),
+(53, 1, 68, 3),
+(54, 1, 69, 4),
+(55, 1, 70, 3),
+(56, 1, 71, 3),
+(57, 1, 72, 4),
+(58, 1, 73, 3),
+(59, 1, 74, 3),
+(60, 1, 75, 3),
+(61, 2, 13, 2),
+(62, 2, 14, 2),
+(63, 2, 15, 2),
+(64, 2, 16, 2),
+(65, 2, 17, 2),
+(66, 2, 18, 2),
+(67, 2, 19, 1),
+(68, 2, 20, 1),
+(69, 2, 21, 1),
+(70, 2, 22, 2),
+(71, 2, 23, 1),
+(72, 2, 24, 2),
+(73, 2, 28, 1),
+(74, 2, 29, 1),
+(75, 2, 30, 2),
+(76, 2, 31, 1),
+(77, 2, 32, 1),
+(78, 2, 33, 1),
+(79, 2, 34, 2),
+(80, 2, 35, 2),
+(81, 2, 36, 3),
+(82, 2, 37, 2),
+(83, 2, 38, 2),
+(84, 2, 39, 1),
+(85, 2, 40, 1),
+(86, 2, 41, 1),
+(87, 2, 42, 1),
+(88, 2, 43, 2),
+(89, 2, 44, 2),
+(90, 2, 45, 2),
+(91, 2, 46, 1),
+(92, 2, 47, 1),
+(93, 2, 48, 1),
+(94, 2, 49, 2),
+(95, 2, 50, 2),
+(96, 2, 51, 1),
+(97, 2, 148, 1),
+(98, 2, 149, 1),
+(99, 2, 150, 1),
+(100, 2, 151, 2),
+(101, 2, 152, 3),
+(102, 2, 153, 3),
+(103, 2, 154, 2),
+(104, 2, 155, 2),
+(105, 2, 156, 2),
+(106, 2, 157, 1),
+(107, 2, 158, 1),
+(108, 2, 159, 1),
+(109, 2, 64, 2),
+(110, 2, 65, 2),
+(111, 2, 66, 2),
+(112, 2, 67, 1),
+(113, 2, 68, 1),
+(114, 2, 69, 1),
+(115, 2, 70, 2),
+(116, 2, 71, 2),
+(117, 2, 72, 1),
+(118, 2, 73, 2),
+(119, 2, 74, 2),
+(120, 2, 75, 1),
+(121, 3, 13, 4),
+(122, 3, 14, 3),
+(123, 3, 15, 4),
+(124, 3, 16, 4),
+(125, 3, 17, 4),
+(126, 3, 18, 4),
+(127, 3, 19, 3),
+(128, 3, 20, 3),
+(129, 3, 21, 3),
+(130, 3, 22, 4),
+(131, 3, 23, 3),
+(132, 3, 24, 4),
+(133, 3, 28, 3),
+(134, 3, 29, 3),
+(135, 3, 30, 4),
+(136, 3, 31, 3),
+(137, 3, 32, 3),
+(138, 3, 33, 3),
+(139, 3, 34, 4),
+(140, 3, 35, 4),
+(141, 3, 36, 4),
+(142, 3, 37, 3),
+(143, 3, 38, 4),
+(144, 3, 39, 3),
+(145, 3, 40, 4),
+(146, 3, 41, 3),
+(147, 3, 42, 4),
+(148, 3, 43, 3),
+(149, 3, 44, 3),
+(150, 3, 45, 4),
+(151, 3, 46, 4),
+(152, 3, 47, 3),
+(153, 3, 48, 3),
+(154, 3, 49, 3),
+(155, 3, 50, 3),
+(156, 3, 51, 4),
+(157, 3, 148, 4),
+(158, 3, 149, 4),
+(159, 3, 150, 4),
+(160, 3, 151, 3),
+(161, 3, 152, 3),
+(162, 3, 153, 3),
+(163, 3, 154, 4),
+(164, 3, 155, 4),
+(165, 3, 156, 4),
+(166, 3, 157, 3),
+(167, 3, 158, 3),
+(168, 3, 159, 3),
+(169, 3, 64, 4),
+(170, 3, 65, 4),
+(171, 3, 66, 4),
+(172, 3, 67, 3),
+(173, 3, 68, 3),
+(174, 3, 69, 4),
+(175, 3, 70, 3),
+(176, 3, 71, 3),
+(177, 3, 72, 3),
+(178, 3, 73, 4),
+(179, 3, 74, 4),
+(180, 3, 75, 4),
+(181, 4, 13, 2),
+(182, 4, 14, 2),
+(183, 4, 15, 2),
+(184, 4, 16, 3),
+(185, 4, 17, 3),
+(186, 4, 18, 3),
+(187, 4, 19, 2),
+(188, 4, 20, 2),
+(189, 4, 21, 2),
+(190, 4, 22, 3),
+(191, 4, 23, 3),
+(192, 4, 24, 3),
+(193, 4, 28, 2),
+(194, 4, 29, 2),
+(195, 4, 30, 2),
+(196, 4, 31, 3),
+(197, 4, 32, 3),
+(198, 4, 33, 3),
+(199, 4, 34, 2),
+(200, 4, 35, 2),
+(201, 4, 36, 2),
+(202, 4, 37, 3),
+(203, 4, 38, 3),
+(204, 4, 39, 3),
+(205, 4, 40, 2),
+(206, 4, 41, 2),
+(207, 4, 42, 2),
+(208, 4, 43, 3),
+(209, 4, 44, 3),
+(210, 4, 45, 3),
+(211, 4, 46, 2),
+(212, 4, 47, 2),
+(213, 4, 48, 2),
+(214, 4, 49, 3),
+(215, 4, 50, 3),
+(216, 4, 51, 3),
+(217, 4, 148, 2),
+(218, 4, 149, 2),
+(219, 4, 150, 2),
+(220, 4, 151, 3),
+(221, 4, 152, 3),
+(222, 4, 153, 3),
+(223, 4, 154, 2),
+(224, 4, 155, 2),
+(225, 4, 156, 2),
+(226, 4, 157, 3),
+(227, 4, 158, 3),
+(228, 4, 159, 3),
+(229, 4, 64, 2),
+(230, 4, 65, 2),
+(231, 4, 66, 2),
+(232, 4, 67, 3),
+(233, 4, 68, 3),
+(234, 4, 69, 3),
+(235, 4, 70, 2),
+(236, 4, 71, 2),
+(237, 4, 72, 2),
+(238, 4, 73, 3),
+(239, 4, 74, 3),
+(240, 4, 75, 3),
+(241, 5, 13, 1),
+(242, 5, 14, 1),
+(243, 5, 15, 1),
+(244, 5, 16, 1),
+(245, 5, 17, 1),
+(246, 5, 18, 1),
+(247, 5, 19, 1),
+(248, 5, 20, 1),
+(249, 5, 21, 1),
+(250, 5, 22, 1),
+(251, 5, 23, 1),
+(252, 5, 24, 1),
+(253, 5, 28, 1),
+(254, 5, 29, 1),
+(255, 5, 30, 1),
+(256, 5, 31, 1),
+(257, 5, 32, 2),
+(258, 5, 33, 1),
+(259, 5, 34, 1),
+(260, 5, 35, 1),
+(261, 5, 36, 2),
+(262, 5, 37, 1),
+(263, 5, 38, 1),
+(264, 5, 40, 1),
+(265, 5, 41, 2),
+(266, 5, 42, 1),
+(267, 5, 43, 1),
+(268, 5, 44, 1),
+(269, 5, 45, 1),
+(270, 5, 46, 1),
+(271, 5, 47, 2),
+(272, 5, 48, 1),
+(273, 5, 49, 1),
+(274, 5, 50, 1),
+(275, 5, 51, 1),
+(276, 5, 148, 2),
+(277, 5, 149, 2),
+(278, 5, 150, 1),
+(279, 5, 151, 1),
+(280, 5, 152, 2),
+(281, 5, 153, 1),
+(282, 5, 154, 1),
+(283, 5, 155, 1),
+(284, 5, 156, 2),
+(285, 5, 157, 1),
+(286, 5, 158, 1),
+(287, 5, 159, 2),
+(288, 5, 64, 1),
+(289, 5, 65, 1),
+(290, 5, 66, 1),
+(291, 5, 67, 1),
+(292, 5, 68, 1),
+(293, 5, 69, 1),
+(294, 5, 70, 1),
+(295, 5, 71, 2),
+(296, 5, 72, 1),
+(297, 5, 73, 1),
+(298, 5, 74, 1),
+(299, 5, 75, 1);
 
 --
 -- Restricciones para tablas volcadas

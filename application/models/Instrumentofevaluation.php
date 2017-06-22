@@ -265,4 +265,10 @@ class Instrumentofevaluation extends CI_Model{
 			return false;
 		}
 	}
+
+	public function check_item($user_instrument_id,$behavioral_indicator_id,$domain_level_id){
+		$query = $this->db->query("SELECT * FROM cm_user_instrument_answer WHERE user_instrument_id = ".$user_instrument_id." AND behavioral_indicator_id = ".$behavioral_indicator_id." AND domain_level_id = ".$domain_level_id);
+
+		return $query->result();
+	}
 }

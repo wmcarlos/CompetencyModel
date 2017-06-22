@@ -12,6 +12,13 @@
         </ul>
         <div class="tab-content">
         <div id="evaluacion" class="tab-pane fade in active">
+            <?php if(count($result_evaluation) > 0){ ?>
+            <br />
+            <div class="alert alert-info">
+              <strong>Informaci&oacute;n!</strong> Ya esta Evaluaci&oacute;n fue realizada!!!.
+            </div>
+
+            <?php } ?>
             <?= form_open('Mains/evaluate') ?>
             <h4>Periodo a Evaluar</h4>
             <hr/>
@@ -98,7 +105,13 @@
                           <?php foreach($domain_levels AS $domain_level){ ?>
 
                           <td>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" type="radio"/></td>
+                          <?php
+                              $label = "";
+                              $verifyCheck = $this->Instrumentofevaluation->check_item($result_evaluation[0]->user_instrument_id,$data[$i]->behavioral_indicator_id,$domain_level->domain_level_id);
+
+                              if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
+                           ?>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" <?= $label ?> type="radio"/></td>
                           <?php } ?>
                           <td></td>
                         </tr>
@@ -112,7 +125,13 @@
                           <?php foreach($domain_levels AS $domain_level){ ?>
 
                           <td>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" type="radio"/></td>
+                          <?php
+                              $label = "";
+                              $verifyCheck = $this->Instrumentofevaluation->check_item($result_evaluation[0]->user_instrument_id,$data[$i]->behavioral_indicator_id,$domain_level->domain_level_id);
+
+                              if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
+                           ?>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" <?= $label ?> type="radio"/></td>
                           <?php } ?>
 
                           <td></td>
@@ -136,7 +155,10 @@
               <?php } ?>
               </tbody>
             </table>
-            <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i> Guardar Evaluaci&oacute;n</button>
+            <?php if(count($result_evaluation) < 0){ ?>
+              <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i> Guardar Evaluaci&oacute;n</button>
+            <?php } ?>
+            <a class="btn btn-info" href="<?= base_url() ?>index.php/Mains"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
             <?= form_close() ?>
           </div>
           <div id="resultado" class="tab-pane fade">
@@ -145,11 +167,12 @@
             <div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div>
 
             <?php }else{ ?>
+            <br/>
                 <div class="alert alert-danger">
                   <strong>Alerta!</strong> aun no existen datos para esta evaluacion!!!
                 </div>
             <?php } ?>
-              
+            <a class="btn btn-info" href="<?= base_url() ?>index.php/Mains"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
           </div>
           </div>
       </div>
