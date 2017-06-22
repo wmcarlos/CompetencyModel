@@ -147,7 +147,7 @@
 </div>
 <script type="text/javascript">
       //BAR CHART
-
+  <?php if(count($result_evaluation) > 0){ ?>
     $(document).ready(function(){
           var bar = new Morris.Bar({
           element: 'bar-chart',
@@ -171,5 +171,8 @@
         });
 
     });
+<?php }else{ ?>
+  isalert("No existen resultados para esta Evaluacion!!!");
+<?php } ?>
 
 </script>
