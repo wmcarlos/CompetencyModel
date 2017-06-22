@@ -52,7 +52,7 @@
               </select>
             </td>
             <td><input type="text" class="form-control" id="txtposition"/></td>
-            <td><button class="btn btn-success fr_button_add"  type="button"><i class="fa fa-plus"></i></button></td>
+            <td><button class="btn btn-success fr_button_add" data-clean="txtdescription,txtdevelopment_level,txtposition" type="button"><i class="fa fa-plus"></i></button></td>
           </tr>
         </tbody>
 
