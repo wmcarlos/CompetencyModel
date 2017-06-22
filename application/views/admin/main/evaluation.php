@@ -226,7 +226,7 @@
               <?php } ?>
               ]  
           }, {
-              name: 'Obtenido',
+              name: 'Alcance',
               data: [
               <?php for($i = 0; $i < count($result_evaluation); $i++){ ?>
                   <?= $result_evaluation[$i]->resultper ?>,
