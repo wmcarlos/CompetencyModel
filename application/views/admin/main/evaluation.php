@@ -10,6 +10,7 @@
           <li class="active"><a data-toggle="tab" href="#evaluacion">Evaluacion</a></li>
           <li><a data-toggle="tab" href="#resultado">Resultado</a></li>
         </ul>
+        <div class="tab-content">
         <div id="evaluacion" class="tab-pane fade in active">
             <?= form_open('Mains/evaluate') ?>
             <h4>Periodo a Evaluar</h4>
@@ -140,13 +141,16 @@
           </div>
           <div id="resultado" class="tab-pane fade">
             <?php if(count($result_evaluation) > 0){ ?>
-               <div id="bar-chart" style="position: absolute; top:200px; width: 100%;"></div>
+               
+            <div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div>
+
             <?php }else{ ?>
-                <div class="alert alert-danger" style="position: absolute; top:150px; width: 98%;">
+                <div class="alert alert-danger">
                   <strong>Alerta!</strong> aun no existen datos para esta evaluacion!!!
                 </div>
             <?php } ?>
               
+          </div>
           </div>
       </div>
     </div>
@@ -155,29 +159,83 @@
 <script type="text/javascript">
       //BAR CHART
   <?php if(count($result_evaluation) > 0){ ?>
-    $(document).ready(function(){
-          var bar = new Morris.Bar({
-          element: 'bar-chart',
-          resize: false,
-          data: [
-          <?php for($i=0; $i < count($result_evaluation); $i++){ ?>
 
-            <?php if(($i+1) == count($result_evaluation) ){ ?>
-                    {y: '<?= $result_evaluation[$i]->competency ?>', a: <?= $result_evaluation[$i]->topper ?>, b: <?= $result_evaluation[$i]->resultper ?>}
-            <?php }else{ ?>
-                    {y: '<?= $result_evaluation[$i]->competency ?>', a: <?= $result_evaluation[$i]->topper ?>, b: <?= $result_evaluation[$i]->resultper ?>},
-             <?php } ?>
+      Highcharts.chart('container', {
+          chart: {
+              type: 'bar'
+          },
+          title: {
+              text: 'Representacion de Competencias'
+          },
+          subtitle: {
+              text: 'Competencias Base / Alcance'
+          },
+          xAxis: {
+              categories: [
+              <?php for($i = 0; $i < count($result_evaluation); $i++){ ?>
+                <?php if(($i+1) == count($result_evaluation)){ ?>
+                    '<?= $result_evaluation[$i]->competency ?>'
+                <?php }else{ ?>
+                    '<?= $result_evaluation[$i]->competency ?>',
+                <?php } ?>
+              <?php } ?>
+              ],
+              title: {
+                  text: null
+              }
+          },
+          yAxis: {
+              min: 0,
+              title: {
+                  text: 'Ponderacion (%)',
+                  align: 'high'
+              },
+              labels: {
+                  overflow: 'justify'
+              }
+          },
+          tooltip: {
+              valueSuffix: '%'
+          },
+          plotOptions: {
+              bar: {
+                  dataLabels: {
+                      enabled: true
+                  }
+              }
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'top',
+              x: -40,
+              y: 80,
+              floating: true,
+              borderWidth: 1,
+              backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+              shadow: true
+          },
+          credits: {
+              enabled: false
+          },
+          series: [{
+              name: 'Tope',
+              data: [
+              <?php for($i = 0; $i < count($result_evaluation); $i++){ ?>
+                  <?= $result_evaluation[$i]->topper ?>,
+              <?php } ?>
+              ]  
+          }, {
+              name: 'Obtenido',
+              data: [
+              <?php for($i = 0; $i < count($result_evaluation); $i++){ ?>
+                  <?= $result_evaluation[$i]->resultper ?>,
+              <?php } ?>
+              ]
+          }]
+          
+      });
 
-          <?php } ?>
-          ],
-          barColors: ['#00a65a', '#f56954'],
-          xkey: 'y',
-          ykeys: ['a', 'b'],
-          labels: ['Tope', 'Obtenido'],
-          hideHover: 'auto'
-        });
-
-    });
-<?php } ?>
+  <?php } ?>
 
 </script>
