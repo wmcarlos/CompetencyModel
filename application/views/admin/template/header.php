@@ -4,6 +4,7 @@
   }
 
   $name = $this->router->fetch_class();
+  
   if($this->Service->getServicesForName($name)){
     redirect("Mains");
   }

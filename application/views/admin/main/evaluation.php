@@ -150,14 +150,16 @@
                               foreach($domain_levels AS $domain_level){ ?>
                               <td id='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>'>
                                 <?php 
-                                  $result_dl = $this->Instrumentofevaluation->getResultForDomainLevel($result_evaluation[0]->user_instrument_id,$domain_level->domain_level_id,$competency->competency_id,$data[$i]->development_level_id);
-                                  if($result_dl->total){
-                                    print $result_dl->total;
-                                     $suma_total += $result_dl->total; 
-                                  }else{
-                                    print 0;
-                                    $suma_total+=0;
-                                  }
+                                    if(count($result_evaluation) > 0 ){
+                                    $result_dl = $this->Instrumentofevaluation->getResultForDomainLevel($result_evaluation[0]->user_instrument_id,$domain_level->domain_level_id,$competency->competency_id,$data[$i]->development_level_id);
+                                    if($result_dl->total){
+                                      print $result_dl->total;
+                                       $suma_total += $result_dl->total; 
+                                    }else{
+                                      print 0;
+                                      $suma_total+=0;
+                                    }
+                                 }
                                 ?>
                               </td>
                             <?php } ?>
