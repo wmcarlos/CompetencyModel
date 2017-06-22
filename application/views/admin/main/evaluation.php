@@ -158,7 +158,7 @@
               <?php } ?>
               </tbody>
             </table>
-            <?php if(count($result_evaluation) < 0){ ?>
+            <?php if(count($result_evaluation) <= 0){ ?>
               <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i> Guardar Evaluaci&oacute;n</button>
             <?php } ?>
             <a class="btn btn-info" href="<?= base_url() ?>index.php/Mains"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
