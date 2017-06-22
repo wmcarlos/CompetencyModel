@@ -217,4 +217,23 @@ class User extends CI_Model{
 		}
 
 	}
+
+	public function getRultChart($user_evaluated_id, $instrument_id){
+		$query = $this->db->query("select
+						c.name AS competency,
+						SUM( (select max(value) from cm_domain_level) * dl.value ) AS top,
+						SUM(dol.value * dl.value) AS result,
+						100 AS topper,
+						ROUND( ((SUM(dol.value * dl.value) / SUM( (select max(value) from cm_domain_level) * dl.value )) * 100),2) AS resultper
+						from cm_user_instrument AS ui
+						inner join cm_user_instrument_answer AS uia ON (uia.user_instrument_id = ui.user_instrument_id)
+						inner join cm_behavioral_indicator AS bi ON (bi.behavioral_indicator_id = uia.behavioral_indicator_id)
+						inner join cm_development_level AS dl ON (dl.development_level_id = bi.development_level_id)
+						inner join cm_domain_level AS dol ON (dol.domain_level_id = uia.domain_level_id)
+						inner join cm_competency AS c ON (c.competency_id = bi.competency_id)
+			where ui.user_evaluated_id = ".$user_evaluated_id." and ui.instrument_of_evaluation_id = ".$instrument_id."
+			group by 1");
+
+		return $query->result();
+	}
 }

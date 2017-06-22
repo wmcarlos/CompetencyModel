@@ -100,6 +100,8 @@ class Mains extends CI_Controller {
 			redirect("Mains");
 		}
 
+		$data['result_evaluation'] = $this->User->getRultChart($user_evaluated_id, $instrument_id);
+
 		$this->load->view("admin/index.php",$data);
 	}
 

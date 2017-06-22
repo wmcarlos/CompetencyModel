@@ -40,6 +40,9 @@
   <script src="<?= base_url() ?>public/plugins/jQueryValidate/dist/additional-methods.min.js"></script>
   <script src="<?= base_url() ?>public/plugins/fr_transaccion/fr_transaccion.js"></script>
   <script src="<?= base_url() ?>public/plugins/iCheck/icheck.min.js"></script>
+  <!-- Morris.js charts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="<?= base_url() ?>public/plugins/morris/morris.min.js"></script>
   <script src="<?= base_url() ?>public/js/global.js"></script>
 
 </head>
