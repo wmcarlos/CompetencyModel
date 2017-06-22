@@ -12,13 +12,13 @@
         </ul>
         <div class="tab-content">
         <div id="evaluacion" class="tab-pane fade in active">
-            <?php if(count($result_evaluation) > 0){ ?>
+            <?php if(count($result_evaluation) > 0){ $disabled = "disabled='disabled'"; ?>
             <br />
             <div class="alert alert-info">
               <strong>Informaci&oacute;n!</strong> Ya esta Evaluaci&oacute;n fue realizada!!!.
             </div>
 
-            <?php } ?>
+            <?php }else{ $disabled = ""; } ?>
             <?= form_open('Mains/evaluate') ?>
             <h4>Periodo a Evaluar</h4>
             <hr/>
@@ -107,11 +107,13 @@
                           <td>
                           <?php
                               $label = "";
-                              $verifyCheck = $this->Instrumentofevaluation->check_item($result_evaluation[0]->user_instrument_id,$data[$i]->behavioral_indicator_id,$domain_level->domain_level_id);
+                              if(count($result_evaluation) > 0){
+                                $verifyCheck = $this->Instrumentofevaluation->check_item($result_evaluation[0]->user_instrument_id,$data[$i]->behavioral_indicator_id,$domain_level->domain_level_id);
 
-                              if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
+                                if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
+                              }
                            ?>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" <?= $label ?> type="radio"/></td>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" <?= $label ?> <?= $disabled ?> type="radio"/></td>
                           <?php } ?>
                           <td></td>
                         </tr>
@@ -127,11 +129,13 @@
                           <td>
                           <?php
                               $label = "";
-                              $verifyCheck = $this->Instrumentofevaluation->check_item($result_evaluation[0]->user_instrument_id,$data[$i]->behavioral_indicator_id,$domain_level->domain_level_id);
+                              if(count($result_evaluation) > 0){
+                                $verifyCheck = $this->Instrumentofevaluation->check_item($result_evaluation[0]->user_instrument_id,$data[$i]->behavioral_indicator_id,$domain_level->domain_level_id);
 
-                              if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
+                                if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
+                              }
                            ?>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" <?= $label ?> type="radio"/></td>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" <?= $label ?> <?= $disabled ?> type="radio"/></td>
                           <?php } ?>
 
                           <td></td>
@@ -144,7 +148,6 @@
                           <td></td>
                         </tr>
                        <?php } ?>
-
 
                   <?php } ?>
                     <tr>
