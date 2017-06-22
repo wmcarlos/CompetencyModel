@@ -76,7 +76,10 @@
             <hr/>
             <table class="table table-bordered table-striped">
               <tbody>
-              <?php foreach($competencies AS $competency){ ?>
+              <?php 
+                $total_competencia = 0;
+                foreach($competencies AS $competency){
+              ?>
                 <tr>
                   <td colspan="2"><b>Competencia:</b> <?= $competency->name ?></td>
                   <td rowspan="2" colspan="5" align="center" valign="bottom">Nivel de Dominio</td>
@@ -158,7 +161,11 @@
                                 ?>
                               </td>
                             <?php } ?>
-                          <td><?= $suma_total ?></td>
+                          <td>
+                            <?php 
+                                $total_competencia += $suma_total;
+                                print $suma_total;
+                            ?></td>
                         </tr>
                        <?php } ?>
 
@@ -166,9 +173,9 @@
                     <tr>
                       <td colspan="2" align="right"><b>TOTAL <?= $competency->name ?></b></td>
                       <td colspan="4"></td>
-                      <td></td>
+                      <td><?= $total_competencia ?></td>
                     </tr>
-              <?php } ?>
+              <?php $total_competencia = 0; } ?>
               </tbody>
             </table>
             <?php if(count($result_evaluation) <= 0){ ?>
