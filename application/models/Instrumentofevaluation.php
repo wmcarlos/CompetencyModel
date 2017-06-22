@@ -307,4 +307,24 @@ class Instrumentofevaluation extends CI_Model{
 
 		return $query->result();
 	}
+
+	public function getPromForCompetency($user_evaluator_id, $competency_id){
+
+		$query = $this->db->query("select
+						    c.competency_id,
+						    c.name AS competency,
+						    SUM(dol.value * dl.value) / SUM((select max(value) from cm_domain_level) * dl.value ) * 100 AS prom
+						    from cm_user_instrument AS ui
+						    inner join cm_user_instrument_answer AS uia ON (uia.user_instrument_id = ui.user_instrument_id)
+						    inner join cm_behavioral_indicator AS bi ON (bi.behavioral_indicator_id = uia.behavioral_indicator_id)
+						    inner join cm_development_level AS dl ON (dl.development_level_id = bi.development_level_id)
+						    inner join cm_domain_level AS dol ON (dol.domain_level_id = uia.domain_level_id)
+						    inner join cm_competency AS c ON (c.competency_id = bi.competency_id)
+						where ui.user_evaluator_id = ".$user_evaluator_id." AND c.competency_id = ".$competency_id."
+						group by 1,2");
+
+		return $query->row();
+
+
+	}
 }

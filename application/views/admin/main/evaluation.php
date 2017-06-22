@@ -280,6 +280,13 @@
                   <?= $result_evaluation[$i]->resultper ?>,
               <?php } ?>
               ]
+          }, {
+              name: 'Promedio',
+              data: [
+              <?php for($i = 0; $i < count($result_evaluation); $i++){ ?>
+                  <?= $this->Instrumentofevaluation->getPromForCompetency($user_evaluator[0]->user_id, $result_evaluation[$i]->competency_id)->prom ?>,
+              <?php } ?>
+              ]
           }]
           
       });

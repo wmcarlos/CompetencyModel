@@ -220,6 +220,7 @@ class User extends CI_Model{
 
 	public function getRultChart($user_evaluated_id, $instrument_id){
 		$query = $this->db->query("select
+						c.competency_id,
 						c.name AS competency,
 						ui.user_instrument_id,
 						SUM( (select max(value) from cm_domain_level) * dl.value ) AS top,
@@ -233,7 +234,7 @@ class User extends CI_Model{
 						inner join cm_domain_level AS dol ON (dol.domain_level_id = uia.domain_level_id)
 						inner join cm_competency AS c ON (c.competency_id = bi.competency_id)
 			where ui.user_evaluated_id = ".$user_evaluated_id." and ui.instrument_of_evaluation_id = ".$instrument_id."
-			group by 1,2");
+			group by 1,2,3");
 
 		return $query->result();
 	}
