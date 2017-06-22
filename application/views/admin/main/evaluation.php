@@ -116,7 +116,7 @@
                                 if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
                               }
                            ?>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" <?= $label ?> <?= $disabled ?> type="radio"/></td>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" <?= $label ?> <?= $disabled ?> type="radio"/></td>
                           <?php } ?>
                           <td></td>
                         </tr>
@@ -138,7 +138,7 @@
                                 if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
                               }
                            ?>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate(this,<?= $domain_level->value ?>,<?= $data[$i]->value ?>);" <?= $label ?> <?= $disabled ?> type="radio"/></td>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" <?= $label ?> <?= $disabled ?> type="radio"/></td>
                           <?php } ?>
 
                           <td></td>
@@ -159,11 +159,13 @@
                                       print 0;
                                       $suma_total+=0;
                                     }
+                                 }else{
+                                  print 0;
                                  }
                                 ?>
                               </td>
                             <?php } ?>
-                          <td>
+                          <td id="<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>" data-total-level="<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>">
                             <?php 
                                 $total_competencia += $suma_total;
                                 print $suma_total;
@@ -175,7 +177,7 @@
                     <tr>
                       <td colspan="2" align="right"><b>TOTAL <?= $competency->name ?></b></td>
                       <td colspan="4"></td>
-                      <td><?= $total_competencia ?></td>
+                      <td id="competency_<?= $competency->competency_id ?>"><?= $total_competencia ?></td>
                     </tr>
               <?php $total_competencia = 0; } ?>
               </tbody>

@@ -69,11 +69,41 @@ function isconfirm(message,url){
 
 }
 
-function set_calculate(e,dolv,delv){
-	var forid = e.getAttribute("data-calculate");
-	var multiple = dolv * delv;
-	var getVal = (document.getElementById(forid).innerHTML) ? document.getElementById(forid).innerHTML : 0;
-	var total = parseInt(getVal) + parseInt(multiple);
+function set_calculate(){
 
-	document.getElementById(forid).innerHTML = total;
+	var radios = document.getElementsByTagName("input");
+
+	for(var i = 0; i < radios.length; i++){
+
+		if(radios[i].getAttribute("data-calculate")){
+			var spl = radios[i].getAttribute("data-calculate").split("_");
+
+			document.getElementById(radios[i].getAttribute("data-calculate")).innerHTML = parseInt(0);
+
+			document.getElementById(spl[0]+"_"+spl[1]).innerHTML = parseInt(0);
+
+			document.getElementById("competency_"+spl[0]).innerHTML = parseInt(0);
+
+		}
+
+	}
+
+    for(var e = 0; e < radios.length; e++){
+
+		if(radios[e].getAttribute("data-calculate")){
+			if(radios[e].checked){
+				var getVal = (document.getElementById(radios[e].getAttribute("data-calculate")).innerHTML.trim()=='') ? 0 : document.getElementById(radios[e].getAttribute("data-calculate")).innerHTML;
+				var spl = radios[e].getAttribute("data-calculate").split("_");
+				var multiplo = spl[2] * spl[1];
+				var total = parseInt(getVal) + parseInt(multiplo);
+				
+				document.getElementById(radios[e].getAttribute("data-calculate")).innerHTML = total;
+
+				document.getElementById(spl[0]+"_"+spl[1]).innerHTML = parseInt(document.getElementById(spl[0]+"_"+spl[1]).innerHTML) + parseInt(total);
+
+				document.getElementById("competency_"+spl[0]).innerHTML = parseInt(document.getElementById("competency_"+spl[0]).innerHTML) + parseInt(document.getElementById(spl[0]+"_"+spl[1]).innerHTML);
+			}
+		}
+	}
+
 }
