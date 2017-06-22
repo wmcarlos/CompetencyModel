@@ -271,4 +271,21 @@ class Instrumentofevaluation extends CI_Model{
 
 		return $query->result();
 	}
+
+	public function getResultForDomainLevel($user_instrument_id,$domain_level_id,$competency_id,$development_level_id){
+
+		$query = $this->db->query("select 
+				SUM(dl.value * dle.value) AS total
+				from cm_user_instrument_answer AS uia
+				inner join cm_behavioral_indicator AS bi ON (bi.behavioral_indicator_id = uia.behavioral_indicator_id)
+				inner join cm_competency AS c ON (c.competency_id = bi.competency_id)
+				inner join cm_domain_level AS dl ON  (dl.domain_level_id = uia.domain_level_id)
+				inner join cm_development_level AS dle ON (dle.development_level_id = bi.development_level_id)
+				where uia.user_instrument_id = ".$user_instrument_id." 
+				AND uia.domain_level_id = ".$domain_level_id." 
+				AND c.competency_id = ".$competency_id." 
+				AND dle.development_level_id = ".$development_level_id);
+
+		return $query->row();
+	}
 }
