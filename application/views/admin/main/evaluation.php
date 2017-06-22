@@ -139,7 +139,14 @@
             <?= form_close() ?>
           </div>
           <div id="resultado" class="tab-pane fade">
-              <div id="bar-chart" style="position: absolute; top:200px; width: 100%;"></div>
+            <?php if(count($result_evaluation) > 0){ ?>
+               <div id="bar-chart" style="position: absolute; top:200px; width: 100%;"></div>
+            <?php }else{ ?>
+                <div class="alert alert-danger" style="position: absolute; top:200px; width: 100%;">
+                  <strong>Alerta!</strong> aun no existen datos para esta evaluacion!!!
+                </div>
+            <?php } ?>
+              
           </div>
       </div>
     </div>
@@ -171,8 +178,6 @@
         });
 
     });
-<?php }else{ ?>
-  isalert("No existen resultados para esta Evaluacion!!!");
 <?php } ?>
 
 </script>
