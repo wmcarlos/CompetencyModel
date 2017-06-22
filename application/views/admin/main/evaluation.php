@@ -142,7 +142,7 @@
             <?php if(count($result_evaluation) > 0){ ?>
                <div id="bar-chart" style="position: absolute; top:200px; width: 100%;"></div>
             <?php }else{ ?>
-                <div class="alert alert-danger" style="position: absolute; top:200px; width: 100%;">
+                <div class="alert alert-danger" style="position: absolute; top:150px; width: 98%;">
                   <strong>Alerta!</strong> aun no existen datos para esta evaluacion!!!
                 </div>
             <?php } ?>
