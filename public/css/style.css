@@ -653,3 +653,8 @@
 	margin-left: 10%;
 	margin-top: -10px;
 }
+
+span.error{
+  font-weight: bold;
+  color: red;
+}

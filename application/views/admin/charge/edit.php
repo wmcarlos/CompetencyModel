@@ -5,7 +5,7 @@
         <h1><?= $title ?></h1>
       </div>
       <div class="box-body">
-      <?= form_open_multipart("Charges/$action",array('autocomplete' => 'off')) ?>
+      <?= form_open_multipart("Charges/$action",array('autocomplete' => 'off', 'id' => 'fcharges')) ?>
 
       <div class='form-group'>
         <label for="txtdepartament_id">Departamento:</label>
@@ -41,3 +41,41 @@
     </div>
   </section>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+      $("#fcharges").validate({
+        rules : {
+          txtdepartament_id : {
+            required : true
+          },
+          txtname : {
+            required : true,
+            minlength : 4
+          },
+          txtcharge_level_id : {
+            required : true
+          }
+        },
+        messages : {
+          txtdepartament_id : {
+            required : '<span class="error">Este Campo es Obligatorio</span>',
+          },
+          txtname : {
+            required : '<span class="error">Este Campo es Obligatorio</span>',
+            minlength : '<span class="error">El valor debe ser mayor a 4 Caracteres</span>'
+          },
+          txtcharge_level_id : {
+            required : '<span class="error">Este Campo es Obligatorio</span>'
+          }
+        },
+        submitHandler: function(form) {
+          // do other things for a valid form
+          form.submit();
+        }
+
+      });
+
+  });
+</script>
