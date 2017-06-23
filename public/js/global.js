@@ -69,6 +69,29 @@ function isconfirm(message,url){
 
 }
 
+function sendForm(idform, msj){
+
+		bootbox.confirm({
+		title : "Confirmaci&oacute;n",
+	    message: msj,
+	    buttons: {
+	        cancel: {
+	            label: '<i class="fa fa-times"></i> No',
+	            className: 'btn-danger'
+	        },
+	        confirm: {
+	            label: '<i class="fa fa-check"></i> Si',
+	            className: 'btn-success'
+	        }
+	    },
+	    callback: function (result) {
+	        if(result){
+	        	document.getElementById(idform).submit();
+	        }
+	    }
+	});
+}
+
 function set_calculate(){
 
 	var radios = document.getElementsByTagName("input");
