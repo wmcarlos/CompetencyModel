@@ -132,13 +132,11 @@ class Mains extends CI_Controller {
 
 					$behavioral_indicator = $this->input->post("txtbeharvioral_indicator".$indicators[$i]);
 
-					for($t = 0; $t < count($behavioral_indicator); $t++){
-						
-						$expl = explode("_", $behavioral_indicator[$t]);
-
+					if(isset($behavioral_indicator) AND !empty($behavioral_indicator)){
+						$expl = explode("_", $behavioral_indicator);
 						$this->Instrumentofevaluation->insert_evaluation_detail($getID->user_instrument_id,$expl[1],$expl[2]);
-
 					}
+
 				}
 				$string = "Evaluacion Registrada con Exito!!";
 			}else{

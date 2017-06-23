@@ -116,7 +116,7 @@
                                 if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
                               }
                            ?>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" data-mult="<?= $domain_level->value ?>_<?= $data[$i]->value ?>" <?= $label ?> <?= $disabled ?> type="radio"/></td>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" data-mult="<?= $domain_level->value ?>_<?= $data[$i]->value ?>" <?= $label ?> <?= $disabled ?> type="radio"/></td>
                           <?php } ?>
                           <td></td>
                         </tr>
@@ -138,7 +138,7 @@
                                 if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
                               }
                            ?>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" data-mult="<?= $domain_level->value ?>_<?= $data[$i]->value ?>" <?= $label ?> <?= $disabled ?> type="radio"/></td>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" data-mult="<?= $domain_level->value ?>_<?= $data[$i]->value ?>" <?= $label ?> <?= $disabled ?> type="radio"/></td>
                           <?php } ?>
 
                           <td></td>
@@ -183,7 +183,7 @@
               </tbody>
             </table>
             <?php if(count($result_evaluation) <= 0){ ?>
-              <button class="btn btn-success" type="button" onclick="sendForm('fevaluation', 'Estas seguro de realizar la evaluacion? una vez guardada no podras Modificarla!!!');"><i class="fa fa-floppy-o"></i> Guardar Evaluaci&oacute;n</button>
+              <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i> Guardar Evaluaci&oacute;n</button>
             <?php } ?>
             <a class="btn btn-info" href="<?= base_url() ?>index.php/Mains"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
             <?= form_close() ?>
@@ -207,6 +207,46 @@
   </section>
 </div>
 <script type="text/javascript">
+
+  $(document).ready(function(){
+      $('#fevaluation').validate({
+          errorPlacement: function(error,element) {
+            element.parent().parent().css("background","red");
+          },
+          unhighlight: function(element) {
+            element.parentNode.parentNode.style.background = "";
+          },
+          rules: {
+          <?php 
+            $thedata = $this->Instrumentofevaluation->getCompetencyCombination($instrument[0]->instrument_of_evaluation_id);
+
+            for($x = 0; $x < count($thedata); $x++){
+
+              if( ($x+1) == count($thedata) ){
+          ?>
+              txtbeharvioral_indicator<?= $thedata[$x]->combination ?>: {
+                  required: true
+              }
+          <?php
+              }else{
+           ?>
+              txtbeharvioral_indicator<?= $thedata[$x]->combination ?>: {
+                  required: true
+              },
+           <?php
+              }
+
+            }
+          ?>
+  }, 
+  submitHandler: function(form) {
+    form.submit();
+  }, 
+  invalidHandler: function(event, validator) {
+      isalert("Debes seleccionar un nivel de dominio para cada uno de los indicadores conductuales, verifica las lineas en rojo!!!");
+  }
+  });
+});
 
       //BAR CHART
   <?php if(count($result_evaluation) > 0){ ?>

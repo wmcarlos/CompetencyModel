@@ -327,4 +327,15 @@ class Instrumentofevaluation extends CI_Model{
 
 
 	}
+
+	public function getCompetencyCombination($instrument_of_evaluation_id){
+		$query = $this->db->query("select
+								concat(c.competency_id,'_',bi.behavioral_indicator_id) AS combination
+								from cm_instrument_of_evaluation AS ioe
+								inner join cm_competency_instrument AS ci ON (ci.instrument_of_evaluation_id = ioe.instrument_of_evaluation_id)
+								inner join cm_competency as c ON (c.competency_id = ci.competency_id)
+								inner join cm_behavioral_indicator AS bi ON (bi.competency_id = c.competency_id)
+								WHERE ioe.instrument_of_evaluation_id = ".$instrument_of_evaluation_id);
+		return $query->result();
+	}
 }
