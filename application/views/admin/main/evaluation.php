@@ -240,7 +240,27 @@
           ?>
   }, 
   submitHandler: function(form) {
-    form.submit();
+      
+    bootbox.confirm({
+      title : "Confirmaci&oacute;n",
+        message: "Estas seguro de Guardar la Evaluacion?, Una vez guardada no podras Modificarla!!",
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> No',
+                className: 'btn-danger'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Si',
+                className: 'btn-success'
+            }
+        },
+        callback: function (result) {
+            if(result){
+              form.submit();
+            }
+        }
+    });
+      
   }, 
   invalidHandler: function(event, validator) {
       isalert("Debes seleccionar un nivel de dominio para cada uno de los indicadores conductuales, verifica las lineas en rojo!!!");
