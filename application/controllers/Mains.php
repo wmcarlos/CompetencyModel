@@ -14,6 +14,11 @@ class Mains extends CI_Controller {
 	}
 
 	public function index(){
+
+		if( count($this->session->userdata("logged_in")) <= 0 ){
+		    redirect("Login");
+		}
+		
 		$data['title'] = "Escritorio";
 		$data['path'] = "admin/main";
 		$data['content'] = "dashboard";

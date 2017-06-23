@@ -116,7 +116,7 @@
                                 if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
                               }
                            ?>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" <?= $label ?> <?= $disabled ?> type="radio"/></td>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" data-mult="<?= $domain_level->value ?>_<?= $data[$i]->value ?>" <?= $label ?> <?= $disabled ?> type="radio"/></td>
                           <?php } ?>
                           <td></td>
                         </tr>
@@ -138,7 +138,7 @@
                                 if(count($verifyCheck) > 0){ $label = "checked='checked'"; }
                               }
                            ?>
-                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" <?= $label ?> <?= $disabled ?> type="radio"/></td>
+                            <input name='txtbeharvioral_indicator<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>[]' value='<?= $competency->competency_id ?>_<?= $data[$i]->behavioral_indicator_id ?>_<?= $domain_level->domain_level_id ?>' data-calculate='<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>_<?= $domain_level->domain_level_id ?>' onclick="set_calculate();" data-mult="<?= $domain_level->value ?>_<?= $data[$i]->value ?>" <?= $label ?> <?= $disabled ?> type="radio"/></td>
                           <?php } ?>
 
                           <td></td>
@@ -165,7 +165,7 @@
                                 ?>
                               </td>
                             <?php } ?>
-                          <td id="<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>" data-total-level="<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>">
+                          <td id="<?= $competency->competency_id ?>_<?= $data[$i]->development_level_id ?>">
                             <?php 
                                 $total_competencia += $suma_total;
                                 print $suma_total;
