@@ -14,12 +14,14 @@
             <table class="datatable display responsive no-wrap" cellspacing="0" width="100%">
               <thead>
                 <th>Evaluacion</th>
+                <th>Evaluada</th>
                 <th>-</th>
               </thead>
               <tbody>
               <?php foreach($instruments AS $instrument){ ?>
                 <tr>
                   <td><?= $instrument->instrumentdes ?></td>
+                  <td><?= (isset($instrument->isevaluated)) ? 'SI' : 'NO'; ?></td>
                   <td><a href="<?= base_url() ?>index.php/Mains/view_evaluation/<?= $instrument->instrument_of_evaluation_id ?>/<?= $this->session->userdata('logged_in')->user_id ?>/<?= $this->session->userdata('logged_in')->user_evaluated ?>"><i class="fa fa-eye"></i></a></td>
                 </tr>
               <?php } ?>
@@ -42,6 +44,7 @@
                 <th>Nombre</th>
                 <th>Cargo</th>
                 <th>Evaluacion</th>
+                <th>Evaluada</th>
                 <th>-</th>
               </thead>
               <tbody>
@@ -50,6 +53,7 @@
                   <td><?= $other_evaluation->user ?></td>
                   <td><?= $other_evaluation->charge ?></td>
                   <td><?= $other_evaluation->evaluation ?></td>
+                  <td><?= (isset($other_evaluation->isevaluated)) ? 'SI' : 'NO'; ?></td>
                   <td><a href="<?= base_url() ?>index.php/Mains/view_evaluation/<?= $other_evaluation->instrument_of_evaluation_id ?>/<?= $other_evaluation->user_id ?>/<?= $this->session->userdata("logged_in")->user_id ?>"><i class="fa fa-eye"></i></a></td>
                 </tr>
               <?php } ?>

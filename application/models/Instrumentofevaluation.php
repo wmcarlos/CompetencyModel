@@ -110,7 +110,12 @@ class Instrumentofevaluation extends CI_Model{
 			case 'get_my_evaluations':
 				$query = "SELECT 
 						  ioe.instrument_of_evaluation_id,
-						  ioe.name AS instrumentdes
+						  ioe.name AS instrumentdes,
+						  (select 
+								user_instrument_id 
+							 from cm_user_instrument as cui 
+							 where cui.user_evaluated_id = ".$this->session->userdata("logged_in")->user_id."
+							 and cui.instrument_of_evaluation_id = ioe.instrument_of_evaluation_id) AS isevaluated
 						  FROM cm_instrument_of_evaluation AS ioe
 						  INNER JOIN cm_instrument_period AS ip ON (ip.instrument_of_evaluation_id = ioe.instrument_of_evaluation_id)
 						  INNER JOIN cm_period AS p ON (p.period_id = ip.period_id)
@@ -123,7 +128,12 @@ class Instrumentofevaluation extends CI_Model{
 							ioe.instrument_of_evaluation_id,
 							u.name AS user,
 							c.name AS charge,
-							ioe.name AS evaluation
+							ioe.name AS evaluation,
+							(select 
+								user_instrument_id 
+							 from cm_user_instrument as cui 
+							 where cui.user_evaluated_id = u.user_id 
+							 and cui.instrument_of_evaluation_id = ioe.instrument_of_evaluation_id) AS isevaluated
 						  FROM cm_charge AS c
 							  INNER JOIN cm_charge_assigned AS ca ON (ca.charge_id = c.charge_id)
 							  INNER JOIN cm_user AS u ON (u.user_id = ca.user_id)
